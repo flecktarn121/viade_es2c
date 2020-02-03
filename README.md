@@ -4,7 +4,8 @@
 
 # VIADE ES2C
 
-# Autores
+# Authors
+* Ana María García Sánchez [link to my page](https://github.com/AnaGciaSchz)
 
 This repository contains a skeleton of the VIADE project.
 

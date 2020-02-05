@@ -4,8 +4,8 @@
 
 # VIADE ES2C
 
-# Authors
 * Ana María García Sánchez [link to my page](https://github.com/AnaGciaSchz)
+- Jaime López Montero UO257745 [@jaimeknd77](https://github.com/jaimeknd77)
 
 This repository contains a skeleton of the VIADE project.
 

@@ -5,7 +5,7 @@
 # VIADE ES2C
 
 # Autores
--- Hello
+- Jaime López Montero UO257745 [@jaimeknd77](https://github.com/jaimeknd77)
 
 This repository contains a skeleton of the VIADE project.
 

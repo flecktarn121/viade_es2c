@@ -6,6 +6,7 @@
 
 * Ana María García Sánchez [link to my page](https://github.com/AnaGciaSchz)
 - Jaime López Montero UO257745 [@jaimeknd77](https://github.com/jaimeknd77)
+- Iván Álvarez López UO264862 [@UO246862](https://github.com/UO264862)
 
 This repository contains a skeleton of the VIADE project.
 

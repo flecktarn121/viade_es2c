@@ -7,7 +7,7 @@
 - Ana María García Sánchez [link to my page](https://github.com/AnaGciaSchz)
 - Jaime López Montero UO257745 [@jaimeknd77](https://github.com/jaimeknd77)
 - Elmer José Cortez Sanjinez [@UO257192](https://github.com/UO257192)
-- Iván Álvarez López UO264862 [@UO246862](https://github.com/UO264862)
+- Iván Álvarez López UO264862 [@UO264862](https://github.com/UO264862)
 - Diego Santos Neila UO264872 [@UO264872](https://github.com/UO264872)
 
 This repository contains a skeleton of the VIADE project.

@@ -12,7 +12,15 @@ Describes the relevant requirements and the driving forces that software archite
 ****
 
 === Requirements Overview
+According to the priority of each requirement, we can order them as you can read next.
 
+* The application must implement a decentralised architecture based in the SoLiD (Social Linked Data) specifications, therefore stored data must be separated from the app.
+* Information must be stored in pods.
+* Routes will be shown to users on the map.
+* A route should be fed back with relative data, such as shared pictures, videos or comments.
+* Notifications will be sent as a result of a friend sharing a route.
+* There can exist user groups for multiple sharing purposes.
+* Interoperability is an essential part of our specific application, so several apps are able to work with the same information of a route.
 [role="arc42help"]
 ****
 .Contents
@@ -32,7 +40,8 @@ Keep these excerpts as short as possible. Balance readability of this document w
 ****
 
 === Quality Goals
-
+* Availability. The application should be a consistent.
+* Privacy. As a SoLiD project, keeping the personal data is a main quality purpose.
 [role="arc42help"]
 ****
 .Contents

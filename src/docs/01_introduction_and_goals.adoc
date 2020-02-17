@@ -1,6 +1,6 @@
 [[section-introduction-and-goals]]
 == Introduction and Goals
-
+The aim of this project is to develop a decentralised path tracker, which has to be able to give an excellent functionality meanwhile the privacy of the customer is being preserved.
 [role="arc42help"]
 ****
 Describes the relevant requirements and the driving forces that software architects and development team must consider. These include

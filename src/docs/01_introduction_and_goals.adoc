@@ -1,10 +1,6 @@
 [[section-introduction-and-goals]]
 == Introduction and Goals
-<<<<<<< HEAD
-The aim of this project is to develop a decentralised path tracker, which has to be able to give an excellent functionality meanwhile the privacy of the customer is being preserved.
-=======
 The aim of the project is to develop a decentralised route tracker, which has to be able to give an excellent performance meanwhile the privacy of the customer is well kept.
->>>>>>> 0c8cbfa68bdafeae1b55fcba53d6b4f1c6939c89
 [role="arc42help"]
 ****
 Initial commit

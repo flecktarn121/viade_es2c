@@ -52,5 +52,4 @@ Decisions about how to document our project.
 |Constraint|Explanation
 | Arc42 | We have to use 'Arc42' structure for our project documentation because it is clear, simple and effective and a common tool used in current companies
 | Asciidoctor | We have to use 'Asciidoctor' to create our documentation
-| English | We agreed on writing it in English because is the prevalent language used in informatic's documentation projects
 |===

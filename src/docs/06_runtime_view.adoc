@@ -75,7 +75,8 @@ participant Viade2
 actor User2
 User1 -> Viade1: 1. create new route
 Viade1 -> POD: saves the route
-User1 -> Viade2: 2. shares route
+User1 -> Viade1: 2. shares route
+Viade1 -> POD: allows User2 to see the route.
 Viade2 -> POD: recieve route
 Viade2 -> User2: show route
 ----

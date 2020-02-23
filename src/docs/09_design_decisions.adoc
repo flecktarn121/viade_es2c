@@ -1,6 +1,11 @@
 [[section-design-decisions]]
 == Design Decisions
 
+Application wil use sliding menu stile like most of mobile applications. For this, we are going to use a special library.
+
+Also, application will has a minimalist stile for a clearly use.
+
+In a future we will update this section when we have more design decisions.
 
 [role="arc42help"]
 ****

@@ -30,25 +30,67 @@ There are many notations for describing scenarios, e.g.
 
 ****
 
-=== <Runtime Scenario 1>
+=== Log in
+The login process will be done by users when they log in with their pesonal id to access the application.
 
+1. The user click login button.
+2. The user enters his credentials.
+3. Their data is sent to a LoginManager to try to log in.
+4. The server can deny or approve the authentication.
+5. The user can start using the application's features.
 
-* _<insert runtime diagram or textual description of the scenario>_
-* _<insert description of the notable aspects of the interactions between the
-building block instances depicted in this diagram.>_
-
-It is possible to use a sequence diagram:
-
-[plantuml,"Sequence diagram",png]
+[plantuml,"Log in secuence diagram",png]
 ----
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
-
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+User -> Viade: 1. login request
+Viade -> LoginManager: 2. user credentials
+LoginManager -> Server: 3. log in try
+Server -> Viade: 4. authentication approved
+Server -> LoginManager: 4. authentication denied
+User -> Viade: 5. routes management
 ----
-=== <Runtime Scenario 2>
+=== Routes Management
+The users use the application to manage their routes.
 
-=== ...
+1. The user creates a new route.
+2. The user shares a route to a friend or a group of friends.
 
-=== <Runtime Scenario n>
+[plantuml,"Routes creation secuence diagram",png]
+----
+title User creates a new route
+actor User1
+participant Viade1
+database POD
+User1 -> Viade1: 1. create new route
+Viade1 -> POD: saves the route
+
+----
+
+[plantuml,"Routes share 1 secuence diagram",png]
+----
+title User shares route to a friend
+actor User1
+participant Viade1
+database POD
+participant Viade2
+actor User2
+User1 -> Viade1: 1. create new route
+Viade1 -> POD: saves the route
+User1 -> Viade2: 2. shares route
+Viade2 -> POD: recieve route
+Viade2 -> User2: show route
+----
+
+[plantuml,"Routes share 2 secuence diagram",png]
+----
+title User shares route to a group of friends
+actor User1
+participant Viade1
+database POD
+participant ViadeX
+collections User_group
+User1 -> Viade1: 1. create new route
+Viade1 -> POD: saves the route
+User1 -> ViadeX: 2. shares route
+ViadeX -> POD: recieve route
+ViadeX -> User_group: show route
+----

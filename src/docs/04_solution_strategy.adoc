@@ -22,3 +22,35 @@ Motivate what you have decided and why you decided that way,
 based upon your problem statement, the quality goals and key constraints.
 Refer to details in the following sections.
 ****
+In this section, we are going to summarize the fundamental strategies and decisions during the development of our project.
+
+First of all, we have to remember that Viade is a decentralized routes management system based on the solid specifications and React framework, so our plans and resolutions need to be consistent with those characteristics.
+
+Let's talk about Technical decisions:
+
+* *Using JavaScript*: We talked about how to implement the logic of the project. We can take advantage of the functionalities of React, but perhaps we would need to implements something more complicated, so we agreed on using JavaScript because we have already used it and it allows us to do all the logic we thought about.
+
+* *Libraries*: We opened an link:https://github.com/Arquisoft/viade_es2c/issues/5[issue] in our GitHub repository where we researched possible libraries to use.
+
+* *Pull request*: We decided that we are going to use the "pull request" functionality of GitHub because it seems that it helps you get better results in your commits.
+
+We want to fulfill some quality goals:
+
+* *Usability*: Viade has to be intuitive. We are going to use the knowledge acquired during this career.
+* *Testability*: It is a constraint to create tests, so Viade has to be testable.
+* *Availability*: You should be able to manage a route at any moment, so Viade has to be consistent.
+* *Interoperability*: We want out routes to be exportable to other apps so we need to investigate it.
+* *Decentralization*: It is a constraint on this project.
+
+
+And this are our organization decisions:
+
+* *Kanban*: We also talked about using the "Project" tab of GitHub that resembles a kanban board. We are going to use it to get organized because we use that methodology last semester and it works fine.
+
+* *Issues*: We want to register our group communications to show all of our work throughout the making of Viade, so we are going to try to create a lot of issues in the GitHub repository.
+
+* *WhatsApp*: It is quicker and simpler to communicate using a group chat, so we are going to use WhatsApp (the common chat app used in Spain) while trying not to stop creating GitHub issues.
+
+* *English*: We agreed on writing it in English because is the prevalent language used in informatic's documentation projects.
+
+With these decisions and plans, we want to create a good decentralized routes management system and fulfill all the requisites of the problem statement.

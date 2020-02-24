@@ -1,8 +1,9 @@
 [[section-introduction-and-goals]]
 == Introduction and Goals
-
+The aim of the project is to develop a decentralised route tracker, which has to be able to give an excellent performance meanwhile the privacy of the customer is well kept.
 [role="arc42help"]
 ****
+Initial commit
 Describes the relevant requirements and the driving forces that software architects and development team must consider. These include
 
 * underlying business goals, essential features and functional requirements for the system

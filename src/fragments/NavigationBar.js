@@ -7,7 +7,7 @@ import {Nav, Navbar} from 'react-bootstrap';
 class NavigationBar extends React.Component {
     render() {
         return(
-            <Navbar fixed="top" expand="lg" bg="success" variant="dark">
+            <Navbar expand="lg" bg="success" variant="dark">
                 <Navbar.Brand href="#home">
                     <img src={logo} width="30" height="30"  className="d-inline-block align-center" alt="logo"/>
                     Viade
@@ -17,7 +17,9 @@ class NavigationBar extends React.Component {
                     <Nav className="mr-auto">
                         <Nav.Link href="#home">Inicio</Nav.Link>
                         <Nav.Link href="#link">Crear ruta</Nav.Link>
-                        <Nav.Link href="#link">Usuario</Nav.Link>
+                    </Nav>
+                    <Nav>
+                        <Nav.Link href="#lin">Usuario</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

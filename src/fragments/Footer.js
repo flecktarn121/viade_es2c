@@ -7,7 +7,7 @@ class Footer extends React.Component {
         return(
             <footer className="page-footer font-small Nav pt-4">
 
-                <div className="container">
+                <div className="text-center">
                     <p>
                         Project delevoped by ES2C Arquisoft Team
                     </p>

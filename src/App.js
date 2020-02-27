@@ -1,12 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from './img/logo.svg';
 import './App.css';
-import NavigationBar from './NavigationBar';
+import NavigationBar from './fragments/NavigationBar';
+import Footer from "./fragments/Footer";
 
 function App() {
   return (
     <div className="App">
-      <NavigationBar></NavigationBar>
+      <NavigationBar/>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -21,6 +22,7 @@ function App() {
           Learn React. Developed using Docker.
         </a>
       </header>
+    <Footer/>
     </div>
   );
 }

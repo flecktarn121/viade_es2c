@@ -10,11 +10,17 @@ function Route() {
     return (
         <div>
             <NavigationBar/>
-            <div>
-                <Map zoom={15}>
+            <div className={"ml-4 mt-4"}>
+                <h1>Crea tu ruta</h1>
+                <p>Selecciona en el mapa los puntos por los que has pasado.</p>
+            </div>
 
+            <section className="grid pl-4 pr-4 demoContainer Nav">
+            <div className="mt-3 mb-3">
+                <Map zoom={15}>
                 </Map>
             </div>
+            </section>
             <Footer/>
         </div>
     );

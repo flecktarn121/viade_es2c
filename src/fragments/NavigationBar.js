@@ -2,11 +2,12 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Home.css';
 import '@inrupt/solid-style-guide';
-import {Nav, Navbar} from 'react-bootstrap';
-import {FaBookOpen, FaMapMarkerAlt, FaRoute, FaUserCircle} from 'react-icons/fa'
+import {Dropdown, Nav, Navbar} from 'react-bootstrap';
+import {FaBookOpen, FaMapMarkerAlt, FaRoute} from 'react-icons/fa'
 import LoggedIn from "../loaders/LoggedIn";
 import LoggedOut from "../loaders/LoggedOut";
 import Value from "../loaders/Value";
+import LogoutButton from "../loaders/LogoutButton";
 
 
 class NavigationBar extends React.Component {
@@ -27,16 +28,21 @@ class NavigationBar extends React.Component {
                         </Nav.Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="/src/index.html">
-                            <span className="text-light">
-                                <span className="icon"><FaUserCircle/></span>
-                                <LoggedIn>
-                                  <Value src="user.name"/>
-                                </LoggedIn>
-                                <LoggedOut>
-                                    Usuario
-                                </LoggedOut>
-                            </span>
+                        <Nav.Link>
+                            <Dropdown>
+                                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                    <LoggedIn>
+                                        <Value src="user.name"/>
+                                    </LoggedIn>
+                                    <LoggedOut>
+                                        Usuario
+                                    </LoggedOut>
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item href="#/action-1">Ver perfil</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-2"><LogoutButton/></Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

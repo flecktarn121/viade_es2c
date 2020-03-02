@@ -22,7 +22,6 @@ function TimeLine() {
                 </LoggedIn>
             </section>
             <Footer/>
-
         </div>
     );
 }

@@ -1,10 +1,17 @@
 import React, {Component} from 'react';
 import GoogleMapReact from 'google-map-react';
-import { ReactComponent as Logo } from '../img/logo-sin-fondo.svg';
+//import {ReactComponent as Marker} from '../img/marker.svg';
+import Marker from "./Marker";
 
-const AnyReactComponent = ({text}: any) => <div>{text}}</div>;
+const pin = new Image();
+pin.src = '../img/marker.svg';
 
 class Map extends Component {
+
+    constructor(props) {
+        super(props);
+        this.handleGoogleMapApi = this.handleGoogleMapApi.bind(this);
+    }
 
     state = {
         center: {
@@ -26,18 +33,41 @@ class Map extends Component {
         }
     }
 
+    cargarMarcadores = (list) => {
+        let markers = [];
+
+        for (let i = 0; i < list.length; i++) {
+            markers.push(
+                <Marker lat={list[i].lat} lng={list[i].lng}/>
+            )
+        }
+        return markers;
+    };
+
+    handleGoogleMapApi = (google) => {
+        var flightPath = new google.maps.Polyline({
+            path: this.props.markers,
+            geodesic: true,
+            strokeColor: '#33BD4E',
+            strokeOpacity: 1,
+            strokeWeight: 5
+        });
+
+        flightPath.setMap(google.map);
+    };
+
     render() {
         this.getLocation();
         return (
-            <div style={{height: '80vh', width: '100%'}}>
+            <div style={{height: '70vh', width: '100%'}}>
                 <GoogleMapReact
                     bootstrapURLKeys={{key: 'AIzaSyC6j4mF6blrc4kZ54S6vYZ2_FpMY9VzyRU'}}
                     defaultCenter={this.state.center}
                     defaultZoom={this.props.zoom}
+                    yesIWantToUseGoogleMapApiInternals
+                    onGoogleApiLoaded={this.handleGoogleMapApi}
                 >
-                    <Logo style={{height: "40", width: "40"}}
-                          lat={this.state.center.lat}
-                          lng={this.state.center.lng}/>
+                    {this.cargarMarcadores(this.props.markers)}
                 </GoogleMapReact>
             </div>
         )

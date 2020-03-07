@@ -6,14 +6,16 @@ import ImageProfile from './ImageProfile';
 import Footer from './Footer';
 import Notification from './Notifications';
 import AutoSaveSpinner from './AutoSaveSpinner';
+import Map from './Map';
 
 export {
-  ErrorBoundary,
-  GlobalError,
-  NavBar,
-  AuthNavBar,
-  ImageProfile,
-  Footer,
-  Notification,
-  AutoSaveSpinner
+    ErrorBoundary,
+    GlobalError,
+    NavBar,
+    AuthNavBar,
+    ImageProfile,
+    Footer,
+    Notification,
+    AutoSaveSpinner,
+    Map
 };

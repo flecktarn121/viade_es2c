@@ -31,6 +31,12 @@ export const NavigationItems = [
     icon: '/img/icon/files.svg',
     label: 'timeline',
     to: '/timeline'
+  },
+  {
+    id: 'route',
+    icon: '/img/icon/files.svg',
+    label: 'route',
+    to: '/route'
   }
 ];
 

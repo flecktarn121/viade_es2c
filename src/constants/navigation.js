@@ -37,6 +37,12 @@ export const NavigationItems = [
     icon: '/img/icon/files.svg',
     label: 'route',
     to: '/route'
+  },
+  {
+    id: 'friends',
+    icon: '/img/icon/files.svg',
+    label: 'friends',
+    to: '/friends'
   }
 ];
 

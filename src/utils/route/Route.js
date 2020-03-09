@@ -1,9 +1,12 @@
 class Route {
-    constructor(name, description, points, author) {
+    constructor(name, description, points, author, comments, image, video) {
         this._name = name;
         this._description = description;
         this._points = points;
         this._author = author;
+        this._comments = comments;
+        this._image = image;
+        this._video = video;
     }
 
     get name() {
@@ -36,5 +39,30 @@ class Route {
 
     set author(value) {
         this._author = value;
+    }
+
+
+    get comments() {
+        return this._comments;
+    }
+
+    set comments(value) {
+        this._comments = value;
+    }
+
+    get image() {
+        return this._image;
+    }
+
+    set image(value) {
+        this._image = value;
+    }
+
+    get video() {
+        return this._video;
+    }
+
+    set video(value) {
+        this._video = value;
     }
 }

@@ -4,36 +4,55 @@ const $rdf = require('rdflib');
 const auth = require('solid-auth-client');
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
 
+
 //var person = null;
 var person = 'https://ruben.verborgh.org/profile/#me';
+
+
 
 /**
  * Container component to show the user´s friends
  */
 function FriendsList() {
     trackSession();
-    var friends = loadFriends(person);
+    var friendsUrls = loadFriendsUrls(person);
+    //Queda sacar los nombres, tenemos urls
+    console.log("Amigos")
+    console.log(friendsUrls)
 
-    return <h1>Lista de amigos</h1>
+    //const friendsList = () => (
+        //<div>
+        //    <h1>Lista de amigos</h1>
+        //    <ul>
+        //        {friends.map(friend => (
+        //            <li key={friend}>{friend}</li>
+        //        ))}
+        //    </ul>
+        // </div>
+   // );
+
+    const friendsList = <h1>Lista de amigos</h1>;
+
+    return friendsList;
 }
 
 /**
- * This function returns the friends list for a specified user
+ * This function returns the friends list urls for a specified user
  */
-async function loadFriends(p) {
+async function loadFriendsUrls(p) {
     const store = $rdf.graph();
     const fetcher = new $rdf.Fetcher(store);
 
     await fetcher.load(person);
-
     const friends = store.each($rdf.sym(p), FOAF('knows'));
 
-    friends.forEach(friend => {
-        console.log(friend);
-    });
+    var friendsUrls = friends.map(friend => 
+        friend.value
+    );
 
-    return friends;
+    return friendsUrls;
 }
+
 /**
  * 
  */

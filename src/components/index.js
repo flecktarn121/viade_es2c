@@ -7,6 +7,7 @@ import Footer from './Footer';
 import Notification from './Notifications';
 import AutoSaveSpinner from './AutoSaveSpinner';
 import Map from './Map';
+import CreateMap from "./MapCreate";
 
 export {
     ErrorBoundary,
@@ -17,5 +18,6 @@ export {
     Footer,
     Notification,
     AutoSaveSpinner,
-    Map
+    Map,
+    CreateMap
 };

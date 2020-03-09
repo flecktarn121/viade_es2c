@@ -15,7 +15,8 @@ import {
     FormModelRenderer,
     TextEditor,
     TimeLine,
-    Route
+    Route,
+    CreateRoute
 } from './containers';
 
 const privateRoutes = [
@@ -63,6 +64,12 @@ const privateRoutes = [
         id: 'route',
         path: '/route',
         component: Route
+    }
+    ,
+    {
+        id: 'createroute',
+        path: '/createroute',
+        component: CreateRoute
     }
 ];
 

@@ -1,31 +1,20 @@
 import React, {Component} from 'react';
 import {default as update} from "react-addons-update";
-
-
-import {Map, InfoWindow, Marker, GoogleApiWrapper, Polyline} from 'google-maps-react';
-
-const style = {
-    width: '70%',
-    height: '80%'
-};
+import {GoogleApiWrapper, Map, Marker, Polyline} from 'google-maps-react';
 
 const containerStyle = {
-    width: '50%',
-    height: '50%',
-    flex: '1 0 auto'
+    height: '400px',
+    paddingBottom: '10px'
+    // height: '100%'
 };
 
 export class CreateMap extends Component {
+    sendData = () => {
+        this.props.parentCallback(this.state.markers);
+    };
 
     state = {
-        markers: [{
-            position: {
-                lat: 25.0112183,
-                lng: 121.52067570000001,
-            },
-            key: "Taiwan",
-            defaultAnimation: 2
-        }],
+        markers: [],
         center: {
             lat: 40.4165000,
             lng: -3.7025600
@@ -60,34 +49,50 @@ export class CreateMap extends Component {
             ],
         });
         this.setState({markers});
+        this.sendData();
     };
 
     crearlinea() {
         let markers = [];
 
         for (let i = 0; i < this.state.markers.length; i++) {
-            if (i != 0) {
-                markers.push({lat: this.state.markers[i].position.lat, lng: this.state.markers[i].position.lng})
-            }
+            markers.push({lat: this.state.markers[i].position.lat, lng: this.state.markers[i].position.lng})
         }
         return markers;
+    };
+
+    handleMarkerRightclick (index, event) {
+        /*
+         * All you modify is data, and the view is driven by data.
+         * This is so called data-driven-development. (And yes, it's now in
+         * web front end and even with google maps API.)
+         */
+        var {markers} = this.state;
+        markers = update(markers, {
+            $splice: [
+                [index, 1]
+            ],
+        });
+        this.setState({ markers });
+        alert("asdasdsdsd")
     };
 
     render() {
         this.getLocation();
         return (
-            <Map google={this.props.google} zoom={14} onClick={this._onClick} center={this.state.center}  containerStyle={containerStyle}>
+            <Map google={this.props.google} zoom={14} onClick={this._onClick} center={this.state.center}
+                 containerStyle={containerStyle}>
 
                 {this.state.markers.map((marker, index) => {
                     return (
-                        <Marker position={{lat: marker.position.lat, lng: marker.position.lng}}/>
+                        <Marker position={{lat: marker.position.lat, lng: marker.position.lng}} />
                     );
                 })}
                 <Polyline
                     path={this.crearlinea()}
-                    strokeColor="#0000FF"
+                    strokeColor="#18A9E6"
                     strokeOpacity={0.8}
-                    strokeWeight={2}/>
+                    strokeWeight={4}/>
             </Map>
         );
     }

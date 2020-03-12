@@ -16,8 +16,8 @@ export const Header = styled.div`
   position: relative;
   align-items: center;
   justify-content: center;
-  background-image: url('/img/pattern-geo.png'),
-    linear-gradient(135deg, #7c4dff 0%, #18a9e6 50%, #01c9ea 100%);
+   background-image: url('/img/pattern-geo.png'),
+    radial-gradient(#00B020, #00B020, #00B020);
   background-repeat: repeat, no-repeat;
   padding: 30px 20px;
   p {

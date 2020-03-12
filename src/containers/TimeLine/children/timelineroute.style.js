@@ -17,5 +17,10 @@ export const TimelineRouteCard = styled.div`
 
 export const TimelineRouteDetail = styled.div`
   padding: 1rem 3.5rem;
-  p;
+    h3 {
+    color: #00B020;
+  }
+  h4 {
+    color: #005F11;
+  }
 `;

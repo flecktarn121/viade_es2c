@@ -90,7 +90,7 @@ export class CreateMap extends Component {
                 })}
                 <Polyline
                     path={this.crearlinea()}
-                    strokeColor="#18A9E6"
+                    strokeColor="#005F11"
                     strokeOpacity={0.8}
                     strokeWeight={4}/>
             </Map>

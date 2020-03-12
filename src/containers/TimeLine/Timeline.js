@@ -11,7 +11,7 @@ function TimeLine() {
     <TimelineWrapper>
       <TimelineContainer>
         <Header>
-          <h1 className="text--white">Cronología</h1>
+          <h1>Rutas</h1>
         </Header>
         <TimeLineRoute
           title="Prueba"

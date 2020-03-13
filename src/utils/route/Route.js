@@ -66,3 +66,5 @@ class Route {
         this._video = value;
     }
 }
+
+export default Route;

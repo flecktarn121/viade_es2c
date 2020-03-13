@@ -1,15 +1,38 @@
 [[section-building-block-view]]
+
+
 == Building Block View
+
 
 === Whitebox Overall System
 
-image:05_building_bloc_view.png["WhiteBox Diagram"]
+Level 1::
 
+App description.
 
-*Level 1* It contains the general structure of the arquitecture: user, application, pod server and solid.
+[cols="1,2" options="header"]
+|===
+| **Name** | **Responsibility**
+| Customer | Person who requires the functionality of this application.
+| ViaDe | Decentralised route tracker.
+| SOLID |  Specification used in order to build up this app.
+| POD | Decentralised store unit of the user data.
+|===
 
-*Level 2* Zoom in the main parts of the application: app, test and libraries.
+Level 2::
 
-*Level 3* Specific parts of application and tests.
+Giving a deeper insight into ViaDe application.
 
-*Lever 4* The most basic level of architecture: models, services and components.
+[cols="1,2" options="header"]
+|===
+| **Name** | **Responsibility**
+| App | Decentralized route tracker.
+| Test units | Should be passed as long as integrity is required in the app.
+| Libraries | Every needed library will be a component of the app.
+|===
+
+Level 3::
+
+ViaDe will have to be meant as a decentralised route tracker application, which will also have to implement several requirements such as services, models & any other needed component. SOLID is the decentralisation specification that the team is going to be following all over the project development.
+
+Some essential technologies such as RDF, which coordinates the POD data, are going to be establishing the foundation of the project.

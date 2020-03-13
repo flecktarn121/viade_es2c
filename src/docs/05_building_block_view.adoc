@@ -1,0 +1,15 @@
+[[section-building-block-view]]
+== Building Block View
+
+=== Whitebox Overall System
+
+image:05_building_bloc_view.png["WhiteBox Diagram"]
+
+
+*Level 1* It contains the general structure of the arquitecture: user, application, pod server and solid.
+
+*Level 2* Zoom in the main parts of the application: app, test and libraries.
+
+*Level 3* Specific parts of application and tests.
+
+*Lever 4* The most basic level of architecture: models, services and components.

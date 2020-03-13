@@ -54,6 +54,8 @@
     "text-editor": "Text Editor",
     "changeLanguage": "Change Language",
     "map": "Map",
+    "timeline":"Routes",
+    "createroute":"New route",
     "languages": {
       "en": "English (English)",
       "es": "Español (Spanish)"

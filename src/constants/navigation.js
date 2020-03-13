@@ -4,39 +4,45 @@
 export const NavigationItems = [
   {
     id: 'welcome',
-    icon: '/img/icon/apps.svg',
+    icon: '/img/icon/home.svg',
     label: 'navBar.welcome',
     to: '/welcome'
   },
-  {
-    id: 'profile',
-    icon: '/img/people.svg',
-    label: 'navBar.profile',
-    to: '/profile'
-  },
-  {
-    id: 'tictactoe',
-    icon: '/img/icon/tictactoe.svg',
-    label: 'navBar.tictactoe',
-    to: '/tictactoe'
-  },
-  {
-    id: 'text-editor',
-    icon: '/img/icon/files.svg',
-    label: 'navBar.text-editor',
-    to: '/text-editor'
-  },
+  // {
+  //   id: 'profile',
+  //   icon: '/img/people.svg',
+  //   label: 'navBar.profile',
+  //   to: '/profile'
+  // },
+  // {
+  //   id: 'tictactoe',
+  //   icon: '/img/icon/tictactoe.svg',
+  //   label: 'navBar.tictactoe',
+  //   to: '/tictactoe'
+  // },
+  // {
+  //   id: 'text-editor',
+  //   icon: '/img/icon/files.svg',
+  //   label: 'navBar.text-editor',
+  //   to: '/text-editor'
+  // },
   {
     id: 'timeline',
-    icon: '/img/icon/files.svg',
-    label: 'timeline',
+    icon: '/img/icon/inicio.svg',
+    label: 'navBar.timeline',
     to: '/timeline'
   },
+  // {
+  //   id: 'route',
+  //   icon: '/img/icon/files.svg',
+  //   label: 'route',
+  //   to: '/route'
+  // },
   {
-    id: 'route',
-    icon: '/img/icon/files.svg',
-    label: 'route',
-    to: '/route'
+    id: 'createroute',
+    icon: '/img/icon/ruta.svg',
+    label: 'navBar.createroute',
+    to: '/createroute'
   }
 ];
 

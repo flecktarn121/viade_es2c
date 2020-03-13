@@ -1,11 +1,11 @@
-import React, { Fragment, useState, useEffect, useCallback } from 'react';
-import { LiveUpdate, useNotification, AccessControlList } from '@inrupt/solid-react-components';
-import { useTranslation } from 'react-i18next';
+import React, {Fragment, useCallback, useEffect, useState} from 'react';
+import {AccessControlList, LiveUpdate, useNotification} from '@inrupt/solid-react-components';
+import {useTranslation} from 'react-i18next';
 import data from '@solid/query-ldflex';
-import { namedNode } from '@rdfjs/data-model';
-import { errorToaster, storageHelper, permissionHelper, ldflexHelper } from '@utils';
-import { Form, List } from './children';
-import { Section, Wrapper } from '../tic-tac-toe.style';
+import {namedNode} from '@rdfjs/data-model';
+import {errorToaster, ldflexHelper, permissionHelper, storageHelper} from '@utils';
+import {Form, List} from './children';
+import {Section, Wrapper} from '../tic-tac-toe.style';
 
 const GameListPage = ({ webId }) => {
   const [opponent, setOpponent] = useState('');

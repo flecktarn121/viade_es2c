@@ -53,12 +53,16 @@ class Map extends Component {
     };
 
     render() {
-        this.getLocation();
+        //this.getLocation();
+        this.center = {
+            lat: this.props.markers[0].lat,
+            lng: this.props.markers[0].lng
+        };
         return (
             <div style={{height: '70vh', width: '100%'}}>
                 <GoogleMapReact
                     bootstrapURLKeys={{key: 'AIzaSyC6j4mF6blrc4kZ54S6vYZ2_FpMY9VzyRU'}}
-                    defaultCenter={this.state.center}
+                    defaultCenter={this.center}
                     defaultZoom={this.props.zoom}
                     yesIWantToUseGoogleMapApiInternals
                     onGoogleApiLoaded={this.handleGoogleMapApi}

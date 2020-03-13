@@ -1,4 +1,5 @@
 import SolidAuth from "solid-auth-client";
+import Route from "../route/Route";
 
 class FileWriter {
     constructor() {
@@ -15,3 +16,4 @@ class FileWriter {
             });
     }
 }
+export default FileWriter;

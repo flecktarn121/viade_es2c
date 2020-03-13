@@ -2,7 +2,8 @@ import React from 'react';
 import TimeLineRoute from './children/TimeLineRoute';
 
 import { Header, TimelineContainer, TimelineWrapper } from './timeline.style';
-
+import Route from "../../utils/route/Route";
+import RouteToRdfParser from "../../utils/parser/RouteToRdfParser";
 /**
  * Container component for the Welcome Page, containing example of how to fetch data from a POD
  */

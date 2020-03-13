@@ -1,22 +1,22 @@
 import React, {Fragment} from 'react';
-import {PrivateLayout, PublicLayout, NotLoggedInLayout} from '@layouts';
-import {BrowserRouter as Router, Switch, Redirect} from 'react-router-dom';
+import {NotLoggedInLayout, PrivateLayout, PublicLayout} from '@layouts';
+import {BrowserRouter as Router, Redirect, Switch} from 'react-router-dom';
 
 import {
-    Login,
-    Register,
-    PageNotFound,
-    Welcome,
-    RegistrationSuccess,
-    Profile,
-    GameList,
-    GamePage,
+    CreateRoute,
     FormModelConverter,
     FormModelRenderer,
+    GameList,
+    GamePage,
+    Login,
+    PageNotFound,
+    Profile,
+    Register,
+    RegistrationSuccess,
+    Route,
     TextEditor,
     TimeLine,
-    Route,
-    CreateRoute
+    Welcome
 } from './containers';
 
 const privateRoutes = [

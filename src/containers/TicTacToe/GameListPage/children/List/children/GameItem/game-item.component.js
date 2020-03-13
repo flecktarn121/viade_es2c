@@ -1,18 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, {useRef, useState} from 'react';
 import moment from 'moment';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useTranslation } from 'react-i18next';
-import { useOnClickOutside } from '@hooks';
-import { Labeled } from '@util-components';
-import {
-  Item,
-  ProfileName,
-  Actions,
-  GameCard,
-  ProfileImage,
-  ProfileItems
-} from './game-item.style';
+import {Link} from 'react-router-dom';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {useTranslation} from 'react-i18next';
+import {useOnClickOutside} from '@hooks';
+import {Labeled} from '@util-components';
+import {Actions, GameCard, Item, ProfileImage, ProfileItems, ProfileName} from './game-item.style';
 
 type Props = { game: Object, webId: String, deleteGame: Function };
 

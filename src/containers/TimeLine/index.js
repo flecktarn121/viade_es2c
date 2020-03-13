@@ -1,3 +1,3 @@
-import  TimeLine  from './Timeline';
+import TimeLine from './Timeline';
 
 export default TimeLine;

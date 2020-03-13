@@ -1,18 +1,13 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { useLiveUpdate, NotificationTypes } from '@inrupt/solid-react-components';
-import { useTranslation } from 'react-i18next';
+import React, {useCallback, useEffect, useState} from 'react';
+import {NotificationTypes, useLiveUpdate} from '@inrupt/solid-react-components';
+import {useTranslation} from 'react-i18next';
 import ldflex from '@solid/query-ldflex';
-import { namedNode } from '@rdfjs/data-model';
-import { Loader, Select } from '@util-components';
+import {namedNode} from '@rdfjs/data-model';
+import {Loader, Select} from '@util-components';
 import tictactoeShape from '@contexts/tictactoe-shape.json';
-import {
-  ldflexHelper,
-  errorToaster,
-  storageHelper,
-  notification as helperNotification
-} from '@utils';
-import { GameStatusList, GameStatus, KnownInboxes } from '@constants';
-import { Wrapper, ListWrapper, GameListContainers, GameListHeader } from './list.style';
+import {errorToaster, ldflexHelper, notification as helperNotification, storageHelper} from '@utils';
+import {GameStatus, GameStatusList, KnownInboxes} from '@constants';
+import {GameListContainers, GameListHeader, ListWrapper, Wrapper} from './list.style';
 import GameItem from './children';
 
 let oldTimestamp;

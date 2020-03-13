@@ -1,6 +1,6 @@
 import React from 'react';
-import { TimelineRouteCard, TimelineRouteDetail } from './timelineroute.style';
-import { Button } from '../timeline.style';
+import {TimelineRouteCard, TimelineRouteDetail} from './timelineroute.style';
+import {Button} from '../timeline.style';
 
 const TimeLineRoute = props => {
   const { title, date, author, description } = props;

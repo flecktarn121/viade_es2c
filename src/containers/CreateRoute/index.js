@@ -1,3 +1,3 @@
-import  CreateRoute  from './CreateRoute';
+import CreateRoute from './CreateRoute';
 
 export default CreateRoute;

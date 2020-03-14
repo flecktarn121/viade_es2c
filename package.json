@@ -48,6 +48,8 @@
     "react-google-maps": "latest"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "node scripts/start.js",
     "build": "npm install && node scripts/build.js",
     "test": "node scripts/test.js",
@@ -135,9 +137,9 @@
       ]
     ]
   },
-  "name": "viade_0",
+  "name": "viade_es2c",
   "version": "0.1.0",
-  "homepage": "https://arquisoft.github.io/viade_0/",
+  "homepage": "https://arquisoft.github.io/viade_es2c/",
   "private": true,
   "devDependencies": {
     "@babel/core": "7.1.6",
@@ -163,6 +165,7 @@
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "7.11.1",
     "file-loader": "2.0.0",
+    "gh-pages": "^2.2.0",
     "google-map-react": "^1.1.6",
     "html-webpack-include-assets-plugin": "^1.0.6",
     "html-webpack-plugin": "4.0.0-alpha.2",

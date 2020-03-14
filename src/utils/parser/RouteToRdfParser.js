@@ -1,15 +1,17 @@
 import FileWriter from "../InOut/FileWriter";
 class RouteToRdfParser {
 
-    constructor (route){
+    constructor (route, webID){
         this.route = route;
+        this.webID = webID;
     }
     parse(){
         var prefixs = this.getPrefix();
         var information = this.getInformation();
         var viadePoints = this.getViadePoints();
         var media = this.getMedia();
-        FileWriter.handleSave("https://anagciaschz.solid.community/viade/pruebaRDF",(String)(prefixs+information+viadePoints+media))
+        alert("asdasds")
+        FileWriter.handleSave(this.webID+"viade/"+this.route.name,(String)(prefixs+information+viadePoints+media))
     }
 
     getPrefix(){
@@ -32,7 +34,7 @@ class RouteToRdfParser {
         var puntos = "";
         var i;
         for (i = 0; i < this.route.points.length; i++) {
-            puntos += "[ schema:latitude "+this.route.points[i].lat+" ; schema:longitude "+this.route.points[i].lng+" ]\n";
+            puntos += "[ schema:latitude "+this.route.points[i].position.lat+" ; schema:longitude "+this.route.points[i].position.lng+" ]\n";
         }
 
         return (String)(cabecera+puntos+final);

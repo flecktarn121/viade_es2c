@@ -191,6 +191,7 @@ export const Editor = ({ webId }: Props) => {
             ''
           )}
         </div>
+
       </FullGridSize>
       <FullGridSize>
         <TextArea value={text} onChange={handleTextChange} cols={40} rows={10} />

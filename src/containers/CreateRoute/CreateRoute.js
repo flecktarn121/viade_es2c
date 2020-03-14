@@ -15,7 +15,7 @@ class CreateRoute extends React.Component {
 
     constructor({ webId }: Props) {
         super();
-        this.webID = webId.slice(0,30)
+        this.webID = webId.replace("profile/card#me","");
         console.log(this.webID);
         this.handleSave = this.handleSave.bind(this);
         this.title = React.createRef();
@@ -28,9 +28,9 @@ class CreateRoute extends React.Component {
     };
 
     handleSave(event){
-        if(this.title.current.value.length == 0){
+        if(this.title.current.value.length === 0){
             alert("La ruta tiene que tener un titulo.")
-        }else if(this.state.markers == 0){
+        }else if(this.state.markers === 0){
             alert("No ha marcado ningún punto en el mapa.")
         }else{
             let route = new Route(this.title.current.value,"Ruta",this.state.markers,this.webID,null,  null,  null);

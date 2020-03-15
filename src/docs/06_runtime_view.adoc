@@ -1,25 +1,71 @@
 [[section-runtime-view]]
 == Runtime View
+
 === Log in
+The login process will be done by users when they log in with their pesonal id to access the application.
 
-* The user runs the application:
+1. The user click login button.
+2. The user enters his credentials.
+3. Their data is sent to a LoginManager to try to log in.
+4. The server can deny or approve the authentication.
+5. The user can start using the application's features.
 
-** Subscenario 1: The user doesnt have a POD, they have to sign up to either Inrupt or Solid Community. 
+[plantuml,"Log in secuence diagram",png]
+----
+title Log in secuence diagram
+actor User
+User -> Viade: 1. login request
+Viade -> LoginManager: 2. user credentials
+LoginManager -> Server: 3. log in try
+Server -> Viade: 4. authentication approved
+Server -> LoginManager: 4. authentication denied
+User -> Viade: 5. routes management
+----
+=== Routes Management
+The users use the application to manage their routes.
 
-** Subscenario 2: The user does already have a POD, but they are not logged in, then they select their provider and enter the credentials.
+1. The user creates a new route.
+2. The user shares a route to a friend or a group of friends.
 
-** Subscenario 3: The user has a POD and is logged in, in this case the user can use the application from the get-go.
+[plantuml,"Routes creation secuence diagram",png]
+----
+title User creates a new route
+actor User1
+participant Viade1
+database POD
+User1 -> Viade1: 1. create new route
+Viade1 -> POD: saves the route
+POD -> Viade1: returns a message of correct stored
+----
 
-=== Share routes
+[plantuml,"Routes share 1 secuence diagram",png]
+----
+title User shares route to a friend
+actor User1
+participant Viade1
+database POD
+participant Viade2
+actor User2
+User1 -> Viade1: 1. create new route
+Viade1 -> POD: saves the route
+User1 -> Viade1: 2. shares route
+Viade1 -> POD: allows to see the route
+Viade2 -> POD: access route
+Viade2 -> User2: show route
+----
 
-1. First User_1 share a route to User_2
-
-2. The application of the User_1 posts its route on the pod of the User_2
-
-3. The application of the User_2 requests the shared routes that contains its pod, so the pod makes the routes available for the application
-
-4. The application of the User_2 requests the received routes that contains its pod, so the pod makes the routes available for the application
-
-5. Finally User_2 view the received routes from the application
-
-
+[plantuml,"Routes share 2 secuence diagram",png]
+----
+title User shares route to a group of friends
+actor User1
+participant Viade1
+database POD
+participant ViadeX
+collections User_group
+User1 -> Viade1: 1. create new route
+Viade1 -> POD: saves the route
+User1 -> Viade1: 2. shares route
+Viade1 -> POD: allows to see the route
+ViadeX -> POD: recieve route
+ViadeX -> User_group: show route
+----

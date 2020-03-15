@@ -1,6 +1,6 @@
-import React, { useEffect, useState, Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import { Navigation, Toolbar, HamburgerButton, MobileNavigation } from './children';
+import React, {Fragment, useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
+import {HamburgerButton, MobileNavigation, Navigation, Toolbar} from './children';
 
 type Props = {
   t: Function,
@@ -58,7 +58,14 @@ const NavBar = (props: Props) => {
       <section className="header-wrap">
         <div className="logo-block">
           <Link to="/welcome">
-            <img src="/img/logo.svg" alt="inrupt" />
+            <img
+                src="/img/logo.svg"
+                alt="Viade"
+                className="nav-icon"
+                width="24px"
+                height="20px"
+                style={{ width: '24px'}}
+            />
           </Link>
         </div>
 

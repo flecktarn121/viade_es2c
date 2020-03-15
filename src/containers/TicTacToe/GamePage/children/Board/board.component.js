@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Field } from '..';
+import {Field} from '..';
 
 const GameBoard = styled.div`
   display: grid;

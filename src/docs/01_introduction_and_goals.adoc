@@ -1,38 +1,39 @@
 [[section-introduction-and-goals]]
 == Introduction and Goals
-This project is based on a decentralized route management system based on the SOLID specifications.
+The aim of the project is to develop a decentralised route tracker, which has to be able to give an excellent performance meanwhile the privacy of the customer is well kept.
+[role="arc42help"]
+****
+Initial commit
+Describes the relevant requirements and the driving forces that software architects and development team must consider. These include
 
-* Project developed using the React and SOLID framework
+* underlying business goals, essential features and functional requirements for the system
+* quality goals for the architecture
+* relevant stakeholders and their expectations
+****
 
 === Requirements Overview
-* The system will be based on a decentralized architecture in which the data is separated from the application
-* Users can store the routes on their own pods.
-* Users can view the routes on a map.
-* The application will allow the user to share photos, videos or other files with other friends.
-* A user can get notifications when a friend wants to share a route with him.
-* Users may have groups of friends with whom they may want to share a route.
-* It should be possible to see the routes loaded by users who are using a different app, so that interoperability with other route management systems should be taken into account.
+According to the priority of each requirement, we can order them as you can read next.
+
+* The application must implement a decentralised architecture based in the SoLiD (Social Linked Data) specifications, therefore stored data must be separated from the app.
+* Information must be stored in pods.
+* Routes will be shown to users on the map.
+* A route should be fed back with relative data, such as shared pictures, videos or comments.
+* Notifications will be sent as a result of a friend sharing a route.
+* There can exist user groups for multiple sharing purposes.
+* Interoperability is an essential part of our specific application, so several apps are able to work with the same information of a route.
 
 === Quality Goals
-
-The main goals of the sistem are: 
-
-[options="header",cols="1,2,2"]
-|===
-|Priority|Goal|Description
-|1| _Privacity_ | _To secure the user data, to make then able to manage their own data as they wish._
-|2| _Usability_ | _To make able to non-technical persons or those related to the technological field may understand the use of the system_
-|3| _Funcionality_  | _So that a good use of the system can be made respecting the two superior objectives, without any problem._
-|4| _Efficiency_  | _The system should make able to share and upload your routes in the lowest possible time._
-|===
+* Availability. The application should be a consistent.
+* Privacy. As a SoLiD project, keeping the personal data is a main quality purpose.
+* Usability. The app must be easy to use, all sort of users should know how to use all the features.
 
 === Stakeholders
+
 [options="header",cols="1,2,2"]
 |===
 |Role/Name|Contact|Expectations
-| _Users_| _Use the app to record their routes_ | _To safe their data safely, and to be owner of their data, using the app to record their routes_
-| _Inrupt_ | _Company who are gonna try the app, to evaluate it_ | _Obtain a decentralized and secure route application using SOLID specifications built by students._
-| _Team Developer_ | _Team who will create the app_ | _Create a good application at the same time that they learn new technologies._
-| _Teachers_ | _They will mark our project and the way we have presented the architecture of the project._ | _They will need to be able to understand our project functioning and architecture. They will be expecting a fully functional proyect that will make the university proud of their students._
-| _Maintenance Team_ | _Team that will maintein the app if its successful_ | _A clean, and eficient code for the application_
+| Teacher | labra@uniovi.es | They will evaluate our project 
+| Solid community | https://solid.mit.edu | Resource for the Solid project
+| Developers | https://github.com/Arquisoft/viade_es2c | They will develop the architecture and the code of the application
+|Users | | People that want to keep track of their routes and their privacy
 |===

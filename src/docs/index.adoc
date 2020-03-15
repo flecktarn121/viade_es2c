@@ -3,7 +3,7 @@
 //
 // ====================================
 
-= image:LogoASW.png[arc42] ViaDe 0
+= image:LogoASW.png[arc42] ViaDe ES2C
 // toc-title definition MUST follow document title without blank line!
 :toc: left
 :toc-title: Table of Contents
@@ -25,10 +25,6 @@ ifdef::basebackend-html[]
 ++++
 endif::basebackend-html[]
 
-
-// horizontal line
-***
-
 [role="arc42help"]
 ****
 [NOTE]
@@ -39,6 +35,8 @@ For documentation of your own system you use better the _plain_ version.
 ====
 ****
 
+// horizontal line
+***
 
 // numbering from here on
 :numbered:

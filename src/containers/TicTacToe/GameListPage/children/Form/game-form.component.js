@@ -1,17 +1,11 @@
-import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import React, {useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import moment from 'moment';
-import { namedNode } from '@rdfjs/data-model';
-import { AccessControlList, NotificationTypes } from '@inrupt/solid-react-components';
+import {namedNode} from '@rdfjs/data-model';
+import {AccessControlList, NotificationTypes} from '@inrupt/solid-react-components';
 import tictactoeShape from '@contexts/tictactoe-shape.json';
-import {
-  ldflexHelper,
-  errorToaster,
-  successToaster,
-  storageHelper,
-  notification as helperNotification
-} from '@utils';
-import { GameFormWrapper, BtnDiv } from './game-form.styles';
+import {errorToaster, ldflexHelper, notification as helperNotification, storageHelper, successToaster} from '@utils';
+import {BtnDiv, GameFormWrapper} from './game-form.styles';
 
 type Props = {
   webId: String,

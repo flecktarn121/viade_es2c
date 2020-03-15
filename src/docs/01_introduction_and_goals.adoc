@@ -36,5 +36,4 @@ According to the priority of each requirement, we can order them as you can read
 | Old users | | Old people who will use our app 
 | Users with computers | | Users that will use Viade through a computer
 | Users with phones | | Users that will use our app through a movile phone
-|
 |===

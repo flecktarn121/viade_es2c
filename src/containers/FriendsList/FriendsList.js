@@ -1,4 +1,5 @@
-import React from 'react';
+import React,{ useState } from 'react';
+import { render } from 'react-testing-library';
 
 const $rdf = require('rdflib');
 const auth = require('solid-auth-client');
@@ -14,27 +15,32 @@ var person = 'https://ruben.verborgh.org/profile/#me';
  * Container component to show the user´s friends
  */
 function FriendsList() {
+    let[friends,setFriends] = useState(0);
+
+    function handleFriends(list){
+        setFriends(list);
+    }
+
     trackSession();
-    var friendsUrls = loadFriendsUrls(person);
+    //array con cada link
+    const friendsUrls =  loadFriendsUrls(person);
     //Queda sacar los nombres, tenemos urls
-    console.log("Amigos")
-    console.log(friendsUrls)
+    console.log('Amigos');
+    console.log(friendsUrls);
 
-    //const friendsList = () => (
-        //<div>
-        //    <h1>Lista de amigos</h1>
-        //    <ul>
-        //        {friends.map(friend => (
-        //            <li key={friend}>{friend}</li>
-        //        ))}
-        //    </ul>
-        // </div>
-   // );
+    loadFriendsUrls().then(list=>{
+        handleFriends(list)
+        console.log(this.state)
+    }).catch(error=>{
+        console.log('error during friends load')
+    })
 
-    const friendsList = <h1>Lista de amigos</h1>;
-
+    const friendsList = <h2>Lista de amigos</h2>
+    
     return friendsList;
 }
+
+
 
 /**
  * This function returns the friends list urls for a specified user

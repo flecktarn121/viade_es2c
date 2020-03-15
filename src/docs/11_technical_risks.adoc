@@ -1,7 +1,15 @@
 [[section-technical-risks]]
 == Risks and Technical Debts
 
-At this moment, we don't have any technical debt (this is our first deadline and we only have to write some documentation) but we do have risks:
+In this first demo, we have some technical debts:
+
+* We have not implemented the use of gpx for the routes
+* Our RDF structure it's simple
+* We have created our demo using an app generator, so we still have to learn mode about the code and quit some extra lines
+* We still don't fully understand cucumber
+* We have put a "Route" link in the nav just for testing, we need to find the way of accesing using a button
+* Some code is "poor done" and have to make it more elegant
+* We have to do documentation in the code
 
 [options="header",cols="1,2,2,2"]
 |===

@@ -28,8 +28,8 @@ According to the priority of each requirement, we can order them as you can read
 | Solid community | https://solid.mit.edu | Resource for the Solid project
 | Developers | https://github.com/Arquisoft/viade_es2c | They will develop the architecture and the code of the application
 |Technical Users | | People that have some experience in the route's world and know some technical concepts
-|Non-technical users | People that is new in the world and have never used a route's management app before
-| Disables users | Users who have some kind of disability
-|Users without an account | People new in the SOLID or Inrupt community and want touse our app
-|Users with an account | User's from SOLID or Inrupt who want to use our app
+|Non-technical users | | People that is new in the world and have never used a route's management app before
+| Disabled users | | Users who have some kind of disability
+|Users without an account | | People new in the SOLID or Inrupt community and want to use our app
+|Users with an account | | User's from SOLID or Inrupt who want to use our app
 |===

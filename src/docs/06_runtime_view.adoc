@@ -12,6 +12,8 @@ The login process will be done by users when they log in with their pesonal id t
 
 [plantuml,"Log in secuence diagram",png]
 ----
+title Log in secuence diagram
+actor User
 User -> Viade: 1. login request
 Viade -> LoginManager: 2. user credentials
 LoginManager -> Server: 3. log in try
@@ -33,7 +35,7 @@ participant Viade1
 database POD
 User1 -> Viade1: 1. create new route
 Viade1 -> POD: saves the route
-
+POD -> Viade1: returns a message of correct stored
 ----
 
 [plantuml,"Routes share 1 secuence diagram",png]

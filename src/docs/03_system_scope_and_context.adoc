@@ -5,10 +5,6 @@ Viade must allow a user to share pictures, videos or information about a route w
 
 Security and privacy is Viade priority. Users can store their routes in their own pods and Viade should have online independence, thats it, no central control of data.
 
-=== Business Context
+=== Business & Technical Context
 
-image::03_Business-Context.png[Business Diagram]
-
-=== Technical Context
-
-image::03_Technical-Context.png[Technical Diagram]
+image::03-Context.png[Business Diagram]

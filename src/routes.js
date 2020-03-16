@@ -18,6 +18,7 @@ import {
     TimeLine,
     Welcome
 } from './containers';
+import FriendsList from './containers/FriendsList/FriendsList';
 
 const privateRoutes = [
     {
@@ -64,6 +65,11 @@ const privateRoutes = [
         id: 'route',
         path: '/route',
         component: Route
+    },
+    {
+        id: 'friends',
+        path : '/friends',
+        component : FriendsList
     }
     ,
     {

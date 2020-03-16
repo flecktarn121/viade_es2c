@@ -21,7 +21,7 @@
     "notSharable": "(logéate y carga undocumento en tu própio pod para poder dar acceso)"
   },
   "login": {
-    "title": "Hola! Bienvenido a Solid.",
+    "title": "Hola! Bienvenido a Viade",
     "loginTitle": "Iniciar sesión",
     "register": "Registrarse por una identidad Solid",
     "solidHelp": "Qué es una identidad Solid?",
@@ -57,6 +57,7 @@
     "map": "Mapa",
     "timeline":"Ver rutas",
     "createroute":"Crear ruta",
+    "friends":"Amigos",
     "languages": {
       "en": "English (Inglés)",
       "es": "Español (Español)"

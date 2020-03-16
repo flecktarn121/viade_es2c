@@ -40,7 +40,7 @@ export const NavigationItems = [
   // },
   {
     id: 'friends',
-    icon: '/img/icon/files.svg',
+    icon: '/img/icon/friend.svg',
     label: 'friends',
     to: '/friends'
   },

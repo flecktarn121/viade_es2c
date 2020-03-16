@@ -6,7 +6,7 @@
 image::10_QualityRequirements.png[Quality Tree]
 
 === Quality Scenarios
-
+[options="header",cols="1,2,1,1"]
 |===
 |Quality attribute|Quality scenario| Measure |Priority
 | Privacy | The user is the owner of his data according to the SOLID principles | |HIGH, HIGH

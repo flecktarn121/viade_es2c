@@ -1,10 +1,11 @@
 [[section-glossary]]
 == Glossary
-[options="header"]
+
+[options="header",cols="1,2"]
 |===
-| Term         | Definition
-| React     | A declarative, efficient, and flexible JavaScript library for building user interfaces.
-| SOLID     | A web decentralization project. Its mission is to reshape the web as we know it.
-| POD    | A personal storage space in SOLID.
-| Descentralized | Something that is not controlled from one central place
+| Term| Definition
+| React| A declarative, efficient, and flexible JavaScript library for building user interfaces.
+| SOLID| A web decentralization project. Its mission is to reshape the web as we know it.
+| POD| A personal storage space in SOLID.
+| Descentralized| Something that is not controlled from one central place
 |===

@@ -41,7 +41,7 @@ export const NavigationItems = [
   {
     id: 'friends',
     icon: '/img/icon/friend.svg',
-    label: 'friends',
+    label: 'navBar.friends',
     to: '/friends'
   },
   {

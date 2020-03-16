@@ -56,6 +56,7 @@
     "map": "Map",
     "timeline":"Routes",
     "createroute":"New route",
+    "friends":"Friends",
     "languages": {
       "en": "English (English)",
       "es": "Español (Spanish)"

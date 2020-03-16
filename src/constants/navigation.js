@@ -44,6 +44,7 @@ export const NavigationItems = [
     label: 'friends',
     to: '/friends'
   },
+  {
     id: 'createroute',
     icon: '/img/icon/ruta.svg',
     label: 'navBar.createroute',

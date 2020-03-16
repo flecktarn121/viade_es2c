@@ -1,5 +1,5 @@
 import React,{ useState } from 'react';
-import { render } from 'react-testing-library';
+/*import { render } from 'react-testing-library';*/
 
 const $rdf = require('rdflib');
 const auth = require('solid-auth-client');
@@ -15,7 +15,8 @@ var person = 'https://ruben.verborgh.org/profile/#me';
  * Container component to show the user´s friends
  */
 function FriendsList() {
-    let[friends,setFriends] = useState(0);
+    /*let[friends,setFriends] = useState(0);*/
+    let[setFriends] = useState(0);
 
     function handleFriends(list){
         setFriends(list);

@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import {NotLoggedInLayout, PrivateLayout, PublicLayout} from '@layouts';
-import {BrowserRouter as Router, Redirect, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Redirect, Switch} from "react-router-dom";
 
 import {
     CreateRoute,
@@ -22,7 +22,8 @@ import FriendsList from './containers/FriendsList/FriendsList';
 
 const privateRoutes = [
     {
-        id: 'welcome',
+        id: 'we' +
+            'lcome',
         path: '/welcome',
         component: Welcome
     },

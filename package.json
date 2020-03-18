@@ -140,8 +140,8 @@
   },
   "name": "viade_es2c",
   "version": "0.1.0",
-  "homepage": "https://arquisoft.github.io/viade_es2c/",
-  "private": true,
+  "homepage": ".",
+  "private": false,
   "devDependencies": {
     "@babel/core": "7.1.6",
     "@babel/runtime": "^7.4.0",

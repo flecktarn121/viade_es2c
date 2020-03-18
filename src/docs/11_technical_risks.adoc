@@ -18,6 +18,9 @@ In this first demo, we have some technical debts:
 |2| Using a deprecated library | Impossibility of using new features | Find a new library or include new complementary library
 |3| Using png instead of PlantUML | It is difficult to do changes of diagrams | Implement diagram in PlantUML
 |===
+
+[options="header",cols="1,2,2,2"]
+|===
 |Priority|Risk |Consequence | Possible Solution
 | 1|Not being used to the technology | Be slow at developing or make mistakes and waste time | Reading and learning about React, SOLID and RDF. We should do some tutorials and use the SOLID forum and gitter.
 |2| First time forming a team| We don't know how to work with each other so we may not understand each other and consume time or be uncomfortable | Communication and interest

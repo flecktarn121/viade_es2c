@@ -16,7 +16,7 @@ const Bell = ({ unread, onClick, active }: Props) => (
     <div className="icon">
       {unread > 0 && <Badge badge={unread} />}
         <img
-            src="/img/icon/notificacion.svg"
+            src="img/icon/notificacion.svg"
             alt="notifications"
             className="nav-icon"
             width="40px"

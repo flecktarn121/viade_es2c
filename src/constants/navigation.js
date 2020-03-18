@@ -4,7 +4,7 @@
 export const NavigationItems = [
   {
     id: 'welcome',
-    icon: '/img/icon/home.svg',
+    icon: 'img/icon/home.svg',
     label: 'navBar.welcome',
     to: '/welcome'
   },
@@ -28,7 +28,7 @@ export const NavigationItems = [
   // },
   {
     id: 'timeline',
-    icon: '/img/icon/inicio.svg',
+    icon: 'img/icon/inicio.svg',
     label: 'navBar.timeline',
     to: '/timeline'
   },
@@ -40,13 +40,13 @@ export const NavigationItems = [
   // },
   {
     id: 'friends',
-    icon: '/img/icon/friend.svg',
+    icon: 'img/icon/friend.svg',
     label: 'navBar.friends',
     to: '/friends'
   },
   {
     id: 'createroute',
-    icon: '/img/icon/ruta.svg',
+    icon: 'img/icon/ruta.svg',
     label: 'navBar.createroute',
     to: '/createroute'
   }

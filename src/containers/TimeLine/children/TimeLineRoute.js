@@ -2,12 +2,15 @@ import React from 'react';
 import {TimelineRouteCard, TimelineRouteDetail} from './timelineroute.style';
 import {Link} from "react-router-dom";
 import Map from "../../../components/Map";
+import Route from "../../Route";
 
 const TimeLineRoute = props => {
     const {title, date, author, description, markers} = props;
     const mostrarMarkers = () => {
         alert(markers)
     };
+    let marcadores = props.markers;
+    console.log(props.markers);
     return (
         <TimelineRouteCard className="card">
             <TimelineRouteDetail data-testid="welcome-detail">
@@ -18,7 +21,8 @@ const TimeLineRoute = props => {
                 <p>{description}</p>
                 <button onClick={mostrarMarkers}>Ver ruta</button>
                 <Link to={{
-                    pathname: '/route'
+                    pathname: '/route',
+                    myCustomProps: marcadores
                 }}>ver ruta</Link>
                 <button>Compartir</button>
             </TimelineRouteDetail>

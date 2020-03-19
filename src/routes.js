@@ -22,8 +22,7 @@ import FriendsList from './containers/FriendsList/FriendsList';
 
 const privateRoutes = [
     {
-        id: 'we' +
-            'lcome',
+        id: 'welcome',
         path: '/welcome',
         component: Welcome
     },

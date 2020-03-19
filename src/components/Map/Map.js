@@ -1,22 +1,38 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import GoogleMapReact from 'google-map-react';
 import Marker from "./Children/Marker";
+import {LiveUpdate} from '@inrupt/solid-react-components';
 
-class Map extends Component {
 
-    constructor(props) {
-        super(props);
-        this.handleGoogleMapApi = this.handleGoogleMapApi.bind(this);
-    }
+const Map = (props) => {
 
-    state = {
-        center: {
-            lat: 40.4165000,
-            lng: -3.7025600
+    // constructor(props) {
+    //     super(props);
+    //     this.handleGoogleMapApi = this.handleGoogleMapApi.bind(this);
+    // }
+
+    const markers = props.markers;
+    console.log(markers);
+    // const marcadores = atob(markers);
+    const [wasChecked, setWasChecked] = useState(false);
+
+    const isMarkersValid = async () => {
+        try {
+            const url = new URL(markers);
+            setWasChecked(url !== undefined);
+        } catch (e) {
+            // history.push('/404');
+            console.log("Error al cargar los marcadores");
         }
     };
 
-    getLocation() {
+    isMarkersValid();
+
+    // useEffect(() => {
+    //     if (markers) isMarkersValid();
+    // }, [markers, props]);
+
+    const getLocation = async () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
                 this.setState({
@@ -27,9 +43,9 @@ class Map extends Component {
                 })
             });
         }
-    }
+    };
 
-    cargarMarcadores = (list) => {
+    const cargarMarcadores = (list) => {
         let markers = [];
 
         for (let i = 0; i < list.length; i++) {
@@ -40,38 +56,36 @@ class Map extends Component {
         return markers;
     };
 
-    handleGoogleMapApi = (google) => {
-        var flightPath = new google.maps.Polyline({
-            path: this.props.markers,
+    const handleGoogleMapApi = (google) => {
+        var routePath = new google.maps.Polyline({
+            path: markers,
             geodesic: true,
             strokeColor: '#33BD4E',
             strokeOpacity: 1,
             strokeWeight: 5
         });
 
-        flightPath.setMap(google.map);
+        routePath.setMap(google.map);
     };
 
-    render() {
-        //this.getLocation();
-        this.center = {
-            lat: this.props.markers[0].lat,
-            lng: this.props.markers[0].lng
-        };
-        return (
-            <div style={{height: '70vh', width: '100%'}}>
-                <GoogleMapReact
-                    bootstrapURLKeys={{key: 'AIzaSyC6j4mF6blrc4kZ54S6vYZ2_FpMY9VzyRU'}}
-                    defaultCenter={this.center}
-                    defaultZoom={this.props.zoom}
-                    yesIWantToUseGoogleMapApiInternals
-                    onGoogleApiLoaded={this.handleGoogleMapApi}
-                >
-                    {this.cargarMarcadores(this.props.markers)}
-                </GoogleMapReact>
-            </div>
-        )
-    }
-}
+    const center = {
+        lat: markers[0].lat,
+        lng: markers[0].lng
+    };
+
+    return (
+        <div style={{height: '70vh', width: '100%'}}>
+            <GoogleMapReact
+                bootstrapURLKeys={{key: 'AIzaSyC6j4mF6blrc4kZ54S6vYZ2_FpMY9VzyRU'}}
+                defaultCenter={center}
+                defaultZoom={props.zoom}
+                yesIWantToUseGoogleMapApiInternals
+                onGoogleApiLoaded={handleGoogleMapApi}
+            >
+                {cargarMarcadores(markers)}
+            </GoogleMapReact>
+        </div>
+    );
+};
 
 export default Map;

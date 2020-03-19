@@ -7,7 +7,7 @@ import TextEditor from './TextEditor';
 import {GameList, GamePage} from './TicTacToe';
 import {FormModelConverter, FormModelRenderer} from './FormModel';
 import TimeLine from "./TimeLine";
-import Route from './Route';
+import Ruta from './Ruta';
 import CreateRoute from "./CreateRoute";
 
 export {
@@ -23,6 +23,6 @@ export {
     FormModelRenderer,
     TextEditor,
     TimeLine,
-    Route,
+    Ruta,
     CreateRoute
 };

@@ -13,7 +13,7 @@ import {
     Profile,
     Register,
     RegistrationSuccess,
-    Route,
+    Ruta,
     TextEditor,
     TimeLine,
     Welcome
@@ -64,7 +64,7 @@ const privateRoutes = [
     {
         id: 'route',
         path: '/route',
-        component: Route
+        component: Ruta
     },
     {
         id: 'friends',

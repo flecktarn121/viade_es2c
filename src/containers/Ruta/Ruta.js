@@ -1,8 +1,8 @@
-import React from 'react';
-import {Header, RouteContainer, RouteWrapper} from "./Route.style";
+import React, {Component} from 'react';
+import {Header, RouteContainer, RouteWrapper} from "./Ruta.style";
 import Map from "../../components/Map";
 
-function Route() {
+class Ruta extends Component {
 
     // const markers = props.params.markers;
     //
@@ -20,20 +20,20 @@ function Route() {
     //     }
     // };
 
-    console.log("");
+    render(){
+        return (
+            <RouteWrapper>
+                <RouteContainer>
+                    <Header>
+                        <h1 className="text--white">Ruta</h1>
+                    </Header>
 
-    return (
-        <RouteWrapper>
-            <RouteContainer>
-                <Header>
-                    <h1 className="text--white">Ruta</h1>
-                </Header>
-
-            </RouteContainer>
-        </RouteWrapper>
-    );
+                </RouteContainer>
+            </RouteWrapper>
+        );
+    }
 }
 
-export default Route;
+export default Ruta;
 
 // <Map zoom={15} markers={markers}/>

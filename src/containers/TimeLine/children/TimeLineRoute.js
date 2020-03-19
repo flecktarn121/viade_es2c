@@ -2,7 +2,7 @@ import React from 'react';
 import {TimelineRouteCard, TimelineRouteDetail} from './timelineroute.style';
 import {Link} from "react-router-dom";
 import Map from "../../../components/Map";
-import Route from "../../Route";
+import Ruta from "../../Ruta/Ruta";
 
 const TimeLineRoute = props => {
     const {title, date, author, description, markers} = props;
@@ -10,7 +10,7 @@ const TimeLineRoute = props => {
         alert(markers)
     };
     let marcadores = props.markers;
-    console.log(props.markers);
+    console.log(marcadores);
 
     return (
         <TimelineRouteCard className="card">
@@ -23,7 +23,9 @@ const TimeLineRoute = props => {
                 <button onClick={mostrarMarkers}>Ver ruta</button>
                 <Link to={{
                     pathname: '/route',
-                    myCustomProps: "hola"
+                    state: {
+                        prueba: true
+                    }
                 }}>ver ruta</Link>
                 <button>Compartir</button>
             </TimelineRouteDetail>

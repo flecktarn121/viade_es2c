@@ -1,17 +1,9 @@
 import React from 'react';
-import { Uploader } from '@inrupt/solid-react-components';
-import { Trans, useTranslation } from 'react-i18next';
-import {
-  WelcomeWrapper,
-  WelcomeCard,
-  WelcomeLogo,
-  WelcomeProfile,
-  WelcomeDetail,
-  WelcomeName,
-  ImageWrapper
-} from './welcome.style';
-import { ImageProfile } from '@components';
-import { errorToaster } from '@utils';
+import {Uploader} from '@inrupt/solid-react-components';
+import {useTranslation} from 'react-i18next';
+import {ImageWrapper, WelcomeCard, WelcomeLogo, WelcomeName, WelcomeProfile, WelcomeWrapper} from './welcome.style';
+import {ImageProfile} from '@components';
+import {errorToaster} from '@utils';
 
 /**
  * Welcome Page UI component, containing the styled components for the Welcome Page
@@ -26,7 +18,7 @@ export const WelcomePageContent = props => {
     <WelcomeWrapper data-testid="welcome-wrapper">
       <WelcomeCard className="card">
         <WelcomeLogo data-testid="welcome-logo">
-          <img src="/img/logo.svg" alt="Inrupt" />
+          <img src="img/logo.svg" alt="Viade" />
         </WelcomeLogo>
         <WelcomeProfile data-testid="welcome-profile">
           <h3>

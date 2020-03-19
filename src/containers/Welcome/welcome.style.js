@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { media } from '../../utils';
+import {media} from '../../utils';
 
 export const WelcomeWrapper = styled.section`
   width: 100%;
-  background-image: url('/img/pattern-geo.png'),
+  background-image: url('img/pattern-geo.png'),
     radial-gradient(#00B010, #00B010, #005F11);
     // linear-gradient(25deg, #C5D8DF 40%, #C5D8DF 50%, #00B020 100%);
   background-repeat: repeat, no-repeat;

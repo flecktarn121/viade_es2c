@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { render } from 'react-testing-library';
+import {HashRouter as Router} from 'react-router-dom';
+import {render} from 'react-testing-library';
 import GameItem from './game-item.component';
 
 const game = {

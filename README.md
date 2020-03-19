@@ -1,5 +1,5 @@
 # VIADE ES2C [![Build Status](https://travis-ci.org/Arquisoft/viade_es2c.svg?branch=master)](https://travis-ci.org/Arquisoft/viade_es2c) [![codecov](https://codecov.io/gh/Arquisoft/viade_es2c/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/viade_es2c) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6ed5f250f3ea4a849db4cd369a01bb8c)](https://www.codacy.com/gh/Arquisoft/viade_es2c?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Arquisoft/viade_es2c&amp;utm_campaign=Badge_Grade)
-![logoViade](https://user-images.githubusercontent.com/49797815/76167057-167aec80-6164-11ea-9c53-257523009dc8.png)
+![logoViade](https://user-images.githubusercontent.com/49797815/76650462-ff247080-6562-11ea-8717-81891cdb1cc6.png)
 
 ## DESCRIPTION
 Viade is a decentralized routes management system based on the solid specifications and React framework. It is a project from the Software Architecture course taught in "Universidad de Oviedo" and its purpose is to teach the students how to work in a real project and how to create a good project architecture. We also are learning how good documentation is made and how to interact with the rest os the programmers of the world using forums or chats.

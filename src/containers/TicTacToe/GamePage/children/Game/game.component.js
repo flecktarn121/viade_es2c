@@ -1,14 +1,14 @@
-import React, { Fragment, useEffect, useState, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useLiveUpdate, useNotification, NotificationTypes } from '@inrupt/solid-react-components';
+import React, {Fragment, useCallback, useEffect, useState} from 'react';
+import {useTranslation} from 'react-i18next';
+import {NotificationTypes, useLiveUpdate, useNotification} from '@inrupt/solid-react-components';
 import moment from 'moment';
-import { ldflexHelper, storageHelper, errorToaster, notification } from '@utils';
+import {errorToaster, ldflexHelper, notification, storageHelper} from '@utils';
 import ldflex from '@solid/query-ldflex';
-import { namedNode } from '@rdfjs/data-model';
+import {namedNode} from '@rdfjs/data-model';
 import tictactoeShape from '@contexts/tictactoe-shape.json';
 import Board from '../Board';
 import GameAccept from '../GameAccept';
-import { GameWrapper, Metadata } from './game.style';
+import {GameWrapper, Metadata} from './game.style';
 
 const possibleCombinations = [
   [0, 4, 8],
@@ -151,7 +151,7 @@ const Game = ({ webId, gameURL, history }: Props) => {
       const nameData = await ldflex[webId]['vcard:fn'];
       const imageData = await ldflex[webId]['vcard:hasPhoto'];
       const name = nameData ? nameData.value : webId;
-      const image = imageData ? imageData.value : '/img/icon/empty-profile.svg';
+      const image = imageData ? imageData.value : 'img/icon/empty-profile.svg';
       return { name, image, webId };
     } catch (e) {
       throw e;

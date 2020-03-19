@@ -29,6 +29,8 @@
     "normalize.css": "^8.0.1",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.1.0",
+    "prop-types": "latest",
+    "rdflib": "^1.0.6",
     "react": "16.8.4",
     "react-app-polyfill": "^0.2.2",
     "react-click-outside": "^3.0.1",
@@ -43,14 +45,15 @@
     "shacl-js": "0.0.1",
     "solid-auth-client": "^2.3.0",
     "styled-components": "^4.1.3",
-    "prop-types": "latest",
     "react-addons-update": "latest",
     "react-google-maps": "latest"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
+    "build": "node scripts/build.js ",
+    "test": "node scripts/test.js --coverage",
     "docs": "shx rm -rf build/docs && asciidoctor -D build/docs -a imagesdir=./images -r asciidoctor-diagram src/docs/index.adoc && shx cp -R src/docs/images build/docs"
   },
   "husky": {
@@ -135,22 +138,23 @@
       ]
     ]
   },
-  "name": "solid-app",
+  "name": "viade_es2c",
   "version": "0.1.0",
+  "homepage": ".",
   "private": false,
   "devDependencies": {
     "@babel/core": "7.1.6",
     "@babel/runtime": "^7.4.0",
     "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "9.0.0",
+    "babel-eslint": "10.0.3",
     "babel-jest": "^24.5.0",
-    "babel-loader": "8.0.4",
+    "babel-loader": "8.0.6",
     "babel-plugin-module-resolver": "^3.1.2",
     "babel-plugin-named-asset-import": "^0.3.0",
     "babel-preset-react-app": "^7.0.0",
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "1.0.0",
-    "eslint": "5.6.0",
+    "eslint": "^6.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-config-react-app": "^3.0.6",
@@ -162,6 +166,7 @@
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "7.11.1",
     "file-loader": "2.0.0",
+    "gh-pages": "^2.2.0",
     "google-map-react": "^1.1.6",
     "html-webpack-include-assets-plugin": "^1.0.6",
     "html-webpack-plugin": "4.0.0-alpha.2",
@@ -183,7 +188,7 @@
     "terser-webpack-plugin": "1.1.0",
     "url-loader": "1.1.1",
     "webpack": "^4.41.2",
-    "webpack-dev-server": "3.1.14",
+    "webpack-dev-server": "3.10.2",
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "3.6.3"
   }

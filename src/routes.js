@@ -1,27 +1,29 @@
 import React, {Fragment} from 'react';
-import {PrivateLayout, PublicLayout, NotLoggedInLayout} from '@layouts';
-import {BrowserRouter as Router, Switch, Redirect} from 'react-router-dom';
+import {NotLoggedInLayout, PrivateLayout, PublicLayout} from '@layouts';
+import {HashRouter as Router, Redirect, Switch} from "react-router-dom";
 
 import {
-    Login,
-    Register,
-    PageNotFound,
-    Welcome,
-    RegistrationSuccess,
-    Profile,
-    GameList,
-    GamePage,
+    CreateRoute,
     FormModelConverter,
     FormModelRenderer,
+    GameList,
+    GamePage,
+    Login,
+    PageNotFound,
+    Profile,
+    Register,
+    RegistrationSuccess,
+    Route,
     TextEditor,
     TimeLine,
-    Route,
-    CreateRoute
+    Welcome
 } from './containers';
+import FriendsList from './containers/FriendsList/FriendsList';
 
 const privateRoutes = [
     {
-        id: 'welcome',
+        id: 'we' +
+            'lcome',
         path: '/welcome',
         component: Welcome
     },
@@ -64,6 +66,11 @@ const privateRoutes = [
         id: 'route',
         path: '/route',
         component: Route
+    },
+    {
+        id: 'friends',
+        path : '/friends',
+        component : FriendsList
     }
     ,
     {

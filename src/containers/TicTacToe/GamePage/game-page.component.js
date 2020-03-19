@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { LiveUpdate } from '@inrupt/solid-react-components';
-import { Game } from './children';
-import { Section, Wrapper } from '../tic-tac-toe.style';
+import React, {useEffect, useState} from 'react';
+import {LiveUpdate} from '@inrupt/solid-react-components';
+import {Game} from './children';
+import {Section, Wrapper} from '../tic-tac-toe.style';
 
 const GamePage = ({ match, webId, history }) => {
   const { gameId } = match.params;

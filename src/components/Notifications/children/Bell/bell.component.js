@@ -1,6 +1,6 @@
 import React from 'react';
-import { Badge } from '@util-components';
-import { BellIcon } from './bell.style';
+import {Badge} from '@util-components';
+import {BellIcon} from './bell.style';
 
 type Props = {
   unread: Boolean,
@@ -16,7 +16,7 @@ const Bell = ({ unread, onClick, active }: Props) => (
     <div className="icon">
       {unread > 0 && <Badge badge={unread} />}
         <img
-            src="/img/icon/notificacion.svg"
+            src="img/icon/notificacion.svg"
             alt="notifications"
             className="nav-icon"
             width="40px"

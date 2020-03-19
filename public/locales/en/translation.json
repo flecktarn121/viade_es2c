@@ -21,7 +21,7 @@
     "notSharable": "(log in and load a doc on your own pod to give others access)"
   },
   "login": {
-    "title": "Hi! Welcome to Solid.",
+    "title": "Hi! Welcome to Viade.",
     "loginTitle": "Log in",
     "register": "Register for a solid identity",
     "solidHelp": "What is a Solid Identity?",
@@ -56,6 +56,7 @@
     "map": "Map",
     "timeline":"Routes",
     "createroute":"New route",
+    "friends":"Friends",
     "languages": {
       "en": "English (English)",
       "es": "Español (Spanish)"

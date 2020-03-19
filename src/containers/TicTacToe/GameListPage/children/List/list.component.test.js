@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-testing-library';
+import {render} from 'react-testing-library';
 import GameList from './list.component';
 
 const webId = 'https://example.com/#me';

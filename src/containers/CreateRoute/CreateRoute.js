@@ -1,30 +1,52 @@
+/* eslint-disable constructor-super */
+/* eslint-disable no-nested-ternary */
+/* eslint-disable no-console */
+
 import React from 'react';
-import {Button, Header, NewRouteContainer, RouteContainer, RouteWrapper} from "./Route.style";
+import {Button, Header, RouteWrapper} from "./Route.style";
 import {CreateMap} from "../../components";
 import {Input} from "../TextEditor/text-editor.style";
+import RouteToRdfParser from "../../utils/parser/RouteToRdfParser"
+import Route from "../../utils/route/Route"
 
-const markers = [
-    {lat: 43.354831, lng: -5.851303},
-    {lat: 43.356440, lng: -5.854693},
-    {lat: 43.361836, lng: -5.850547}
-];
-
-let mapa = new CreateMap();
+type Props = { webId: String };
 
 class CreateRoute extends React.Component {
+
+    constructor({ webId }: Props) {
+        super();
+        this.webID = webId.replace("profile/card#me","");
+        console.log(this.webID);
+        this.handleSave = this.handleSave.bind(this);
+        this.title = React.createRef();
+    }
+
     state = {markers: {}};
 
     callbackFunction = (childData) => {
         this.setState({markers: childData})
-        console.log(this.state.markers)
     };
+
+    handleSave(event){
+        if(this.title.current.value.length === 0){
+            alert("La ruta tiene que tener un titulo.")
+        }else if(this.state.markers === 0){
+            alert("No ha marcado ningún punto en el mapa.")
+        }else{
+            let route = new Route(this.title.current.value,"Ruta",this.state.markers,this.webID,null,  null,  null);
+            let parser = new RouteToRdfParser(route, this.webID);
+            parser.parse();
+            alert("Se ha guardado correctamente");
+        }
+        event.preventDefault();
+    }
 
     render() {
         return (
             <RouteWrapper>
                 <Header>
-                    <Input type="text" size="20" placeholder="Nueva ruta"/>
-                    <Button> Guardar ruta </Button>
+                    <Input type="text" size="20" placeholder="Nueva ruta" ref={this.title}/>
+                    <Button onClick={this.handleSave}> Guardar ruta </Button>
                 </Header>
 
                 <CreateMap parentCallback = {this.callbackFunction}/>

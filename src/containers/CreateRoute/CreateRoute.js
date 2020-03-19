@@ -3,19 +3,19 @@
 /* eslint-disable no-console */
 
 import React from 'react';
-import {Button, Header, RouteWrapper} from "./Route.style";
+import {Button, Header, RouteWrapper, Input, Label} from "./Route.style";
 import {CreateMap} from "../../components";
-import {Input} from "../TextEditor/text-editor.style";
 import RouteToRdfParser from "../../utils/parser/RouteToRdfParser"
 import Route from "../../utils/route/Route"
+import {Uploader} from '@inrupt/solid-react-components';
 
-type Props = { webId: String };
+type Props = {webId: String};
 
 class CreateRoute extends React.Component {
 
-    constructor({ webId }: Props) {
+    constructor({webId}: Props) {
         super();
-        this.webID = webId.replace("profile/card#me","");
+        this.webID = webId.replace("profile/card#me", "");
         console.log(this.webID);
         this.handleSave = this.handleSave.bind(this);
         this.title = React.createRef();
@@ -27,13 +27,13 @@ class CreateRoute extends React.Component {
         this.setState({markers: childData})
     };
 
-    handleSave(event){
-        if(this.title.current.value.length === 0){
+    handleSave(event) {
+        if (this.title.current.value.length === 0) {
             alert("La ruta tiene que tener un titulo.")
-        }else if(this.state.markers === 0){
+        } else if (this.state.markers === 0) {
             alert("No ha marcado ningún punto en el mapa.")
-        }else{
-            let route = new Route(this.title.current.value,"Ruta",this.state.markers,this.webID,null,  null,  null);
+        } else {
+            let route = new Route(this.title.current.value, "Ruta", this.state.markers, this.webID, null, null, null);
             let parser = new RouteToRdfParser(route, this.webID);
             parser.parse();
             alert("Se ha guardado correctamente");
@@ -45,11 +45,17 @@ class CreateRoute extends React.Component {
         return (
             <RouteWrapper>
                 <Header>
+                    <h1 className={"text--white"}>Nueva Ruta</h1>
+                    <Label>Titulo</Label>
                     <Input type="text" size="20" placeholder="Nueva ruta" ref={this.title}/>
+                    <Label>Descripcion</Label>
+                    <Input type="text" size="100" placeholder="Descripcion" ref={this.title}/>
+                    <Label>Sube una foto</Label>
+                    <Input type="file" accept="image/*, video/*"/>
+                    <br/>
                     <Button onClick={this.handleSave}> Guardar ruta </Button>
                 </Header>
-
-                <CreateMap parentCallback = {this.callbackFunction}/>
+                <CreateMap parentCallback={this.callbackFunction}/>
             </RouteWrapper>
         );
     }

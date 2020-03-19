@@ -2,7 +2,7 @@ import React from 'react';
 import {Header, RouteContainer, RouteWrapper} from "./Route.style";
 import Map from "../../components/Map";
 
-function Route(props) {
+function Route() {
 
     // const markers = props.params.markers;
     //
@@ -20,7 +20,7 @@ function Route(props) {
     //     }
     // };
 
-    console.log(props.location.myCustomProps);
+    console.log("");
 
     return (
         <RouteWrapper>

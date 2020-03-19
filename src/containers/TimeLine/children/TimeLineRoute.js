@@ -11,6 +11,7 @@ const TimeLineRoute = props => {
     };
     let marcadores = props.markers;
     console.log(props.markers);
+
     return (
         <TimelineRouteCard className="card">
             <TimelineRouteDetail data-testid="welcome-detail">
@@ -22,7 +23,7 @@ const TimeLineRoute = props => {
                 <button onClick={mostrarMarkers}>Ver ruta</button>
                 <Link to={{
                     pathname: '/route',
-                    myCustomProps: marcadores
+                    myCustomProps: "hola"
                 }}>ver ruta</Link>
                 <button>Compartir</button>
             </TimelineRouteDetail>

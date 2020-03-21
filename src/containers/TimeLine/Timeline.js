@@ -1,6 +1,6 @@
 import React from 'react';
 import TimeLineRoute from './children/TimeLineRoute';
-import Route from '../../utils/route/Route'
+import Route from '../../utils/route/Route';
 
 import {Header, TimelineContainer, TimelineWrapper} from './timeline.style';
 

@@ -1,45 +1,86 @@
 import styled from 'styled-components';
+import {media} from "../../utils";
 
 export const RouteWrapper = styled.section`
   display: flex;
   flex: 1 0 auto;
-  flex-direction:column;
+  flex-direction:row !important;
   background-image: url('img/concentric-hex-pattern_2x.png');
   background-repeat: repeat;
-  padding: 10px 0;
+  height: inherit;
+  width: 100vw !important;
 `;
 
 export const Header = styled.div`
   display: flex;
+  flex-direction: column !important;
   position: relative;
-  align-items: center;
-  justify-content: center;
+
    background-image: url('img/pattern-geo.png'),
     radial-gradient(#00B020, #00B020, #00B020);
   background-repeat: repeat, no-repeat;
   padding: 30px 20px;
-  p {
-    color: white;
-  }
-  .edit-button {
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid white;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    font-size: 1rem;
-  }
+  max-width: 300px;
 `;
 
 export const Input = styled.input`
   margin: 5px;
+  color: white;
 `;
 
 export const Button = styled.button`
   max-width: 128px;
   display: inline-block;
+  margin-left: 5px;
+`;
 
-  &:first-child {
-    margin-right: 10px;
+export const Label = styled.label`
+  margin: 5px;
+  color: white;
+`;
+
+export const TextArea = styled.textarea`
+  margin: 5px;
+`;
+
+export const RoutePhoto = styled.div`
+  height: 100%;
+  text-align: center;
+  position: relative;
+
+  img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
+
+  h1,
+  img {
+    margin: 0 10px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  ${media.tablet`
+    width: 50%;
+    &:after {
+      display: block;
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 1px;
+      background-color:#D0D0D0;
+      top:0;
+    }
+  `}
+`;
+
+export const ImageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    margin-left: 0px;
   }
 `;

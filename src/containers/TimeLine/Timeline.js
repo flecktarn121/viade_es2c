@@ -35,7 +35,7 @@ function TimeLine() {
     <TimelineWrapper>
       <TimelineContainer>
         <Header>
-          <h1>Rutas</h1>
+          <h1>Ver Rutas</h1>
         </Header>
         {rutas.map((ruta, index) => {
           return (

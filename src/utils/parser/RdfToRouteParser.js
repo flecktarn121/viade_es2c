@@ -1,8 +1,10 @@
 import FileWriter from "../InOut/FileWriter";
+import Route from "../route/Route";
 class RdftoRouteParser {
 
-    constructor (webID, name){
-        this.text =  FileWriter.handleLoad(webID+"viade/"+name)
+    constructor (text){
+        alert(text);
+        this.text = text;
     }
     parse(){
         let name = this.getName();
@@ -26,15 +28,17 @@ class RdftoRouteParser {
     }
 
     getPoints(){
-      //  let cabecera = "viade:points (\n";
-      //  let final = " );\n";
-      //  let puntos = "";
-      //  let i;
-      //  for (i = 0; i < this.route.points.length; i++) {
-      //   puntos += "[ schema:latitude "+this.route.points[i].position.lat+" ; schema:longitude "+this.route.points[i].position.lng+" ]\n";
-        // }
-
-        //return (String)(cabecera+puntos+final);
+        let tx = this.text.split("\n");
+        let i = 9;
+        let line = tx[i];
+        let points = [];
+        while (line.split(" ")[0].equals("[")){
+            let valores = line.split(" ")
+            points[i-9]= {lat:valores[2],lng:valores[5]};
+            i++;
+            line = tx[i];
+        }
+        return points;
     }
 
     getComments(){

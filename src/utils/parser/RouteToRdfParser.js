@@ -34,7 +34,7 @@ class RouteToRdfParser {
         let puntos = "";
         let i;
         for (i = 0; i < this.route.points.length; i++) {
-            puntos += "[ schema:latitude "+this.route.points[i].position.lat+" ; schema:longitude "+this.route.points[i].position.lng+" ]\n";
+            puntos += "[ schema:latitude "+this.route.points[i].lat+" ; schema:longitude "+this.route.points[i].lng+" ]\n";
         }
 
         return (String)(cabecera+puntos+final);

@@ -5,23 +5,24 @@ class FileWriter {
 
     static async handleSave(url, text) {
         // Not using LDFlex here, because this is not an RDF document.
-        const result = await SolidAuth.fetch(url, {
+        //const result =
+         await SolidAuth.fetch(url, {
             method: 'PUT',
             body: text,
             headers: {
                 'Content-Type': 'text/plain'
             }
         });
-        result();
+   //     result();
     }
-    static async handleLoad(url) {
+    static async handleLoad(url,callback) {
         const {t} = useTranslation();
         const doc = SolidAuth.fetch(url);
         doc
             .then(async response => {
                 const text = await response.text();
                 if (response.ok) {
-                    return text;
+                    callback(text);
                 } else if (response.status === 404) {
                     alert(t('notifications.404'));
                 } else {

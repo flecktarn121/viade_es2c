@@ -2,48 +2,49 @@ import FileWriter from "../InOut/FileWriter";
 import Route from "../route/Route";
 class RdftoRouteParser {
 
-    constructor (text){
-        alert(text);
-        this.text = text;
+    constructor (url){
+        FileWriter.handleLoad(url,this.parse.bind(this));
     }
-    parse(){
-        let name = this.getName();
-        let description = this.getDescription();
-        let points = this.getPoints();
-        let comments = this.getComments();
-        return new Route(name,description, points,null,comments,null,null);
+    parse(text){
+        let name = this.getName(text);
+        let description = this.getDescription(text);
+        let points = this.getPoints(text);
+        let comments = this.getComments(text);
+        let route = new Route(name,description, points,null,comments,null,null);
     }
 
-    getName(){
-        let tx = this.text.split("\n");
+    getName(text){
+        let tx = text.split("\n");
         let line = tx[6].split(" ");
         let name = line[1].replace('"',"")
         return name;
     }
-    getDescription(){
-        let tx = this.text.split("\n");
+    getDescription(text){
+        let tx = text.split("\n");
         let line = tx[7].split(" ");
         let description = line[1].replace('"',"")
         return description;
     }
 
-    getPoints(){
-        let tx = this.text.split("\n");
+    getPoints(text){
+        let tx = text.split("\n");
         let i = 9;
         let line = tx[i];
+        let valores = line.split(" ");
         let points = [];
-        while (line.split(" ")[0].equals("[")){
-            let valores = line.split(" ")
+        while (valores[0] ==="["){
             points[i-9]= {lat:valores[2],lng:valores[5]};
             i++;
             line = tx[i];
+            valores = line.split(" ");
         }
         return points;
     }
 
-    getComments(){
-        let tx = this.text.split("\n");
-        let line = tx[tx.length-1].split(" ");
+    getComments(text){
+        let tx = text.split("\n");
+        let indice = tx.length-2;
+        let line = tx[indice].split(" ");
         let comments = line[1].replace('"',"")
         return comments;
     }

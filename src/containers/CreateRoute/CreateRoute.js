@@ -7,7 +7,7 @@ import {Button, Header, RouteWrapper} from "./Route.style";
 import {CreateMap} from "../../components";
 import {Input} from "../TextEditor/text-editor.style";
 import RouteToRdfParser from "../../utils/parser/RouteToRdfParser"
-import Route from "../../utils/route/Route";
+import Route from "../../utils/route/Route"
 
 type Props = { webId: String };
 

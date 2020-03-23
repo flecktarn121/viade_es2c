@@ -1,10 +1,8 @@
 import React from 'react';
 import TimeLineRoute from './children/TimeLineRoute';
-import Route from '../../utils/route/Route';
-import FileWriter from "../../utils/InOut/FileWriter";
+import Route from '../../utils/route/Route'
 
 import {Header, TimelineContainer, TimelineWrapper} from './timeline.style';
-import RdftoRouteParser from "../../utils/parser/RdfToRouteParser";
 
 const markers1 = [
   {lat: 43.354831, lng: -5.851303},
@@ -33,13 +31,6 @@ const rutas = [ruta1,ruta2,ruta3];
  * Container component for the Welcome Page, containing example of how to fetch data from a POD
  */
 function TimeLine() {
-  FileWriter.handleLoad("");
-  //alert("nombre : "+ruta.name);
-  //alert("Descripcion: "+ruta.description);
-  //alert("puntos: "+ruta.points[0].lat+ ","+ruta.points[0].lng);
-  //alert("puntos: "+ruta.points[1].lat+ ","+ruta.points[1].lng);
-  //alert("comentarios_:"+ruta.comments);
-
   return (
     <TimelineWrapper>
       <TimelineContainer>

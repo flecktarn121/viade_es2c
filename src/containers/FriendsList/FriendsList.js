@@ -1,5 +1,7 @@
 import React,{ useState } from 'react';
 import { render } from 'react-testing-library';
+import { toUnicode } from 'punycode';
+import { FriendListWrapper } from './FriendList.style';
 
 const $rdf = require('rdflib');
 const auth = require('solid-auth-client');
@@ -8,16 +10,13 @@ const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
 
 //var person = null;
 var person = 'https://ruben.verborgh.org/profile/#me';
-
-
-
+var friendsList = null;
 /**
  * Container component to show the user´s friends
  */
 function FriendsList() {
     //obtenemos webId de session
     trackSession();
-
     //array con cada link
     loadFriendsUrls(person,function(friendsUrls){
         if(friendsUrls == null || undefined){
@@ -25,11 +24,21 @@ function FriendsList() {
         }else{
             console.log('Amigos');
             console.log(friendsUrls);
+            friendsList =            
+            friendsUrls.map(friend=>
+                <FriendListWrapper>
+                    <div>
+                        <ul>
+                            <li key={friend.toString()}>
+                                <h3>Amigo</h3>
+                                <div>{friend}</div>
+                            </li>
+                        </ul>     
+                 </div>
+                </FriendListWrapper>
+            );
         }
     });
-    
-    const friendsList = <h2>Lista de amigos</h2>
-    
     return friendsList;
 }
 
@@ -49,7 +58,7 @@ async function loadFriendsUrls(p,callback) {
         friend.value
     );
     
-    callback(friendsUrls);
+    return callback(friendsUrls);
 }
 
 /**

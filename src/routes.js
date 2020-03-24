@@ -14,7 +14,6 @@ import {
     Register,
     RegistrationSuccess,
     Ruta,
-    TextEditor,
     TimeLine,
     Welcome
 } from './containers';
@@ -40,11 +39,6 @@ const privateRoutes = [
         id: 'tictactoegame',
         path: '/tictactoe/:gameId',
         component: GamePage
-    },
-    {
-        id: 'text-editor',
-        path: '/text-editor',
-        component: TextEditor
     },
     {
         id: 'formmodelconverter',

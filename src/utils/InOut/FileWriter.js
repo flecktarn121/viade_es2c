@@ -10,7 +10,7 @@ class FileWriter {
             method: 'PUT',
             body: text,
             headers: {
-                'Content-Type': 'text/plain'
+                'Content-Type': 'text/turtle'
             }
         });
    //     result();

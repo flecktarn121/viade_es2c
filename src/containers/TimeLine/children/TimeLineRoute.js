@@ -1,15 +1,15 @@
 import React from 'react';
 import {TimelineRouteCard, TimelineRouteDetail} from './timelineroute.style';
 import {Link} from "react-router-dom";
-import Map from "../../../components/Map";
-import Ruta from "../../Ruta/Ruta";
+//import Map from "../../../components/Map";
+//import Ruta from "../../Ruta/Ruta";
+//import RdftoRouteParser from "../../../utils/parser/RdfToRouteParser";
 
 const TimeLineRoute = props => {
     const {title, date, author, description, id} = props;
     let path = "/route/" + id;
 
     console.log(path);
-
     return (
         <TimelineRouteCard className="card">
             <TimelineRouteDetail data-testid="welcome-detail">

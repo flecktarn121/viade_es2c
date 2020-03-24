@@ -1,5 +1,6 @@
 import FileWriter from "../InOut/FileWriter";
 import Route from "../route/Route";
+import routes from "../../constants/globals";
 class RdftoRouteParser {
 
     constructor (url){
@@ -11,6 +12,8 @@ class RdftoRouteParser {
         let points = this.getPoints(text);
         let comments = this.getComments(text);
         let route = new Route(name,description, points,null,comments,null,null);
+        routes.push(route);
+
     }
 
     getName(text){
@@ -33,7 +36,7 @@ class RdftoRouteParser {
         let valores = line.split(" ");
         let points = [];
         while (valores[0] ==="["){
-            points[i-9]= {lat:valores[2],lng:valores[5]};
+            points[i-9]= {position: {lat:valores[2],lng:valores[5]}};
             i++;
             line = tx[i];
             valores = line.split(" ");

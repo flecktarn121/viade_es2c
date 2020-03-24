@@ -7,7 +7,7 @@ import {Button, Header, RouteWrapper, Input, Label} from "./Route.style";
 import {CreateMap} from "../../components";
 import RouteToRdfParser from "../../utils/parser/RouteToRdfParser"
 import Route from "../../utils/route/Route"
-import {Uploader} from '@inrupt/solid-react-components';
+//import {Uploader} from '@inrupt/solid-react-components';
 
 type Props = {webId: String};
 

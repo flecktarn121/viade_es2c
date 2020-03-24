@@ -14,11 +14,11 @@ class RouteToRdfParser {
     }
 
     getPrefix(){
-        let line = "prefix :   <http://example.org/> \n";
-        let viade = "prefix viade:  <http://arquisoft.github.io/viadeSpec/>\n";
-        let schema = "prefix schema: <http://schema.org/>\n";
-        let rdfs = "prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#>\n";
-        let xsd = "prefix xsd:    <http://www.w3.org/2001/XMLSchema#>\n";
+        let line = "@prefix :   <http://example.org/>. \n";
+        let viade = "@prefix viade:  <http://arquisoft.github.io/viadeSpec/>.\n";
+        let schema = "@prefix schema: <http://schema.org/>.\n";
+        let rdfs = "@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#>.\n";
+        let xsd = "@prefix xsd:    <http://www.w3.org/2001/XMLSchema#>.\n";
         return (String)(line+viade+schema+rdfs+xsd);
     }
     getInformation(){
@@ -34,14 +34,14 @@ class RouteToRdfParser {
         let puntos = "";
         let i;
         for (i = 0; i < this.route.points.length; i++) {
-            puntos += "[ schema:latitude "+this.route.points[i].lat+" ; schema:longitude "+this.route.points[i].lng+" ]\n";
+            puntos += "[ schema:latitude "+this.route.points[i].position.lat+" ; schema:longitude "+this.route.points[i].position.lng+" ]\n";
         }
 
         return (String)(cabecera+puntos+final);
     }
 
     getMedia(){
-        let comments = "viade:hasComments \""+this.route.comments+"\" ;\n";
+        let comments = "viade:hasComments \""+this.route.comments+"\" .\n";
         return comments;
     }
 

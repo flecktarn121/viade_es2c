@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+//import React, {Component} from 'react';
+import React from 'react';
 import {Header, RouteContainer, RouteWrapper} from "./Ruta.style";
 import Map from "../../components/Map";
 import routes from "../../constants/globals";

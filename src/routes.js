@@ -63,7 +63,7 @@ const privateRoutes = [
     },
     {
         id: 'route',
-        path: '/route',
+        path: '/route/:id',
         component: Ruta
     },
     {

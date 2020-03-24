@@ -1,12 +1,12 @@
 import React from 'react';
 import {cleanup, render} from 'react-testing-library';
-import Route from "./Route";
+import Ruta from "./Ruta";
 
-describe.only('Route', () => {
+describe.only('Ruta', () => {
   afterAll(cleanup);
 
   const { container, getByTestId } = render(
-    <Route />
+    <Ruta />
   );
 
   test('renders without crashing', () => {

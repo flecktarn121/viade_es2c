@@ -13,7 +13,7 @@ import {
     Profile,
     Register,
     RegistrationSuccess,
-    Route,
+    Ruta,
     TextEditor,
     TimeLine,
     Welcome
@@ -22,8 +22,7 @@ import FriendsList from './containers/FriendsList/FriendsList';
 
 const privateRoutes = [
     {
-        id: 'we' +
-            'lcome',
+        id: 'welcome',
         path: '/welcome',
         component: Welcome
     },
@@ -65,7 +64,7 @@ const privateRoutes = [
     {
         id: 'route',
         path: '/route',
-        component: Route
+        component: Ruta
     },
     {
         id: 'friends',

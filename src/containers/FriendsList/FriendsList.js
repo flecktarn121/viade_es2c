@@ -15,26 +15,19 @@ var person = 'https://ruben.verborgh.org/profile/#me';
  * Container component to show the user´s friends
  */
 function FriendsList() {
-    let[friends,setFriends] = useState(0);
-
-    function handleFriends(list){
-        setFriends(list);
-    }
-
+    //obtenemos webId de session
     trackSession();
+
     //array con cada link
-    const friendsUrls =  loadFriendsUrls(person);
-    //Queda sacar los nombres, tenemos urls
-    console.log('Amigos');
-    console.log(friendsUrls);
-
-    loadFriendsUrls().then(list=>{
-        handleFriends(list)
-        console.log(this.state)
-    }).catch(error=>{
-        console.log('error during friends load')
-    })
-
+    loadFriendsUrls(person,function(friendsUrls){
+        if(friendsUrls == null || undefined){
+            console.log('Error obtaining friendsUrls')
+        }else{
+            console.log('Amigos');
+            console.log(friendsUrls);
+        }
+    });
+    
     const friendsList = <h2>Lista de amigos</h2>
     
     return friendsList;
@@ -45,7 +38,7 @@ function FriendsList() {
 /**
  * This function returns the friends list urls for a specified user
  */
-async function loadFriendsUrls(p) {
+async function loadFriendsUrls(p,callback) {
     const store = $rdf.graph();
     const fetcher = new $rdf.Fetcher(store);
 
@@ -55,8 +48,8 @@ async function loadFriendsUrls(p) {
     var friendsUrls = friends.map(friend => 
         friend.value
     );
-
-    return friendsUrls;
+    
+    callback(friendsUrls);
 }
 
 /**

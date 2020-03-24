@@ -2,22 +2,22 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-console */
 
-import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+import React, {useEffect, useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import SolidAuth from 'solid-auth-client';
-import { successToaster, errorToaster } from '@utils';
+import {errorToaster, successToaster} from '@utils';
 import ldflex from '@solid/query-ldflex';
-import { AccessControlList } from '@inrupt/solid-react-components';
+import {AccessControlList} from '@inrupt/solid-react-components';
 import {
-  TextEditorWrapper,
-  TextEditorContainer,
-  Header,
+  Button,
   Form,
   FullGridSize,
-  Button,
-  Label,
+  Header,
   Input,
+  Label,
   TextArea,
+  TextEditorContainer,
+  TextEditorWrapper,
   WebId
 } from './text-editor.style';
 
@@ -191,6 +191,7 @@ export const Editor = ({ webId }: Props) => {
             ''
           )}
         </div>
+
       </FullGridSize>
       <FullGridSize>
         <TextArea value={text} onChange={handleTextChange} cols={40} rows={10} />

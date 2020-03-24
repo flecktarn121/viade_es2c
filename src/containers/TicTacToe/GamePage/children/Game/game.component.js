@@ -1,14 +1,14 @@
-import React, { Fragment, useEffect, useState, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useLiveUpdate, useNotification, NotificationTypes } from '@inrupt/solid-react-components';
+import React, {Fragment, useCallback, useEffect, useState} from 'react';
+import {useTranslation} from 'react-i18next';
+import {NotificationTypes, useLiveUpdate, useNotification} from '@inrupt/solid-react-components';
 import moment from 'moment';
-import { ldflexHelper, storageHelper, errorToaster, notification } from '@utils';
+import {errorToaster, ldflexHelper, notification, storageHelper} from '@utils';
 import ldflex from '@solid/query-ldflex';
-import { namedNode } from '@rdfjs/data-model';
+import {namedNode} from '@rdfjs/data-model';
 import tictactoeShape from '@contexts/tictactoe-shape.json';
 import Board from '../Board';
 import GameAccept from '../GameAccept';
-import { GameWrapper, Metadata } from './game.style';
+import {GameWrapper, Metadata} from './game.style';
 
 const possibleCombinations = [
   [0, 4, 8],

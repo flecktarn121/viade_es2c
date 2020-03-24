@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
+import React, {Fragment} from 'react';
 import styled from 'styled-components';
-import { Trans, useTranslation } from 'react-i18next';
-import { ConfirmationDialog } from '@util-components';
+import {Trans, useTranslation} from 'react-i18next';
+import {ConfirmationDialog} from '@util-components';
 
 const MessageWrapper = styled.div`
   text-align: center;

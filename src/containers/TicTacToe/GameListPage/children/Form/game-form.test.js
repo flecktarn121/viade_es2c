@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, fireEvent } from 'react-testing-library';
+import {cleanup, fireEvent, render} from 'react-testing-library';
 import GameForm from './game-form.component';
 
 const sendNotification = jest.fn();

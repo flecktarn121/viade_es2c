@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactModal from 'react-modal';
-import { render, cleanup } from 'react-testing-library';
+import {cleanup, render} from 'react-testing-library';
 import Board from './board.component';
 
 describe.only('TicTacToe', () => {

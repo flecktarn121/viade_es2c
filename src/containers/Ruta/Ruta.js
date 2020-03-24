@@ -7,7 +7,8 @@ const Ruta = ({match}) => (
     <RouteWrapper>
         <RouteContainer>
             <Header>
-                <h1 className="text--white">Ruta</h1>
+                <h1 className="text--white">{routes[match.params.id].name}: </h1>
+                <h2 className="text--white">{routes[match.params.id].description}</h2>
             </Header>
             <Map zoom={15} markers={loadMarkers(match.params.id)}/>
         </RouteContainer>

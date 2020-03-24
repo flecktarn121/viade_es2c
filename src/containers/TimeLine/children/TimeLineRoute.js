@@ -5,15 +5,8 @@ import Map from "../../../components/Map";
 import Ruta from "../../Ruta/Ruta";
 
 const TimeLineRoute = props => {
-    const {title, date, author, description, markers, id} = props;
-    const mostrarMarkers = () => {
-        alert(markers)
-    };
-    let marcadores = props.markers;
-    console.log(marcadores);
-
-    let path = "/route/";
-    path += id;
+    const {title, date, author, description, id} = props;
+    let path = "/route/" + id;
 
     console.log(path);
 
@@ -25,11 +18,9 @@ const TimeLineRoute = props => {
                     {date} - {author}
                 </h4>
                 <p>{description}</p>
-                <button onClick={mostrarMarkers}>Ver ruta</button>
                 <Link to={path}>ver ruta</Link>
                 <button>Compartir</button>
             </TimelineRouteDetail>
-            <Map zoom={15} markers={markers}/>
         </TimelineRouteCard>
     );
 };

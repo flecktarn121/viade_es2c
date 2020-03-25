@@ -3,6 +3,7 @@ import TimeLineRoute from './children/TimeLineRoute';
 
 import {Header, TimelineContainer, TimelineWrapper} from './timeline.style';
 import routes from "../../constants/globals";
+import RdftoRouteParser from "../../utils/parser/RdfToRouteParser";
 
 /**
  * Container component for the Welcome Page, containing example of how to fetch data from a POD

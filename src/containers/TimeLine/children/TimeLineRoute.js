@@ -2,7 +2,6 @@ import React from 'react';
 import {TimelineRouteCard, TimelineRouteDetail} from './timelineroute.style';
 import {Link} from "react-router-dom";
 import Map from "../../../components/Map";
-import Ruta from "../../Ruta/Ruta";
 
 const TimeLineRoute = props => {
     const {title, date, author, description, markers} = props;

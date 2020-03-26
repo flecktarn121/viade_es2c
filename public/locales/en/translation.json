@@ -18,7 +18,10 @@
     "errorGrantingAccess": "There was an error giving access to your file, please try again.",
     "saved": "Your file was saved successfully.",
     "notEditable": "(not editable)",
-    "notSharable": "(log in and load a doc on your own pod to give others access)"
+    "notSharable": "(log in and load a doc on your own pod to give others access)",
+    "title": "The route must have a title.",
+    "description": "The route must have a description.",
+    "save": "The route has been successfully saved."
   },
   "login": {
     "title": "Hi! Welcome to Viade.",

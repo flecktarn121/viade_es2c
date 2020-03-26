@@ -9,6 +9,8 @@ import {FormModelConverter, FormModelRenderer} from './FormModel';
 import TimeLine from "./TimeLine";
 import Ruta from './Ruta';
 import CreateRoute from "./CreateRoute";
+import CreateRouteSelector from "./CreateRouteSelector";
+import CreateRouteGPX from "./CreateRouteGPX";
 
 export {
     Login,
@@ -24,5 +26,7 @@ export {
     TextEditor,
     TimeLine,
     Ruta,
-    CreateRoute
+    CreateRoute,
+    CreateRouteSelector,
+    CreateRouteGPX
 };

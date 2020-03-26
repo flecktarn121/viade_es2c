@@ -3,7 +3,7 @@ import {NotLoggedInLayout, PrivateLayout, PublicLayout} from '@layouts';
 import {HashRouter as Router, Redirect, Switch} from "react-router-dom";
 
 import {
-    CreateRoute,
+    CreateRoute, CreateRouteSelector,
     FormModelConverter,
     FormModelRenderer,
     GameList,
@@ -16,7 +16,8 @@ import {
     Ruta,
     TextEditor,
     TimeLine,
-    Welcome
+    Welcome,
+    CreateRouteGPX
 } from './containers';
 import FriendsList from './containers/FriendsList/FriendsList';
 
@@ -68,14 +69,24 @@ const privateRoutes = [
     },
     {
         id: 'friends',
-        path : '/friends',
-        component : FriendsList
+        path: '/friends',
+        component: FriendsList
     }
     ,
     {
         id: 'createroute',
         path: '/createroute',
         component: CreateRoute
+    },
+    {
+        id: 'createroutegpx',
+        path: '/createroutegpx',
+        component: CreateRouteGPX
+    },
+    {
+        id: 'createrouteselector',
+        path: '/createrouteselector',
+        component: CreateRouteSelector
     }
 ];
 

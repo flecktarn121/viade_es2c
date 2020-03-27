@@ -18,4 +18,8 @@ describe.only('Timeline', () => {
   test('renders without crashing', () => {
     expect(container).toBeTruthy();
   });
+  
+  test('prueba', ()=>{
+      container.click();
+  })
 });

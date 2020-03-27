@@ -26,6 +26,7 @@ const CreateRouteSelector = ({ webId }: Props) => {
                 <SelectorOption>
                     <h3>A partir de un archivo gpx</h3>
                     <button onClick={createroutegpx}> Aqui </button>
+                    <button onClick={createroutegpx}> Aqui </button>
                 </SelectorOption>
                 <SelectorOption>
                     <h3>Crea tu propia ruta en el mapa</h3>

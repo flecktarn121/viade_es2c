@@ -8,6 +8,9 @@ import {FormModelConverter, FormModelRenderer} from './FormModel';
 import TimeLine from "./TimeLine";
 import Ruta from './Ruta';
 import CreateRoute from "./CreateRoute";
+import CreateRouteSelector from "./CreateRouteSelector";
+import CreateRouteGPX from "./CreateRouteGPX";
+import CreateRouteGeoJSON from "./CreateRouteGeoJSON";
 
 export {
     Login,
@@ -22,5 +25,8 @@ export {
     FormModelRenderer,
     TimeLine,
     Ruta,
-    CreateRoute
+    CreateRoute,
+    CreateRouteSelector,
+    CreateRouteGPX,
+    CreateRouteGeoJSON
 };

@@ -45,10 +45,10 @@ export const NavigationItems = [
     to: '/friends'
   },
   {
-    id: 'createroute',
+    id: 'createrouteselector',
     icon: 'img/icon/ruta.svg',
     label: 'navBar.createroute',
-    to: '/createroute'
+    to: '/createrouteselector'
   }
 ];
 

@@ -3,11 +3,10 @@ import {NotLoggedInLayout, PrivateLayout, PublicLayout} from '@layouts';
 import {HashRouter as Router, Redirect, Switch} from "react-router-dom";
 
 import {
-    CreateRoute, CreateRouteSelector,
-    FormModelConverter,
-    FormModelRenderer,
-    GameList,
-    GamePage,
+    CreateRoute,
+    CreateRouteGeoJSON,
+    CreateRouteGPX,
+    CreateRouteSelector,
     Login,
     PageNotFound,
     Profile,
@@ -15,9 +14,7 @@ import {
     RegistrationSuccess,
     Ruta,
     TimeLine,
-    Welcome,
-    CreateRouteGPX,
-    CreateRouteGeoJSON
+    Welcome
 } from './containers';
 import FriendsList from './containers/FriendsList/FriendsList';
 
@@ -31,26 +28,6 @@ const privateRoutes = [
         id: 'profile',
         path: '/profile',
         component: Profile
-    },
-    {
-        id: 'tictactoe',
-        path: '/tictactoe',
-        component: GameList
-    },
-    {
-        id: 'tictactoegame',
-        path: '/tictactoe/:gameId',
-        component: GamePage
-    },
-    {
-        id: 'formmodelconverter',
-        path: '/formmodel/converter',
-        component: FormModelConverter
-    },
-    {
-        id: 'formmodelrenderer',
-        path: '/formmodel/renderer',
-        component: FormModelRenderer
     },
     {
         id: 'timeline',

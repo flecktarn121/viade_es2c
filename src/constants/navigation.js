@@ -8,36 +8,12 @@ export const NavigationItems = [
     label: 'navBar.welcome',
     to: '/welcome'
   },
-  // {
-  //   id: 'profile',
-  //   icon: '/img/people.svg',
-  //   label: 'navBar.profile',
-  //   to: '/profile'
-  // },
-  // {
-  //   id: 'tictactoe',
-  //   icon: '/img/icon/tictactoe.svg',
-  //   label: 'navBar.tictactoe',
-  //   to: '/tictactoe'
-  // },
-  // {
-  //   id: 'text-editor',
-  //   icon: '/img/icon/files.svg',
-  //   label: 'navBar.text-editor',
-  //   to: '/text-editor'
-  // },
   {
     id: 'timeline',
     icon: 'img/icon/inicio.svg',
     label: 'navBar.timeline',
     to: '/timeline'
   },
-  // {
-  //   id: 'route',
-  //   icon: '/img/icon/files.svg',
-  //   label: 'route',
-  //   to: '/route'
-  // },
   {
     id: 'friends',
     icon: 'img/icon/friend.svg',

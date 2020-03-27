@@ -4,7 +4,6 @@ import {media} from "../../utils";
 export const RouteWrapper = styled.section`
   display: flex;
   flex: 1 0 auto;
-  flex-direction:row !important;
   background-image: url('img/concentric-hex-pattern_2x.png');
   background-repeat: repeat;
   height: inherit;
@@ -20,7 +19,14 @@ export const Header = styled.div`
     radial-gradient(#00B020, #00B020, #00B020);
   background-repeat: repeat, no-repeat;
   padding: 30px 20px;
-  max-width: 300px;
+  max-width: 100vw;
+  width: 100vw;
+`;
+
+export const Mapa = styled.div`
+    padding: '30px 0',
+    height: '200px',
+    width: '200px'
 `;
 
 export const Input = styled.input`

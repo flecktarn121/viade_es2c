@@ -17,7 +17,7 @@ const CreateRoute = ({ webId }: Props) => {
     const webID = webId.replace("profile/card#me", "");
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [photo, setPhoto] = useState('');
+    // const [photo, setPhoto] = useState('');
     const [markers, setMarkers] = useState({});
     let file = React.createRef();
 
@@ -53,20 +53,6 @@ const CreateRoute = ({ webId }: Props) => {
 
     function handlePhotoChange(event) {
         event.preventDefault();
-       // alert( file.current.files[0].name);
-        let reader = new FileReader();
-        reader.onload = function(event) {
-            //console.log('File content:', event.target.result);
-            var xmlParser = new DOMParser();
-            var xmlDoc = xmlParser.parseFromString(event.target.result.toString(), "text/xml");
-            var wpts = xmlDoc.getElementsByTagName("wpt")
-            console.log(wpts.length)
-            for (var i = 0; i < wpts.length ;i++) {
-                console.log(wpts[i].getAttribute('lat') +" - " + wpts[i].getAttribute('lon'))
-            }
-        };
-        reader.readAsText(file.current.files[0]);
-        console.log(reader.result)
     }
 
     return (

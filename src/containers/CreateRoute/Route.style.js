@@ -23,6 +23,8 @@ export const Header = styled.div`
   max-width: 300px;
 `;
 
+
+
 export const Input = styled.input`
   margin: 5px;
 `;

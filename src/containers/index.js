@@ -11,6 +11,7 @@ import Ruta from './Ruta';
 import CreateRoute from "./CreateRoute";
 import CreateRouteSelector from "./CreateRouteSelector";
 import CreateRouteGPX from "./CreateRouteGPX";
+import CreateRouteGeoJSON from "./CreateRouteGeoJSON";
 
 export {
     Login,
@@ -28,5 +29,6 @@ export {
     Ruta,
     CreateRoute,
     CreateRouteSelector,
-    CreateRouteGPX
+    CreateRouteGPX,
+    CreateRouteGeoJSON
 };

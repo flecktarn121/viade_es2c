@@ -15,6 +15,10 @@ function createroutegpx() {
     window.location.href=`#/createroutegpx`;
 }
 
+function createroutegeojson() {
+    window.location.href=`#/createroutegeojson`;
+}
+
 
 
 const CreateRouteSelector = ({ webId }: Props) => {
@@ -24,9 +28,9 @@ const CreateRouteSelector = ({ webId }: Props) => {
         <SelectorWrapper>
             <SelectorCard className="card">
                 <SelectorOption>
-                    <h3>A partir de un archivo gpx</h3>
-                    <button onClick={createroutegpx}> Aqui </button>
-                    <button onClick={createroutegpx}> Aqui </button>
+                    <h3>A partir de un archivo:</h3>
+                    <button onClick={createroutegpx}> Gpx </button>
+                    <button onClick={createroutegeojson}> GeoJSON </button>
                 </SelectorOption>
                 <SelectorOption>
                     <h3>Crea tu propia ruta en el mapa</h3>

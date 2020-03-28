@@ -1,22 +1,41 @@
 import FileWriter from "../InOut/FileWriter";
 import Route from "../route/Route";
 import routes from "../../constants/globals";
-import ldflex from '@solid/query-ldflex';
 class RdftoRouteParser {
-    regexForQuotationMarks=  /\"/g;
+    regexForQuotationMarks=  /"/g;
 
-
-    constructor (url){
-        FileWriter.handleLoad(url,this.parse.bind(this));
+    addRoute (url){
+        FileWriter.handleLoad(url,this.singleParse.bind(this));
     }
-    parse(text){
+
+    addRoutes (url){
+        FileWriter.readFolder(url, this.multiParse.bind(this));
+    }
+    singleParse(text){
         let name = this.getName(text);
         let description = this.getDescription(text);
         let points = this.getPoints(text);
         let comments = this.getComments(text);
         let route = new Route(name,description, points,null,comments,null,null);
-        routes.push(route);
+        this.pushRoutes(route);
 
+    }
+
+    pushRoutes(route){
+        let i
+        for (i=0;i<routes.length;i++){
+            if(routes[i].name === route.name){
+                return
+            }
+        }
+        routes.push(route);
+    }
+
+    multiParse(url,documentos){
+        let i
+        for (i=0;i<documentos.length;i++){
+            this.addRoute(url+documentos[i]);
+        }
     }
 
     getName(text){

@@ -4,13 +4,14 @@ import routes from "../../constants/globals";
 class RdftoRouteParser {
     regexForQuotationMarks=  /"/g;
 
-    addRoute (url){
-        FileWriter.handleLoad(url,this.singleParse.bind(this));
+    async addRoute (url){
+        await FileWriter.handleLoad(url,this.singleParse.bind(this));
     }
 
-    addRoutes (url){
-        FileWriter.readFolder(url, this.multiParse.bind(this));
+    async addRoutes (url){
+        await FileWriter.readFolder(url, this.multiParse.bind(this));
     }
+
     singleParse(text){
         let name = this.getName(text);
         let description = this.getDescription(text);
@@ -34,7 +35,7 @@ class RdftoRouteParser {
     multiParse(url,documentos){
         let i
         for (i=0;i<documentos.length;i++){
-            this.addRoute(url+documentos[i]);
+            FileWriter.handleLoad(url + documentos[i],this.singleParse.bind(this));
         }
     }
 

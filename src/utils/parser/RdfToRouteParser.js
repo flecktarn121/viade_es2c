@@ -8,8 +8,8 @@ class RdftoRouteParser {
         await FileWriter.handleLoad(url,this.singleParse.bind(this));
     }
 
-    async addRoutes (url){
-        await FileWriter.readFolder(url, this.multiParse.bind(this));
+    addRoutes (url){
+        FileWriter.readFolder(url, this.multiParse.bind(this));
     }
 
     singleParse(text){

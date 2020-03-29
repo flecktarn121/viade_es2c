@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 //import RdftoRouteParser from "../../../utils/parser/RdfToRouteParser";
 
 const TimeLineRoute = props => {
-    const {title, date, author, description, id} = props;
+    const {title, description, id} = props;
     let path = "/route/" + id;
 
     console.log(path);
@@ -14,9 +14,6 @@ const TimeLineRoute = props => {
         <TimelineRouteCard className="card">
             <TimelineRouteDetail data-testid="welcome-detail">
                 <h3>{title}</h3>
-                <h4>
-                    {date} - {author}
-                </h4>
                 <p>{description}</p>
                 <Link to={path}>ver ruta</Link>
                 <button>Compartir</button>

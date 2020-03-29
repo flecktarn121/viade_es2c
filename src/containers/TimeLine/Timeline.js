@@ -15,12 +15,8 @@ class TimeLine extends React.Component{
     constructor({webId}: Props) {
         super();
         this.webID = webId.replace("profile/card#me", "viade/");
-    }
-
-    async componentDidMount() {
         const parser = new RdftoRouteParser();
-        await parser.addRoutes(this.webID);
-        this.render()
+        parser.addRoutes(this.webID);
     }
 
     render() {
@@ -31,7 +27,6 @@ class TimeLine extends React.Component{
                         <h1>Ver Rutas</h1>
                     </Header>
                     {routes.map((ruta, index) => {
-                        console.log(index);
                         return (
                             <TimeLineRoute
                                 title={ruta.name}

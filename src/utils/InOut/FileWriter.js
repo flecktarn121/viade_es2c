@@ -15,9 +15,9 @@ class FileWriter {
         });
    //     result();
     }
-    static async handleLoad(url,callback) {
+    static handleLoad(url,callback) {
         const doc = SolidAuth.fetch(url);
-        await doc
+        doc
             .then(async response => {
                 const text = await response.text();
                 if (response.ok) {
@@ -30,9 +30,9 @@ class FileWriter {
             });
     }
 
-    static async readFolder(url,callback){
+    static readFolder(url,callback){
         let leer = new SolidFileClient(SolidAuth,[]);
-        await leer.readFolder(url,[]).then(promesa => {
+        leer.readFolder(url,[]).then(promesa => {
             let i
             let carpetas = []
             for (i=0;i<promesa.files.length;i++){

@@ -19,6 +19,6 @@ const Ruta = ({match}) => (
 export default Ruta;
 
 function loadMarkers(id){
-    console.log(routes[id]);
+    console.log(routes[id].points);
     return routes[id].points;
 }

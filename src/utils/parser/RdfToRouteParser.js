@@ -19,12 +19,10 @@ class RdftoRouteParser {
         let comments = this.getComments(text);
         let route = new Route(name,description, points,null,comments,null,null);
         this.pushRoutes(route);
-
     }
 
     pushRoutes(route){
-        let i
-        for (i=0;i<routes.length;i++){
+        for (let i=0;i<routes.length;i++){
             if(routes[i].name === route.name){
                 return
             }
@@ -32,9 +30,8 @@ class RdftoRouteParser {
         routes.push(route);
     }
 
-    multiParse(url,documentos){
-        let i
-        for (i=0;i<documentos.length;i++){
+    multiParse(url, documentos){
+        for (let i=0;i<documentos.length;i++){
             FileWriter.handleLoad(url + documentos[i],this.singleParse.bind(this));
         }
     }
@@ -42,7 +39,7 @@ class RdftoRouteParser {
     getName(text){
         let tx = text.split("\n");
         let line = tx[6].split(" ");
-        let name = line[1].replace(this.regexForQuotationMarks,"")
+        let name = line[1].replace(this.regexForQuotationMarks,"");
         return name;
     }
     getDescription(text){

@@ -8,11 +8,19 @@ class Map extends Component {
     constructor(props) {
         super(props);
         this.handleGoogleMapApi = this.handleGoogleMapApi.bind(this);
+        this.markers = [];
+        for(let i=0; i<this.props.markers.length; i++){
+            let marker = {
+                lat: parseFloat(this.props.markers[i].position.lat),
+                lng: parseFloat(this.props.markers[i].position.lng)
+            };
+            this.markers.push(marker);
+        }
     };
 
     handleGoogleMapApi = (google) => {
         var routePath = new google.maps.Polyline({
-            path: this.props.markers,
+            path: this.markers,
             geodesic: true,
             strokeColor: '#33BD4E',
             strokeOpacity: 1,
@@ -48,8 +56,8 @@ class Map extends Component {
 
     render() {
         this.center = {
-            lat: this.props.markers[0].lat,
-            lng: this.props.markers[0].lng
+            lat: this.markers[0].lat,
+            lng: this.markers[0].lng
         };
         return (
             <div style={{height: '70vh', width: '100%'}}>
@@ -60,7 +68,7 @@ class Map extends Component {
                     yesIWantToUseGoogleMapApiInternals
                     onGoogleApiLoaded={this.handleGoogleMapApi}
                 >
-                    {this.cargarMarcadores(this.props.markers)}
+                    {this.cargarMarcadores(this.markers)}
                 </GoogleMapReact>
             </div>
         )

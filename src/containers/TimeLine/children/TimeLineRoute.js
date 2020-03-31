@@ -15,7 +15,7 @@ const TimeLineRoute = props => {
             <TimelineRouteDetail data-testid="welcome-detail">
                 <h3>{title}</h3>
                 <p>{description}</p>
-                <Link to={path}>ver ruta</Link>
+                <button><Link to={path}>ver ruta</Link></button>
                 <button>Compartir</button>
             </TimelineRouteDetail>
         </TimelineRouteCard>

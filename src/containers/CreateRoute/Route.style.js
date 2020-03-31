@@ -40,48 +40,42 @@ export const Label = styled.label`
   color: white;
 `;
 
-export const TextArea = styled.textarea`
-  margin: 5px;
+export const InputFile = styled.input`
+    height: 0;
+    overflow: hidden;
+    width: 0;
 `;
 
-export const RoutePhoto = styled.div`
-  height: 100%;
-  text-align: center;
+export const LabelFile = styled.label`
+  background: #f15d22;
+  border: none;
+  border-radius: 5px;
+  color: #00B020;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-size: inherit;
+  font-weight: 520;
+  margin-bottom: 1rem;
+  outline: none;
+   padding: 1rem 50px;
   position: relative;
+  transition: all 0.3s;
+  vertical-align: middle;
 
-  img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
+  &:hover {
+    background-color: darken(#f15d22, 10%);
   }
 
-  h1,
-  img {
-    margin: 0 10px;
-    display: inline-block;
-    vertical-align: middle;
-  }
+  &.btn-1 {
+    background-color: #ffffff;
+    box-shadow: 0 6px darken(#f79159, 10%);
+    transition: none;
 
-  ${media.tablet`
-    width: 50%;
-    &:after {
-      display: block;
-      content: "";
-      position: absolute;
-      height: 100%;
-      width: 1px;
-      background-color:#D0D0D0;
-      top:0;
+    &:hover {
+      box-shadow: 0 4px darken(#f79159, 10%);
+      top: 2px;
     }
-  `}
-`;
-
-export const ImageWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  button {
-    margin-left: 0px;
   }
+
 `;

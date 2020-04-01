@@ -11,7 +11,6 @@ import {errorToaster, successToaster} from '@utils';
 import {useTranslation} from "react-i18next";
 import MediaLoader from "../../utils/InOut/MediaLoader";
 import InputFiles from 'react-input-files';
-import ReactDOM from 'react-dom'
 
 type Props = { webId: String };
 

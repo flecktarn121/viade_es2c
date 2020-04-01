@@ -1,9 +1,6 @@
 import SolidAuth from "solid-auth-client";
 import auth from "solid-auth-client";
-import FC from "solid-file-client"
-import ReactDOM from "react-dom";
-import React from "react";
-import {Header} from "../../containers/CreateRoute/Route.style";
+import FC from "solid-file-client";
 
 class MediaLoader {
 

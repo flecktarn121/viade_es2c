@@ -1,11 +1,10 @@
 //import React, {Component} from 'react';
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useEffect} from 'react';
 import {Header, Input, RouteContainer, RouteWrapper} from "./Ruta.style";
 import Map from "../../components/Map";
 import routes from "../../constants/globals";
-import {useNotification} from '@inrupt/solid-react-components';
+import {NotificationTypes, useNotification} from '@inrupt/solid-react-components';
 import {notification} from '@utils';
-import {NotificationTypes} from '@inrupt/solid-react-components';
 
 
 const Ruta = ({match}) => {
@@ -38,7 +37,7 @@ const Ruta = ({match}) => {
                     summary: "has shared you a route.",
                     actor: cadena,
                     object: cadena + "viade/" + routes[match.params.id].name,
-                    target: cadena
+                    target: friendWebID
                 };
                 publish(sendNotification, contentNotif, cadena, NotificationTypes.OFFER);
             } catch (error) {

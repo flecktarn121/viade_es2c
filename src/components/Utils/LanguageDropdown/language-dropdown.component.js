@@ -5,15 +5,15 @@ import {toast} from 'react-toastify';
 const languages = {
   en: {
     id: 'en',
-    icon: 'us'
+    icon: ''
   },
   es: {
     id: 'es',
-    icon: 'es'
+    icon: ''
   },
   'en-US': {
     id: 'en-US',
-    icon: 'us'
+    icon: ''
   }
 };
 
@@ -46,23 +46,25 @@ class LanguageDropdown extends Component<Props> {
       {
         label: t('navBar.languages.en'),
         onClick: () => this.onLanguageSelect('en'),
-        icon: 'us',
+        icon: '',
         customIcon: true
       },
       {
         label: t('navBar.languages.es'),
         onClick: () => this.onLanguageSelect('es'),
-        icon: 'es',
+        icon: '',
         customIcon: true
       }
     ];
     return (
       <Dropdown actions={profileOpts} hover>
         <div
-          className={`flag-icon flag-icon-${
-            language && languages[language] ? languages[language].icon : 'us'
-          }`}
-        />
+          // className={`flag-icon flag-icon-${
+          //   language && languages[language] ? languages[language].icon : 'us'
+          // }`}
+        >
+          {profileOpts[language==='es'?1:0].label}
+        </div>
       </Dropdown>
     );
   }

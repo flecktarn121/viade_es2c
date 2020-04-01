@@ -6,6 +6,7 @@ import React from 'react';
 import {SelectorCard, SelectorOption, SelectorWrapper} from "./RouteSelector.style";
 import {withRouter} from 'react-router-dom';
 
+
 type Props = {webId: String};
 
 function createroute() {
@@ -18,7 +19,6 @@ function createroutegpx() {
 function createroutegeojson() {
     window.location.href=`#/createroutegeojson`;
 }
-
 
 
 const CreateRouteSelector = ({ webId }: Props) => {

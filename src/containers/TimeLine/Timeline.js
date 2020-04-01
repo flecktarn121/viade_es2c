@@ -32,7 +32,7 @@ class TimeLine extends React.Component {
                     <Header>
                         <h1>Ver Rutas</h1>
                     </Header>
-                    <SmallRow/>
+                    <SmallRow webID={this.webID}/>
                 </TimelineContainer>
                 {this.state.isLoading && <Loader absolute/>}
             </TimelineWrapper>

@@ -34,12 +34,12 @@ const Ruta = ({match}) => {
             try {
                 const contentNotif = {
                     title: "Route share",
-                    summary: "has shared you a route.",
+                    summary: "hola guapa",
                     actor: cadena,
                     object: cadena + "viade/" + routes[match.params.id].name,
                     target: friendWebID
                 };
-                publish(sendNotification, contentNotif, cadena, NotificationTypes.OFFER);
+                publish(sendNotification, contentNotif, friendWebID, NotificationTypes.OFFER);
             } catch (error) {
                 console.log(error);
                 alert("Could not share the route");

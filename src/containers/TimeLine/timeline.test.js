@@ -7,11 +7,15 @@ import TimeLine from "./Timeline";
 
 library.add(fas);
 
+const props = {
+    webId: 'https://elmer.solid.community/'
+};
+
 describe.only('Timeline', () => {
   afterAll(cleanup);
   const { container, getByTestId } = render(
       <Router>
-        <TimeLine/>
+        <TimeLine {...{ ...props }}/>
       </Router>
   );
 

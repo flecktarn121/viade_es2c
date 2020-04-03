@@ -27,13 +27,15 @@ describe.only('Timeline', () => {
 
     test('timeline render properly', () => {
 
-        const timeline_wrapper = getById(container, 'timeline-wrapper');
-        const timeline_container = getById(container, 'timeline-container');
-        const timeline_rankInput = getById(container, 'timeline-header');
+        setTimeout(function () {
+            const timeline_wrapper = getById(container, 'timeline-wrapper');
+            const timeline_container = getById(container, 'timeline-container');
+            const timeline_rankInput = getById(container, 'timeline-header');
 
-        expect(timeline_wrapper).not.toBe(null);
-        expect(timeline_container).not.toBe(null);
-        expect(timeline_rankInput).not.toBe(null);
+            expect(timeline_wrapper).not.toBe(null);
+            expect(timeline_container).not.toBe(null);
+            expect(timeline_rankInput).not.toBe(null);
+        }, 3000);
+
     });
-
 });

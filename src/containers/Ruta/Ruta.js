@@ -5,6 +5,7 @@ import Map from "../../components/Map";
 import routes from "../../constants/globals";
 import {NotificationTypes, useNotification} from '@inrupt/solid-react-components';
 import {notification} from '@utils';
+import auth from "solid-auth-client";
 
 
 const Ruta = ({match,ruta}) => {
@@ -14,10 +15,10 @@ const Ruta = ({match,ruta}) => {
         const route = ruta == null? routes[match.params.id] : ruta;
 
         useEffect(() => {
-            const auth = require('solid-auth-client');
             auth.trackSession(session => {
                 if (session) {
                     cadena = session.webId;
+                    console.log(cadena)
                 }
             });
         });

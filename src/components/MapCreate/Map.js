@@ -3,9 +3,16 @@ import {default as update} from "react-addons-update";
 import {GoogleApiWrapper, Map, Marker, Polyline} from 'google-maps-react';
 
 const containerStyle = {
-    height: '400px',
-    paddingBottom: '10px'
-    // height: '100%'
+    display: 'flex',
+    padding: '30px 0',
+    position: 'relative',
+};
+
+const style = {
+    display: 'flex',
+    flexDirection: 'row',
+    height: 'auto',
+    width: '100vw'
 };
 
 export class CreateMap extends Component {
@@ -81,7 +88,7 @@ export class CreateMap extends Component {
         this.getLocation();
         return (
             <Map google={this.props.google} zoom={14} onClick={this._onClick} center={this.state.center}
-                 containerStyle={containerStyle}>
+                 style={style} containerStyle={containerStyle}>
 
                 {this.state.markers.map((marker, index) => {
                     return (

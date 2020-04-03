@@ -18,7 +18,10 @@
     "errorGrantingAccess": "Había un error al dar acceso a tu documento. Por favor, intenta de nuevo.",
     "saved": "Tu documento ha sido guardado al pod.",
     "notEditable": "(no editable)",
-    "notSharable": "(logéate y carga undocumento en tu própio pod para poder dar acceso)"
+    "notSharable": "(logéate y carga undocumento en tu própio pod para poder dar acceso)",
+    "title": "La ruta debe tener un título.",
+    "description": "La ruta debe tener una descripción.",
+    "save": "La ruta se ha guardado correctamente."
   },
   "login": {
     "title": "Hola! Bienvenido a Viade",

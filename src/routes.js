@@ -4,17 +4,15 @@ import {HashRouter as Router, Redirect, Switch} from "react-router-dom";
 
 import {
     CreateRoute,
-    FormModelConverter,
-    FormModelRenderer,
-    GameList,
-    GamePage,
+    CreateRouteGeoJSON,
+    CreateRouteGPX,
+    CreateRouteSelector,
     Login,
     PageNotFound,
     Profile,
     Register,
     RegistrationSuccess,
-    Route,
-    TextEditor,
+    Ruta,
     TimeLine,
     Welcome
 } from './containers';
@@ -22,8 +20,7 @@ import FriendsList from './containers/FriendsList/FriendsList';
 
 const privateRoutes = [
     {
-        id: 'we' +
-            'lcome',
+        id: 'welcome',
         path: '/welcome',
         component: Welcome
     },
@@ -33,50 +30,40 @@ const privateRoutes = [
         component: Profile
     },
     {
-        id: 'tictactoe',
-        path: '/tictactoe',
-        component: GameList
-    },
-    {
-        id: 'tictactoegame',
-        path: '/tictactoe/:gameId',
-        component: GamePage
-    },
-    {
-        id: 'text-editor',
-        path: '/text-editor',
-        component: TextEditor
-    },
-    {
-        id: 'formmodelconverter',
-        path: '/formmodel/converter',
-        component: FormModelConverter
-    },
-    {
-        id: 'formmodelrenderer',
-        path: '/formmodel/renderer',
-        component: FormModelRenderer
-    },
-    {
         id: 'timeline',
         path: '/timeline',
         component: TimeLine
     },
     {
         id: 'route',
-        path: '/route',
-        component: Route
+        path: '/route/:id',
+        component: Ruta
     },
     {
         id: 'friends',
-        path : '/friends',
-        component : FriendsList
+        path: '/friends',
+        component: FriendsList
     }
     ,
     {
         id: 'createroute',
         path: '/createroute',
         component: CreateRoute
+    },
+    {
+        id: 'createroutegpx',
+        path: '/createroutegpx',
+        component: CreateRouteGPX
+    },
+    {
+        id: 'createroutegeojson',
+        path: '/createroutegeojson',
+        component: CreateRouteGeoJSON
+    },
+    {
+        id: 'createrouteselector',
+        path: '/createrouteselector',
+        component: CreateRouteSelector
     }
 ];
 

@@ -5,8 +5,6 @@ import FC from "solid-file-client";
 class FileWriter {
 
     static async handleSave(url, text) {
-        // Not using LDFlex here, because this is not an RDF document.
-        //const result =
          await SolidAuth.fetch(url, {
             method: 'PUT',
             body: text,
@@ -14,7 +12,6 @@ class FileWriter {
                 'Content-Type': 'text/turtle'
             }
         });
-   //     result();
     }
     static handleLoad(url,callback) {
         const doc = SolidAuth.fetch(url);

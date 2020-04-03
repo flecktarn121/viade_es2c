@@ -5,11 +5,24 @@ export default jest.mock('../../src/solid/solid-helper', () => {
   let files = [];
   let links = [];
 
-  files.push(HashHelper.hash('soy_una_ruta'));
-  files.push(HashHelper.hash('soy_un_hito'));
-  files.push(HashHelper.hash('soy_una_imagen'));
-  files.push(HashHelper.hash('soy_un_comentario'));
-  files.push(HashHelper.hash('soy_un_amigo'));
+  files.push(HashHelper.hash('ruta_de_prueba'));
+  files.push(HashHelper.hash('imagen_de_prueba'));
+  files.push(HashHelper.hash('video_de_prueba'));
+
+
+    links.push({
+        obj: 'ruta_de_prueba',
+        webId: HashHelper.hash('ruta_de_prueba'),
+        predicate: 'schema:name'
+    });
+    links.push({
+        obj: 'imagen_de_prueba',
+        webId: HashHelper.hash('imagen_de_prueba'),
+        predicate: 'schema:name'
+    });
+
+
+
 
   links.push({
     obj: 'soy_una_ruta',

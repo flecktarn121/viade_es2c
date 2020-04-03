@@ -7,10 +7,11 @@ import {NotificationTypes, useNotification} from '@inrupt/solid-react-components
 import {notification} from '@utils';
 
 
-const Ruta = ({match}) => {
+const Ruta = ({match,ruta}) => {
         let cadena = null;
         let friendWebID = null;
         const {createNotification} = useNotification(cadena);
+        const route = ruta == null? routes[match.params.id] : ruta;
 
         useEffect(() => {
             const auth = require('solid-auth-client');
@@ -36,7 +37,7 @@ const Ruta = ({match}) => {
                     title: "Route share",
                     summary: "hola guapa",
                     actor: cadena,
-                    object: cadena + "viade/" + routes[match.params.id].name,
+                    object: cadena + "viade/" + route.name,
                     target: friendWebID
                 };
                 publish(sendNotification, contentNotif, friendWebID, NotificationTypes.OFFER);
@@ -84,13 +85,13 @@ const Ruta = ({match}) => {
             <RouteWrapper>
                 <RouteContainer>
                     <Header>
-                        <h1 className="text--white">{routes[match.params.id].name}: </h1>
-                        <h2 className="text--white">{routes[match.params.id].description}</h2>
+                        <h1 className="text--white">{route.name}: </h1>
+                        <h2 className="text--white">{route.description}</h2>
                         <br/>
                         <Input type={"text"} placeholder={"WebID"} onChange={handleFriendChange}/>
                         <button onClick={handleSave}> compartir</button>
                     </Header>
-                    <Map zoom={15} markers={loadMarkers(match.params.id)}/>
+                    <Map zoom={15} markers={route.points}/>
                 </RouteContainer>
             </RouteWrapper>
         )
@@ -100,8 +101,3 @@ const Ruta = ({match}) => {
 ;
 
 export default Ruta;
-
-function loadMarkers(id) {
-    console.log(routes[id].points);
-    return routes[id].points;
-}

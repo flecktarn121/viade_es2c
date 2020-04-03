@@ -27,9 +27,9 @@ class TimeLine extends React.Component {
     render() {
         setTimeout(this.loaded, 3000);
         return (
-            <TimelineWrapper>
-                <TimelineContainer>
-                    <Header>
+            <TimelineWrapper data-testid="timeline-wrapper">
+                <TimelineContainer data-testid="timeline-container">
+                    <Header data-testid="timeline-header">
                         <h1>Ver Rutas</h1>
                     </Header>
                     <SmallRow webID={this.webID}/>

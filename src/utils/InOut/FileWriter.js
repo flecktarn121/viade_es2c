@@ -1,5 +1,5 @@
 import SolidAuth from "solid-auth-client";
-import SolidFileClient from "solid-file-client/src/SolidFileClient";
+// import SolidFileClient from "solid-file-client/src/SolidFileClient";
 
 class FileWriter {
 
@@ -31,8 +31,11 @@ class FileWriter {
     }
 
     static readFolder(url,callback){
-        let leer = new SolidFileClient(SolidAuth,[]);
-        leer.readFolder(url,[]).then(promesa => {
+        const auth = require('solid-auth-client');
+        const FC   = require('solid-file-client');
+        const fc   = new FC( auth );
+
+        fc.readFolder(url,[]).then(promesa => {
             let i
             let carpetas = []
             for (i=0;i<promesa.files.length;i++){

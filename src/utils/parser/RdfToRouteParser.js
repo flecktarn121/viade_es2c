@@ -16,8 +16,15 @@ class RdftoRouteParser {
         let name = this.getName(text);
         let description = this.getDescription(text);
         let points = this.getPoints(text);
-        let comments = this.getComments(text);
-        let route = new Route(name,description, points,null,comments,null,null);
+        let comments = this.getComments(text,points);
+        let image = this.getImage(text,points);
+        let video = null;
+        if(image != null){
+            video = this.getVideo(text,points, true);
+        }else{
+            video = this.getVideo(text,points, false);
+        }
+        let route = new Route(name,description, points,null,comments,image,video);
         this.pushRoutes(route);
     }
 
@@ -64,12 +71,43 @@ class RdftoRouteParser {
         return points;
     }
 
-    getComments(text){
+    getComments(text,points){
         let tx = text.split("\n");
-        let indice = tx.length-2;
+        let indice = 9+points.length+1;
         let line = tx[indice].split(" ");
         let comments = line[1].replace(this.regexForQuotationMarks,"")
+        if (comments==="null"){
+            comments = null;
+        }
         return comments;
+    }
+
+    getImage(text,points){
+        let tx = text.split("\n");
+        let indice = 9+points.length+2;
+        let line = tx[indice].split(" ");
+        if(line[1]==="\"null\""){
+            return null;
+        }
+        indice = indice + 2;
+        line = tx[indice].split(" ");
+        return line[2].replace(this.regexForQuotationMarks,"")
+    }
+
+    getVideo(text,points, imagen){
+        let tx = text.split("\n");
+        let indice = 9+points.length+3;
+        let line = tx[indice].split(" ");
+        if(line[1]==="\"null\""){
+            return null;
+        }
+        if(imagen){
+            indice = indice + 2;
+        }else{
+            indice = indice + 1;
+        }
+        line = tx[indice].split(" ");
+        return line[2].replace(this.regexForQuotationMarks,"")
     }
 
 }

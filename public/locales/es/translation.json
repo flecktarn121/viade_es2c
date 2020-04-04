@@ -170,5 +170,8 @@
       "fieldDeleted": "Campo de formulario eliminado correctamente",
       "fieldAdded": "Campo de formulario agregado con éxito"
     }
+  },
+  "timeline": {
+    "seeRoutes": "See Routes"
   }
 }

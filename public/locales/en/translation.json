@@ -169,6 +169,8 @@
       "fieldDeleted": "Form field successfully deleted",
       "fieldAdded": "New form field successfully added"
     }
-  }
+  },
+    "timeline": {
+      "seeRoutes": "Ver Rutas"
   }
 }

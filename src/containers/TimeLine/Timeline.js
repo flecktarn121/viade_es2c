@@ -4,9 +4,7 @@ import {Header, TimelineContainer, TimelineWrapper} from './timeline.style';
 import RdftoRouteParser from "../../utils/parser/RdfToRouteParser";
 import SmallRow from "../Delay/Delay";
 import {Loader} from '@util-components';
-//import {useTranslation} from 'react-i18next';
 import {withTranslation} from 'react-i18next';
-import {RegisterComponent} from "../Register/register.component";
 
 type Props = {
     webId: String,
@@ -30,7 +28,7 @@ class TimeLine extends React.Component {
     loaded = () => this.setState({isLoading: false});
 
     render() {
-        const { providers, t } = this.props;
+        const { t } = this.props;
         setTimeout(this.loaded, 3000);
         return (
             <TimelineWrapper data-testid="timeline-wrapper">

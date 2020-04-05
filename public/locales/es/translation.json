@@ -172,6 +172,11 @@
     }
   },
   "timeline": {
-    "seeRoutes": "See Routes"
+    "seeRoutes": "Ver Rutas"
+  },
+  "globalError": {
+    "title": "Error",
+    "info" : "Ha ocurrido un error",
+    "msg" : "Te recomendamos refrescar la página o probar de nuevo en otro momento."
   }
 }

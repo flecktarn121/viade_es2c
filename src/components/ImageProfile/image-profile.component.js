@@ -1,6 +1,7 @@
 import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {ButtonStyled, ImageProfileLoader, ImageProfileWrapper, LoaderText} from './image-profile.style';
+import {useTranslation} from 'react-i18next';
 
 type Props = {
   photo: String,
@@ -15,7 +16,7 @@ type Props = {
   text?: String
 };
 
-export const ImageProfile = (props: Props) => {
+const ImageProfile = (props: Props) => {
   const {
     uploadedFiles,
     photo: img,
@@ -24,12 +25,11 @@ export const ImageProfile = (props: Props) => {
     onDragEnter,
     onDrop,
     onClickFile,
-    text,
     inProgress,
-    uploadingText
   } = props;
   const photo =
     uploadedFiles && uploadedFiles.length > 0 ? uploadedFiles[uploadedFiles.length - 1].uri : img;
+  const { t } = useTranslation();
 
   return (
     <ImageProfileWrapper
@@ -46,19 +46,17 @@ export const ImageProfile = (props: Props) => {
     >
       <ButtonStyled onClick={onClickFile} className="button-upload">
         <FontAwesomeIcon icon="upload" className="upload-icon" />
-        {text}
+        {t('imageProfile.text')}
       </ButtonStyled>
       {inProgress && (
         <ImageProfileLoader className="image-profile-loader">
           <FontAwesomeIcon icon="spinner" spin size="2x" />
-          <LoaderText>{uploadingText}</LoaderText>
+          <LoaderText>{t('imageProfile.upload')}</LoaderText>
         </ImageProfileLoader>
       )}
     </ImageProfileWrapper>
   );
 };
-
-ImageProfile.defaultProps = {
-  text: 'Upload New Photo',
-  uploadingText: 'Uploading'
-};
+//Upload New Photo
+//'Uploading'
+export default ImageProfile;

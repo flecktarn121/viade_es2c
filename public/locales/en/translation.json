@@ -177,5 +177,9 @@
     "title": "Error",
     "info" : "Something Went Wrong",
     "msg" : "You may refresh the page, or try again at a later time."
+  },
+  "imageProfile": {
+    "text": "Upload New Photo",
+    "upload" : "Uploading"
   }
 }

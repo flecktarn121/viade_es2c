@@ -178,5 +178,9 @@
     "title": "Error",
     "info" : "Ha ocurrido un error",
     "msg" : "Te recomendamos refrescar la página o probar de nuevo en otro momento."
+  },
+  "imageProfile": {
+    "text": "Sube una nueva foto",
+    "upload" : "Subiendo"
   }
 }

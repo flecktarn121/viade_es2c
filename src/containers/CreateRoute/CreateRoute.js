@@ -12,7 +12,10 @@ import {useTranslation} from "react-i18next";
 import MediaLoader from "../../utils/InOut/MediaLoader";
 import InputFiles from 'react-input-files';
 
-type Props = { webId: String };
+type Props = {
+    webId: String,
+    t: Function
+};
 
 const CreateRoute = ({webId}: Props) => {
     const {t} = useTranslation();
@@ -76,21 +79,21 @@ const CreateRoute = ({webId}: Props) => {
     return (
         <RouteWrapper>
             <Header>
-                <h1 className={"text--white"}>Nueva Ruta</h1>
-                <Label>Titulo</Label>
-                <Input type="text" size="20" placeholder="Nueva ruta" onChange={handleTitleChange}/>
-                <Label>Descripcion</Label>
-                <Input type="text" size="100" placeholder="Descripcion" onChange={handleDescriptionChange}/>
-                <Label>Multimedia</Label>
+                <h1 className={"text--white"}>{t('createRoute.newRoute')}</h1>
+                <Label>{t('createRoute.title')}</Label>
+                <Input type="text" size="20" placeholder={t('createRoute.newRoute')} onChange={handleTitleChange}/>
+                <Label>{t('createRoute.description')}</Label>
+                <Input type="text" size="100" placeholder={t('createRoute.description')} onChange={handleDescriptionChange}/>
+                <Label>{t('createRoute.media')}</Label>
                 <InputFiles onChange={handlePhotoChange} accept={".png"}>
-                    <button>Añadir foto</button>
+                    <button>{t('createRoute.addPhoto')}</button>
                 </InputFiles>
                 <br/>
                 <InputFiles onChange={handleVideoChange} accept={".mp4"}>
-                    <button>Añadir video</button>
+                    <button>{t('createRoute.addVideo')}</button>
                 </InputFiles>
                 <br/>
-                <Button onClick={handleSave}> Guardar ruta </Button>
+                <Button onClick={handleSave}> {t('createRoute.saveRoute')} </Button>
             </Header>
             <CreateMap parentCallback={callbackFunction}/>
         </RouteWrapper>

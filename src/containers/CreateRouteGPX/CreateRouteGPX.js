@@ -73,15 +73,15 @@ const CreateRouteGPX = ({ webId }: Props) => {
     return (
         <RouteWrapper>
             <Header>
-                <h1 className={"text--white"}>Nueva Ruta</h1>
-                <Label>Titulo</Label>
-                <Input type="text" size="20" placeholder="Nueva ruta" onChange={handleTitleChange} />
-                <Label>Descripcion</Label>
-                <Input type="text" size="100" placeholder="Descripcion" onChange={handleDescriptionChange}/>
-                <Label>Sube tu archivo GPX</Label>
+                <h1 className={"text--white"}>{t('createRoute.newRoute')}</h1>
+                <Label>import {useTranslation} from 'react-i18next';</Label>
+                <Input type="text" size="20" placeholder={t('createRoute.newRoute')} onChange={handleTitleChange} />
+                <Label>{t('createRoute.description')}</Label>
+                <Input type="text" size="100" placeholder={t('createRoute.description')}onChange={handleDescriptionChange}/>
+                <Label>{t('createRoute.uploadGPX')}</Label>
                 <Input type="file" ref={file} onChange={handleUpload}/>
                 <br/>
-                <Button onClick={handleSave}> Guardar ruta </Button>
+                <Button onClick={handleSave}> {t('createRoute.saveRoute')} </Button>
             </Header>
         </RouteWrapper>
     );

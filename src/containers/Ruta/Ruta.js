@@ -6,6 +6,7 @@ import routes from "../../constants/globals";
 import {NotificationTypes, useNotification} from '@inrupt/solid-react-components';
 import {notification} from '@utils';
 import auth from "solid-auth-client";
+import {useTranslation} from 'react-i18next';
 
 
 const Ruta = ({match,ruta}) => {
@@ -13,6 +14,7 @@ const Ruta = ({match,ruta}) => {
         let friendWebID = null;
         const {createNotification} = useNotification(cadena);
         const route = ruta == null? routes[match.params.id] : ruta;
+    const { t } = useTranslation();
 
         useEffect(() => {
             auth.trackSession(session => {
@@ -28,7 +30,7 @@ const Ruta = ({match,ruta}) => {
                 await createNotification(content, to, type, license);
             } catch (error) {
                 console.log(error);
-                alert('Error: RouteConst > sendNotification');
+                alert(t('notifications.sendNotification'));
             }
         }
 
@@ -44,7 +46,7 @@ const Ruta = ({match,ruta}) => {
                 publish(sendNotification, contentNotif, friendWebID, NotificationTypes.OFFER);
             } catch (error) {
                 console.log(error);
-                alert("Could not share the route");
+                alert(t('notifications.notShareRoute'));
             }
         }
 
@@ -90,7 +92,7 @@ const Ruta = ({match,ruta}) => {
                         <h2 className="text--white">{route.description}</h2>
                         <br/>
                         <Input type={"text"} placeholder={"WebID"} onChange={handleFriendChange}/>
-                        <button onClick={handleSave}> compartir</button>
+                        <button onClick={handleSave}>{t('route.share')}</button>
                     </Header>
                     <Map zoom={15} markers={route.points}/>
                 </RouteContainer>

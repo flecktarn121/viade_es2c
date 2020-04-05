@@ -21,7 +21,9 @@
     "notSharable": "(logéate y carga undocumento en tu própio pod para poder dar acceso)",
     "title": "La ruta debe tener un título.",
     "description": "La ruta debe tener una descripción.",
-    "save": "La ruta se ha guardado correctamente."
+    "save": "La ruta se ha guardado correctamente.",
+    "notShareRoute" : "No se ha podido compartir la ruta",
+    "sendNotification": "Error: RouteConst > sendNotification"
   },
   "login": {
     "title": "Hola! Bienvenido a Viade",
@@ -49,41 +51,38 @@
     "next": "Siguiente"
   },
   "navBar": {
-    "welcome": "Bienvenida",
+    "welcome": "Bienvenid@",
     "formModel": "Form Model",
     "logOut": "Cerrar Sesión",
     "profile": "Perfil",
     "formModelRender": "Form Model Render",
     "formModelConvert": "Form Model Convert",
     "text-editor": "Editor de Textos",
-    "changeLanguage": "Cambiar Lenguaje",
+    "changeLanguage": "Cambiar Idioma",
     "map": "Mapa",
     "timeline":"Ver rutas",
     "createroute":"Crear ruta",
     "friends":"Amigos",
     "languages": {
-      "en": "English (Inglés)",
-      "es": "Español (Español)"
+      "en": "EN",
+      "es": "ES"
     },
     "notifications": {
       "global": "Global",
-      "tictactoe": "Gato",
-      "noinbox": "No se encontró ningún inbox en su POD, debes tener al menos uno para jugar.",
       "fetchingError": "Error en las notificaciones"
-    },
-    "tictactoe": "Juego"
+    }
   },
   "footer": {
     "version": "Versión"
   },
   "notFound": {
     "title": "Página no encontrada",
-    "content": "Puede existir un problema con la dirección buscada. Por favor verifiquela e intente de nuevo. O la página que buscaste ha sido movida o eliminada",
-    "redirectButton": "Llevarme a la página principal"
+    "content": "Puede existir un problema con la dirección buscada. Por favor verifiquela e intente de nuevo. Quizá la página que buscaste ha sido movida o eliminada",
+    "redirectButton": "Página principal"
   },
   "welcome": {
-    "welcome": "Bienvenido",
-    "doneMessage": "¿Terminaste?",
+    "welcome": "Bienvenid@",
+    "doneMessage": "¿Has acabado?",
     "title": "<0>Esta aplicacion fue generada con <1>Solid React SDK by inrupt.</1></0>",
     "description": "<0>El <1>Solid React SDK by inrupt</1>  es una combinación de librerias, componentes, documentación, buenas prácticas y un generador de aplicaciones diseñada para acelerar el desarrollo de aplicaciones Solid de alta calidad:</0>",
     "libraryList": "<0><0><0> Componentes reutilizables </0>que puedes utilizar en tus propias aplicaciones.</0><1><0>Generador de aplicaciones</0>, incorpora todos los componentes y las buenas practicas en una misma aplicacion para el desarrollador. Nota: La aplicaciones Solid React, muestra el uso de los componentes instalados por el generador. No debe ser considerado como un servicio que Inrupt provee, y está sujeto a cambios.</0><0>Patrones de buenas prácticas que puedes referenciar como ejemplos para lograr resolver diferentes situaciones.</1></0>",
@@ -172,7 +171,8 @@
     }
   },
   "timeline": {
-    "seeRoutes": "Ver Rutas"
+    "seeRoutes": "Ver Rutas",
+    "seeRoute" : "Ver Ruta"
   },
   "globalError": {
     "title": "Error",
@@ -182,5 +182,25 @@
   "imageProfile": {
     "text": "Sube una nueva foto",
     "upload" : "Subiendo"
+  },
+  "createRoute":{
+    "newRoute" : "Nueva Ruta",
+    "description" : "Descripción",
+    "title": "Título",
+    "media": "Multimedia",
+    "addPhoto": "Agregar foto",
+    "addVideo": "Agregar video",
+    "saveRoute" : "Guardar ruta",
+    "uploadGeoJson" : "Sube tu archivo GeoJson",
+    "uploadGPX" : "Sube tu archivo GPX",
+    "archive" : "A partir de un archivo:",
+    "map": "Crea tu propia ruta usando el mapa:",
+    "here" : "Aquí"
+  },
+  "friends": {
+    "list" : "Lista de amigos"
+  },
+  "route" : {
+    "share" : "Compartir"
   }
 }

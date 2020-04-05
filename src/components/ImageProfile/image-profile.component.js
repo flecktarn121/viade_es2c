@@ -57,6 +57,5 @@ const ImageProfile = (props: Props) => {
     </ImageProfileWrapper>
   );
 };
-//Upload New Photo
-//'Uploading'
+
 export default ImageProfile;

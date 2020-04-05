@@ -1,4 +1,5 @@
 import React,{ useState } from 'react';
+import {useTranslation} from 'react-i18next';
 /*import { render } from 'react-testing-library';*/
 
 const $rdf = require('rdflib');
@@ -15,6 +16,7 @@ var person = 'https://ruben.verborgh.org/profile/#me';
  * Container component to show the user´s friends
  */
 function FriendsList() {
+    const { t } = useTranslation();
     /*let[friends,setFriends] = useState(0);*/
     let[setFriends] = useState(0);
 
@@ -36,7 +38,7 @@ function FriendsList() {
         console.log('error during friends load')
     })
 
-    const friendsList = <h2>Lista de amigos</h2>
+    const friendsList = <h2>{t('friends.list')}</h2>
     
     return friendsList;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {cleanup, getByTestId, render} from 'react-testing-library';
+import {cleanup, fireEvent, getByTestId, render} from 'react-testing-library';
 import {HashRouter as Router} from 'react-router-dom';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fas} from '@fortawesome/free-solid-svg-icons';
@@ -38,5 +38,19 @@ describe.only('CreateRouteGeoJSON', () => {
         expect(input_file).not.toBe(null);
         expect(button_save).not.toBe(null);
 
+    });
+
+    test('test inputs', () => {
+        const input_title = getByTestId(container, 'input-title');
+        const input_description = getByTestId(container, 'input-description');
+        // const input_file = getByTestId(container, 'input-file');
+        // const button_save = getByTestId(container, 'button-save');
+
+        fireEvent.change(input_title, { target: { value: "prueba" } });
+        fireEvent.change(input_description, { target: { value: "prueba" } });
+        // fireEvent.change(input_description, { target: { value: "prueba" } });
+
+        expect(input_title.value).toEqual("prueba");
+        expect(input_description.value).toEqual("prueba");
     });
 });

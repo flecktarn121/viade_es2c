@@ -22,4 +22,14 @@ describe.only('CreateRouteSelector', () => {
   test('renders without crashing', () => {
     expect(container).toBeTruthy();
   });
+
+    test('renders with styled components', () => {
+        expect(getByTestId('selector-wrapper')).toBeTruthy();
+        expect(getByTestId('selector-option-parsers')).toBeTruthy();
+        expect(getByTestId('goTo-gpx')).toBeTruthy();
+        expect(getByTestId('goTo-geojson')).toBeTruthy();
+        expect(getByTestId('selector-option-map')).toBeTruthy();
+        expect(getByTestId('goTo-map')).toBeTruthy();
+        expect(document.querySelector('.card')).toBeTruthy();
+    });
 });

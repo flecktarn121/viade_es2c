@@ -63,7 +63,10 @@ const CreateRouteGeoJSON = ({ webId }: Props) => {
     }
 
     function loaded(file) {
+        console.log(file)
+        console.log(file.target)
         geojson = file.target.result.toString();
+        console.log(new File([geojson], "track.geojson"));
     }
     function handleUpload(event) {
         event.preventDefault();

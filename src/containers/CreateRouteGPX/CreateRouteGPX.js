@@ -29,7 +29,7 @@ const CreateRouteGPX = ({ webId }: Props) => {
         for (var i = 0; i < trkpts.length ;i++) {
             let lat = parseFloat(trkpts[i].getAttribute('lat'));
             let lng = parseFloat(trkpts[i].getAttribute('lon'));
-            markers.push({lat:lat, lng: lng});
+            markers.push({position: {lat:lat, lng: lng}});
         }
     }
 
@@ -40,7 +40,6 @@ const CreateRouteGPX = ({ webId }: Props) => {
             errorToaster(t('notifications.description'),t('notifications.error'));
         } else {
             parsergpx(gpx);
-            console.log(markers)
             let route = new Route(title, description, markers, webID, null, null, null);
             let parser = new RouteToRdfParser(route, webID);
             parser.parse();
@@ -65,9 +64,11 @@ const CreateRouteGPX = ({ webId }: Props) => {
     }
     function handleUpload(event) {
         event.preventDefault();
-        var reader = new FileReader();
-        reader.readAsText(file.current.files[0]);
-        reader.onload = loaded;
+        if(file.current.files.length < 0){
+            var reader = new FileReader();
+            reader.readAsText(file.current.files[0]);
+            reader.onload = loaded;
+        }
     }
 
     return (

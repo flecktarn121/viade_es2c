@@ -10,10 +10,10 @@ import {useTranslation} from 'react-i18next';
 
 
 const Ruta = ({match,ruta}) => {
-        let cadena = null;
-        let friendWebID = null;
-        const {createNotification} = useNotification(cadena);
-        const route = ruta == null? routes[match.params.id] : ruta;
+    let cadena = null;
+    let friendWebID = null;
+    const {createNotification} = useNotification(cadena);
+    const route = ruta == null? routes[match.params.id] : ruta;
     const { t } = useTranslation();
 
         useEffect(() => {

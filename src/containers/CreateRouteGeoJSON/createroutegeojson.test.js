@@ -45,7 +45,7 @@ describe.only('CreateRouteGeoJSON', () => {
         const input_description = getByTestId(container, 'input-description');
         const input_file = getByTestId(container, 'input-file');
         const button_save = getByTestId(container, 'button-save');
-        const file = new File(['{"type": "FeatureCollection","features": [{"type": "Feature","properties": {},"geometry": {"type": "LineString","coordinates": [[28.67431640625,51.74743863117572],[28.037109375,50.33844888725473]]}}]}'], "track.geojson");
+        const file = new File('{"type": "FeatureCollection","features": [{"type": "Feature","properties": {},"geometry": {"type": "LineString","coordinates": [[28.67431640625,51.74743863117572],[28.037109375,50.33844888725473]]}}]}', "track.geojson");
         fireEvent.change(input_title, { target: { value: "prueba" } });
         fireEvent.change(input_description, { target: { value: "prueba" } });
         Object.defineProperty(input_file, "files", {

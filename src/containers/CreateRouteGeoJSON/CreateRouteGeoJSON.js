@@ -66,6 +66,7 @@ const CreateRouteGeoJSON = ({ webId }: Props) => {
         geojson = file.target.result.toString();
     }
     function handleUpload(event) {
+        console.log(file.current.files)
         event.preventDefault();
         if(file.current.files.length > 0){
             var reader = new FileReader();

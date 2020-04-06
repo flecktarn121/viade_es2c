@@ -16,7 +16,7 @@ describe.only('CreateRouteGeoJSON', () => {
     afterAll(cleanup);
     const {container} = render(
         <Router>
-            <CreateRouteGeoJSON {...{...props,test}} />
+            <CreateRouteGeoJSON {...{...props}} />
         </Router>
     );
 

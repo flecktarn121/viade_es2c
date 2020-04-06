@@ -10,32 +10,24 @@ import {useTranslation} from 'react-i18next';
 
 type Props = {webId: String};
 
-function createroute() {
-    window.location.href=`#/createroute`;
+function goTo(path) {
+    window.location.href=path;
 }
-function createroutegpx() {
-    window.location.href=`#/createroutegpx`;
-}
-
-function createroutegeojson() {
-    window.location.href=`#/createroutegeojson`;
-}
-
 
 const CreateRouteSelector = ({ webId }: Props) => {
     const { t } = useTranslation();
 
     return (
-        <SelectorWrapper>
+        <SelectorWrapper data-testid="selector-wrapper">
             <SelectorCard className="card">
-                <SelectorOption>
+                <SelectorOption data-testid="selector-option-parsers">
                     <h3>{t('createRoute.archive')}</h3>
-                    <button onClick={createroutegpx}> Gpx </button>
-                    <button onClick={createroutegeojson}> GeoJSON </button>
+                    <button data-testid="goTo-gpx" onClick={() => goTo('#/createroutegpx')}>Gpx</button>
+                    <button data-testid="goTo-geojson" onClick={() => goTo('#/createroutegeojson')}>GeoJSON</button>
                 </SelectorOption>
-                <SelectorOption>
+                <SelectorOption data-testid="selector-option-map">
                     <h3>{t('createRoute.map')}</h3>
-                    <button onClick={createroute}> {t('createRoute.here')} </button>
+                    <button data-testid="goTo-map" onClick={() => goTo('#/createroute')}>{t('createRoute.here')}</button>
                 </SelectorOption>
             </SelectorCard>
         </SelectorWrapper>

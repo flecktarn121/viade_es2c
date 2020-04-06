@@ -44,7 +44,19 @@ describe.only('CreateRouteSelector', () => {
     test('go to gpx', () => {
         const gpxButton = getByTestId(container, "goTo-gpx");
         fireEvent.click(gpxButton);
-        expect(window.location.href).toBe('#/createroutegpx');
+        expect(window.location.href).toBe('http://localhost/#/createroutegpx');
+    });
+
+    test('go to geojson', () => {
+        const geojsonButton = getByTestId(container, "goTo-geojson");
+        fireEvent.click(geojsonButton);
+        expect(window.location.href).toBe('http://localhost/#/createroutegeojson');
+    });
+
+    test('go to map', () => {
+        const mapButton = getByTestId(container, 'goTo-map');
+        fireEvent.click(mapButton);
+        expect(window.location.href).toBe('http://localhost/#/createroute');
     });
 
 

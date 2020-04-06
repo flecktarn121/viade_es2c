@@ -12,16 +12,16 @@ const props = {
 };
 
 describe.only('CreateRouteGeoJSON', () => {
-  afterAll(cleanup);
-  const { container } = render(
-      <Router>
-        <CreateRouteGeoJSON {...{ ...props }} />
-      </Router>
-  );
+    afterAll(cleanup);
+    const {container} = render(
+        <Router>
+            <CreateRouteGeoJSON {...{...props}} />
+        </Router>
+    );
 
-  test('renders without crashing', () => {
-    expect(container).toBeTruthy();
-  });
+    test('renders without crashing', () => {
+        expect(container).toBeTruthy();
+    });
 
     test('renders with styled components', () => {
         const route_wrapper = getByTestId(container, 'route-wrapper');
@@ -46,30 +46,20 @@ describe.only('CreateRouteGeoJSON', () => {
         const input_file = getByTestId(container, 'input-file');
         const button_save = getByTestId(container, 'button-save');
         const json = {
-            "type": "FeatureCollection",
-            "features": [
-                {
+                "type": "FeatureCollection",
+                "features": [{
                     "type": "Feature",
                     "properties": {},
                     "geometry": {
                         "type": "LineString",
-                        "coordinates": [
-                            [
-                                28.67431640625,
-                                51.74743863117572
-                            ],
-                            [
-                                28.037109375,
-                                50.33844888725473
-                            ]
-                        ]
+                        "coordinates": [[28.67431640625, 51.74743863117572], [28.037109375, 50.33844888725473], [30.684814453125004, 50.00067775723633], [30.223388671874996, 51.303145259199056], [29.68505859375, 49.1888842152458], [26.400146484375, 51.31688050404585]]
                     }
-                }
-            ]
-        };
+                }]
+            }
+        ;
         const file = new File([json], "track.geojson");
-        fireEvent.change(input_title, { target: { value: "prueba" } });
-        fireEvent.change(input_description, { target: { value: "prueba" } });
+        fireEvent.change(input_title, {target: {value: "prueba"}});
+        fireEvent.change(input_description, {target: {value: "prueba"}});
         Object.defineProperty(input_file, "files", {
             value: [file]
         });

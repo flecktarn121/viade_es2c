@@ -44,6 +44,7 @@ describe.only('CreateRouteGPX', () => {
         const input_title = getByTestId(container, 'input-title');
         const input_description = getByTestId(container, 'input-description');
         const input_file = getByTestId(container, 'input-file');
+        const button_save = getByTestId(container, 'button-save');
         const file = new File(["<gpx creator=\"GPS Visualizer https://www.gpsvisualizer.com/\" version=\"1.0\">\n" +
         "  <trk>\n" +
         "    <name>Barrett Spur 1</name>\n" +
@@ -68,5 +69,8 @@ describe.only('CreateRouteGPX', () => {
         fireEvent.change(input_file);
         expect(input_title.value).toEqual("prueba");
         expect(input_description.value).toEqual("prueba");
+
+        fireEvent.click(button_save);
+
     });
 });

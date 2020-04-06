@@ -1,5 +1,5 @@
 import React from 'react';
-import {cleanup, render} from 'react-testing-library';
+import {cleanup, render, fireEvent} from 'react-testing-library';
 import {HashRouter as Router} from 'react-router-dom';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fas} from '@fortawesome/free-solid-svg-icons';
@@ -32,4 +32,12 @@ describe.only('CreateRouteSelector', () => {
         expect(getByTestId('goTo-map')).toBeTruthy();
         expect(document.querySelector('.card')).toBeTruthy();
     });
+
+    test('go to gpx', () => {
+        const gpxButton = getByTestId(container, "goTo-gpx");
+        fireEvent.click(gpxButton);
+        expect(window.location.href).toBe('#/createroutegpx');
+    });
+
+
 });

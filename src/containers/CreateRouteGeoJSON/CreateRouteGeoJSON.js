@@ -67,9 +67,11 @@ const CreateRouteGeoJSON = ({ webId }: Props) => {
     }
     function handleUpload(event) {
         event.preventDefault();
-        var reader = new FileReader();
-        reader.readAsText(file.current.files[0]);
-        reader.onload = loaded;
+        if(file.current.files.length > 0){
+            var reader = new FileReader();
+            reader.readAsText(file.current.files[0]);
+            reader.onload = loaded;
+        }
     }
 
     return (

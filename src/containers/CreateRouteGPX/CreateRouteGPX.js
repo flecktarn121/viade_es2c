@@ -71,17 +71,17 @@ const CreateRouteGPX = ({ webId }: Props) => {
     }
 
     return (
-        <RouteWrapper>
-            <Header>
+        <RouteWrapper data-testid="route-wrapper">
+            <Header data-testid="route-header">
                 <h1 className={"text--white"}>{t('createRoute.newRoute')}</h1>
                 <Label>import {useTranslation} from 'react-i18next';</Label>
-                <Input type="text" size="20" placeholder={t('createRoute.newRoute')} onChange={handleTitleChange} />
+                <Input type="text" size="20" placeholder={t('createRoute.newRoute')} onChange={handleTitleChange}  data-testid="input-title"/>
                 <Label>{t('createRoute.description')}</Label>
-                <Input type="text" size="100" placeholder={t('createRoute.description')}onChange={handleDescriptionChange}/>
+                <Input type="text" size="100" placeholder={t('createRoute.description')}onChange={handleDescriptionChange} data-testid="input-description"/>
                 <Label>{t('createRoute.uploadGPX')}</Label>
-                <Input type="file" ref={file} onChange={handleUpload}/>
+                <Input type="file" ref={file} onChange={handleUpload} data-testid="input-file"/>
                 <br/>
-                <Button onClick={handleSave}> {t('createRoute.saveRoute')} </Button>
+                <Button onClick={handleSave} data-testid="button-save"> {t('createRoute.saveRoute')} </Button>
             </Header>
         </RouteWrapper>
     );

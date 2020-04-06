@@ -1,5 +1,5 @@
 import React from 'react';
-import {cleanup, render} from 'react-testing-library';
+import {cleanup, getByTestId, render} from 'react-testing-library';
 import {HashRouter as Router} from 'react-router-dom';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fas} from '@fortawesome/free-solid-svg-icons';
@@ -13,7 +13,7 @@ const props = {
 
 describe.only('CreateRouteGeoJSON', () => {
   afterAll(cleanup);
-  const { container, getByTestId } = render(
+  const { container } = render(
       <Router>
         <CreateRouteGeoJSON {...{ ...props }} />
       </Router>
@@ -24,12 +24,19 @@ describe.only('CreateRouteGeoJSON', () => {
   });
 
     test('renders with styled components', () => {
-        expect(getByTestId('route-wrapper')).toBeTruthy();
-        expect(getByTestId('route-header')).toBeTruthy();
-        expect(getByTestId('input-title')).toBeTruthy();
-        expect(getByTestId('input-description')).toBeTruthy();
-        expect(getByTestId('input-file')).toBeTruthy();
-        expect(getByTestId('button-save')).toBeTruthy();
+        const route_wrapper = getByTestId(container, 'route-wrapper');
+        const route_header = getByTestId(container, 'route-header');
+        const input_title = getByTestId(container, 'input-title');
+        const input_description = getByTestId(container, 'input-description');
+        const input_file = getByTestId(container, 'input-file');
+        const button_save = getByTestId(container, 'button-save');
+
+        expect(route_wrapper).not.toBe(null);
+        expect(route_header).not.toBe(null);
+        expect(input_title).not.toBe(null);
+        expect(input_description).not.toBe(null);
+        expect(input_file).not.toBe(null);
+        expect(button_save).not.toBe(null);
 
     });
 });

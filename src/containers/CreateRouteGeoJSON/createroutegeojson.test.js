@@ -8,14 +8,15 @@ import CreateRouteGeoJSON from "./CreateRouteGeoJSON";
 library.add(fas);
 
 const props = {
-    webId: 'https://elmer.solid.community/'
+    webId: 'https://elmer.solid.community/',
+    test: true
 };
 
 describe.only('CreateRouteGeoJSON', () => {
     afterAll(cleanup);
     const {container} = render(
         <Router>
-            <CreateRouteGeoJSON {...{...props}} />
+            <CreateRouteGeoJSON {...{...props,test}} />
         </Router>
     );
 

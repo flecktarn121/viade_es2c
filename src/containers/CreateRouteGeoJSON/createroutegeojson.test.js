@@ -56,8 +56,7 @@ describe.only('CreateRouteGeoJSON', () => {
                     }
                 }]
             }
-        ;
-        const file = new File([json], "track.geojson");
+        const file = new File([JSON.stringify(json)], "track.geojson");
         fireEvent.change(input_title, {target: {value: "prueba"}});
         fireEvent.change(input_description, {target: {value: "prueba"}});
         Object.defineProperty(input_file, "files", {

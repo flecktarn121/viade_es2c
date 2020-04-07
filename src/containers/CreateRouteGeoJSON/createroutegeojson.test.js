@@ -74,10 +74,12 @@ describe.only('CreateRouteGeoJSON', () => {
         Object.defineProperty(input_img, "files", {
             value: [img]
         });
+        fireEvent.change(input_img);
 
         Object.defineProperty(input_video, "files", {
             value: [video]
         });
+        fireEvent.change(input_video);
 
         fireEvent.click(button_save);
     });

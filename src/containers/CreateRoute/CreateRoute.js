@@ -84,19 +84,24 @@ const CreateRoute = ({webId}: Props) => {
                 <h1 className={"text--white"}>{t('createRoute.newRoute')}</h1>
                 <Label>{t('createRoute.title')}</Label>
                 <Input type="text" size="20" placeholder={t('createRoute.newRoute')} onChange={handleTitleChange}
-                       data-testid="input-title"/>
+                       data-testid="input-title" id={"input-title"}/>
                 <Label>{t('createRoute.description')}</Label>
                 <Input type="text" size="100" placeholder={t('createRoute.description')}
-                       onChange={handleDescriptionChange} data-testid="input-description"/>
+                       onChange={handleDescriptionChange} data-testid="input-description" id={"input-description"}/>
                 <Label>{t('createRoute.media')}</Label>
                 <Label>{t('createRoute.addPhoto')}</Label>
-                <Input type="file" ref={img} onChange={handlePhotoChange} data-testid="input-img" accept={".png"}/>
+                <Input type="file" ref={img} onChange={handlePhotoChange} data-testid="input-img" id={"input-img"}
+                       accept={".png"}/>
                 <Label>{t('createRoute.addVideo')}</Label>
-                <Input type="file" ref={video} onChange={handleVideoChange} data-testid="input-video" accept={".mp4"}/>
+                <Input type="file" ref={video} onChange={handleVideoChange} data-testid="input-video" id={"input-video"}
+                       accept={".mp4"}/>
                 <br/>
-                <Button onClick={handleSave} data-testid="button-save"> {t('createRoute.saveRoute')} </Button>
+                <Button onClick={handleSave} data-testid="button-save"
+                        id={"button-save"}> {t('createRoute.saveRoute')} </Button>
             </Header>
+
             <CreateMap parentCallback={callbackFunction}/>
+
         </RouteWrapper>
     );
 

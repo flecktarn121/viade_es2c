@@ -10,7 +10,6 @@ import Route from "../../utils/route/Route"
 import {errorToaster, successToaster} from '@utils';
 import {useTranslation} from "react-i18next";
 import MediaLoader from "../../utils/InOut/MediaLoader";
-import SendNotification from "../../utils/SendNotification";
 
 type Props = {
     webId: String,
@@ -34,26 +33,24 @@ const CreateRoute = ({webId}: Props) => {
     }
 
     function handleSave(event) {
-        let notif = new SendNotification("https://elmer.solid.community/profile/card#me");
-        notif.notification("hola","hola", "https://elmer.solid.community/profile/card#me","https://elmer.solid.community/profile/card#me","https://elmer.solid.community/viade/jaja")
-        // if (title.length === 0) {
-        //     errorToaster(t('notifications.title'), t('notifications.error'));
-        // } else if (description.length === 0) {
-        //     errorToaster(t('notifications.description'), t('notifications.error'));
-        // } else if (markers.length === undefined){
-        //     errorToaster("Añada marcadores al mapa para crear la ruta", t('notifications.error'));
-        // } else {
-        //     let loader = new MediaLoader();
-        //     loader.saveImage(photoURL, img);
-        //     loader.saveVideo(videoURL, video);
-        //     let route = new Route(title, description, markers, webID, null, photoURL===""?null:photoURL, videoURL===""?null:videoURL);
-        //     let parser = new RouteToRdfParser(route, webID);
-        //     parser.parse();
-        //     successToaster(t('notifications.save'), t('notifications.success'));
-        //     setTimeout(function () {
-        //         window.location.href = '#/timeline'
-        //     }, 1000)
-        // }
+        if (title.length === 0) {
+            errorToaster(t('notifications.title'), t('notifications.error'));
+        } else if (description.length === 0) {
+            errorToaster(t('notifications.description'), t('notifications.error'));
+        } else if (markers.length === undefined) {
+            errorToaster("Añada marcadores al mapa para crear la ruta", t('notifications.error'));
+        } else {
+            let loader = new MediaLoader();
+            loader.saveImage(photoURL, img);
+            loader.saveVideo(videoURL, video);
+            let route = new Route(title, description, markers, webID, null, photoURL === "" ? null : photoURL, videoURL === "" ? null : videoURL);
+            let parser = new RouteToRdfParser(route, webID);
+            parser.parse();
+            successToaster(t('notifications.save'), t('notifications.success'));
+            setTimeout(function () {
+                window.location.href = '#/timeline'
+            }, 1000)
+        }
         event.preventDefault();
     }
 
@@ -86,9 +83,11 @@ const CreateRoute = ({webId}: Props) => {
             <Header>
                 <h1 className={"text--white"}>{t('createRoute.newRoute')}</h1>
                 <Label>{t('createRoute.title')}</Label>
-                <Input type="text" size="20" placeholder={t('createRoute.newRoute')} onChange={handleTitleChange} data-testid="input-title" />
+                <Input type="text" size="20" placeholder={t('createRoute.newRoute')} onChange={handleTitleChange}
+                       data-testid="input-title"/>
                 <Label>{t('createRoute.description')}</Label>
-                <Input type="text" size="100" placeholder={t('createRoute.description')} onChange={handleDescriptionChange} data-testid="input-description"/>
+                <Input type="text" size="100" placeholder={t('createRoute.description')}
+                       onChange={handleDescriptionChange} data-testid="input-description"/>
                 <Label>{t('createRoute.media')}</Label>
                 <Label>{t('createRoute.addPhoto')}</Label>
                 <Input type="file" ref={img} onChange={handlePhotoChange} data-testid="input-img" accept={".png"}/>

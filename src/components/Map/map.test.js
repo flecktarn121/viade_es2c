@@ -3,15 +3,15 @@ import {cleanup, render} from 'react-testing-library';
 import Map from "./Map";
 
 const markers = [
-    {lat: 43.354831, lng: -5.851303},
-    {lat: 43.356440, lng: -5.854693},
-    {lat: 43.361836, lng: -5.850547}
+    {position :{lat: 43.354831, lng: -5.851303}},
+    {position :{lat: 43.356440, lng: -5.854693}},
+    {position :{lat: 43.361836, lng: -5.850547}}
 ];
 
 const anotherMarkers = [
-    {lat: 43.354831, lng: -5.851303},
-    {lat: 43.356440, lng: -5.854693},
-    {lat: 43.361836, lng: -5.850547}
+    {position :{lat: 43.354831, lng: -5.851303}},
+    {position :{lat: 43.356440, lng: -5.854693}},
+    {position :{lat: 43.361836, lng: -5.850547}}
 ];
 
 afterAll(cleanup);

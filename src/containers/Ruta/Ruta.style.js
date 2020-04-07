@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import {media} from '@utils';
-
 export const RouteWrapper = styled.section`
   display: flex;
   flex: 1 0 auto;
@@ -52,9 +50,7 @@ export const Form = styled.form`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 20px 40px;
-  ${media.tablet`
-    grid-template-columns: 1fr 1fr;
-  `}
+
 `;
 
 export const Button = styled.button`

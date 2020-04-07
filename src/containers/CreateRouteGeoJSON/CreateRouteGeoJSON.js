@@ -9,13 +9,15 @@ import Route from "../../utils/route/Route"
 import {errorToaster, successToaster} from '@utils';
 import {useTranslation} from "react-i18next";
 
-type Props = {webId: String};
+type Props = {webId: String, test: boolean};
 
 let markers = [];
 
-let geojson = "";
+let geojsontest = '{"type": "FeatureCollection", "features": [{"type": "Feature", "properties": {}, "geometry": {"type": "LineString", "coordinates": [[28.67431640625, 51.74743863117572], [28.037109375, 50.33844888725473], [30.684814453125004, 50.00067775723633], [30.223388671874996, 51.303145259199056], [29.68505859375, 49.1888842152458], [26.400146484375, 51.31688050404585]]}}]}'
+let geojson = '';
 
-const CreateRouteGeoJSON = ({ webId }: Props) => {
+
+const CreateRouteGeoJSON = ({ webId, test }: Props) => {
     const { t } = useTranslation();
     const webID = webId.replace("profile/card#me", "");
     const [title, setTitle] = useState('');
@@ -30,7 +32,7 @@ const CreateRouteGeoJSON = ({ webId }: Props) => {
             if(features[0].geometry.type === "LineString"){
                 var coordinates = features[0].geometry.coordinates;
                 for(var i = 0; i< coordinates.length; i++){
-                    markers.push({lat:coordinates[i][0], lng: coordinates[i][1]});
+                    markers.push({position:{lat:coordinates[i][0], lng: coordinates[i][1]}});
                 }
             }
         }
@@ -42,7 +44,7 @@ const CreateRouteGeoJSON = ({ webId }: Props) => {
         }else if(description.length === 0){
             errorToaster(t('notifications.description'),t('notifications.error'));
         } else {
-            parsergeojson(geojson);
+            parsergeojson(test? geojsontest:geojson);
             let route = new Route(title, description, markers, webID, null, null, null);
             let parser = new RouteToRdfParser(route, webID);
             parser.parse();
@@ -67,23 +69,25 @@ const CreateRouteGeoJSON = ({ webId }: Props) => {
     }
     function handleUpload(event) {
         event.preventDefault();
-        var reader = new FileReader();
-        reader.readAsText(file.current.files[0]);
-        reader.onload = loaded;
+        if(file.current.files.length > 0){
+            var reader = new FileReader();
+            reader.readAsText(file.current.files[0]);
+            reader.onload = loaded;
+        }
     }
 
     return (
-        <RouteWrapper>
-            <Header>
-                <h1 className={"text--white"}>Nueva Ruta</h1>
-                <Label>Titulo</Label>
-                <Input type="text" size="20" placeholder="Nueva ruta" onChange={handleTitleChange} />
-                <Label>Descripcion</Label>
-                <Input type="text" size="100" placeholder="Descripcion" onChange={handleDescriptionChange}/>
-                <Label>Sube tu archivo GeoJSON</Label>
-                <Input type="file" ref={file} onChange={handleUpload}/>
+        <RouteWrapper data-testid="route-wrapper">
+            <Header data-testid="route-header">
+                <h1 className={"text--white"}>{t('createRoute.newRoute')}</h1>
+                <Label>{t('createRoute.title')}</Label>
+                <Input type="text" size="20" placeholder={t('createRoute.newRoute')} onChange={handleTitleChange} data-testid="input-title" />
+                <Label>{t('createRoute.description')}</Label>
+                <Input type="text" size="100" placeholder={t('createRoute.description')} onChange={handleDescriptionChange} data-testid="input-description"/>
+                <Label>{t('createRoute.uploadGeoJson')}</Label>
+                <Input type="file" ref={file} onChange={handleUpload} data-testid="input-file"/>
                 <br/>
-                <Button onClick={handleSave}> Guardar ruta </Button>
+                <Button onClick={handleSave} data-testid="button-save"> {t('createRoute.saveRoute')} </Button>
             </Header>
         </RouteWrapper>
     );

@@ -1,11 +1,10 @@
 import SolidAuth from "solid-auth-client";
-import SolidFileClient from "solid-file-client/src/SolidFileClient";
+import auth from "solid-auth-client";
+import FC from "solid-file-client";
 
 class FileWriter {
 
     static async handleSave(url, text) {
-        // Not using LDFlex here, because this is not an RDF document.
-        //const result =
          await SolidAuth.fetch(url, {
             method: 'PUT',
             body: text,
@@ -13,7 +12,6 @@ class FileWriter {
                 'Content-Type': 'text/turtle'
             }
         });
-   //     result();
     }
     static handleLoad(url,callback) {
         const doc = SolidAuth.fetch(url);
@@ -31,8 +29,9 @@ class FileWriter {
     }
 
     static readFolder(url,callback){
-        let leer = new SolidFileClient(SolidAuth,[]);
-        leer.readFolder(url,[]).then(promesa => {
+        const fc = new FC(auth);
+
+        fc.readFolder(url,[]).then(promesa => {
             let i
             let carpetas = []
             for (i=0;i<promesa.files.length;i++){

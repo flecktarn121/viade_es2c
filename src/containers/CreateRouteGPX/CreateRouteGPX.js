@@ -8,7 +8,6 @@ import RouteToRdfParser from "../../utils/parser/RouteToRdfParser"
 import Route from "../../utils/route/Route"
 import {errorToaster, successToaster} from '@utils';
 import {useTranslation} from "react-i18next";
-import InputFiles from "react-input-files";
 import MediaLoader from "../../utils/InOut/MediaLoader";
 
 type Props = {webId: String};

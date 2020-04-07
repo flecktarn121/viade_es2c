@@ -37,6 +37,7 @@
     "react": "16.8.4",
     "react-addons-update": "latest",
     "react-app-polyfill": "^0.2.2",
+    "react-awesome-modal": "^2.0.5",
     "react-click-outside": "^3.0.1",
     "react-delay-render": "^0.1.2",
     "react-dev-utils": "^7.0.1",

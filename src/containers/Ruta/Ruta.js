@@ -1,101 +1,47 @@
-import React, {useEffect} from 'react';
-import {Header, Input, RouteContainer, RouteWrapper} from "./Ruta.style";
+import React, {Component} from "react";
+import Modal from 'react-awesome-modal'
+import {Header} from "./Ruta.style";
 import Map from "../../components/Map";
-import routes from "../../constants/globals";
-import {NotificationTypes, useNotification} from '@inrupt/solid-react-components';
-import {notification} from '@utils';
-import auth from "solid-auth-client";
-import {useTranslation} from 'react-i18next';
-import Delay from "react-delay-render";
 
-const Ruta = ({match, ruta}) => {
-    //let id = match.params.id;
-    let cadena = null;
-    let friendWebID = null;
-    const {createNotification} = useNotification(cadena);
-    const route = ruta == null ? routes[match.params.id] : ruta;
-    const {t} = useTranslation();
+export default class Ruta extends Component {
 
-    useEffect(() => {
-        auth.trackSession(session => {
-            if (session) {
-                cadena = session.webId;
-                console.log(cadena)
-            }
+    constructor(props) {
+        super(props);
+
+        this.route = props.route;
+
+        this.state = {
+            visible: false
+        }
+    }
+
+    openModal() {
+        this.setState({
+            visible: true
         });
-    });
-
-    async function sendNotification(content, to, type, license) {
-        try {
-            await createNotification(content, to, type, license);
-        } catch (error) {
-            console.log(error);
-            alert(t('notifications.sendNotification'));
-        }
     }
 
-    function handleSave() {
-        try {
-            const contentNotif = {
-                title: "Route share",
-                summary: "hola guapa",
-                actor: cadena,
-                object: cadena + "viade/" + route.name,
-                target: friendWebID
-            };
-            publish(sendNotification, contentNotif, friendWebID, NotificationTypes.OFFER);
-        } catch (error) {
-            console.log(error);
-            alert(t('notifications.notShareRoute'));
-        }
+    closeModal() {
+        this.setState({
+            visible: false
+        });
     }
 
-    const publish = async (createNotification, content, webId, type) => {
-        try {
-            type = type || NotificationTypes.ANNOUNCE;
-
-            const license = 'https://creativecommons.org/licenses/by-sa/4.0/';
-
-            const inboxes = await notification.findUserInboxes([
-                {path: webId, name: 'Global'}
-            ]);
-            if (inboxes.length === 0)
-                return false;
-            const to = notification.getDefaultInbox(inboxes, 'Global');
-            if (to) {
-                await createNotification({
-                    title: content.title,
-                    summary: content.summary,
-                    actor: content.actor,
-                    object: content.object,
-                    target: content.target
-                }, to.path, type, license);
-            }
-            return true;
-        } catch (e) {
-            console.error(e);
-            return false;
-        }
-    };
-
-    function handleFriendChange(event) {
-        event.preventDefault();
-        friendWebID = event.target.value;
+    render() {
+        return (
+            <section>
+                <input type="button" value={"Abrir ruta"} onClick={() => this.openModal()}/>
+                <Modal visible={this.state.visible} width="1200" height="720" effect="fadeInDown"
+                       onClickAway={() => this.closeModal()}>
+                    <div>
+                        <Header>
+                            <h1 className="text--white">{this.route.name}</h1>
+                        </Header>
+                        <Map zoom={15} markers={this.route.points}/>
+                        <input type="button" value={"Cerrar ruta"} onClick={() => this.closeModal()}/>
+                    </div>
+                </Modal>
+            </section>
+        );
     }
-
-    return (
-        <RouteWrapper>
-            <RouteContainer>
-                <Header>
-                    <h1 className="text--white">{route.name}: </h1>
-                    <br/>
-                    <Input type={"text"} placeholder={"WebID"} onChange={handleFriendChange}/>
-                    <button onClick={handleSave}>{t('route.share')}</button>
-                </Header>
-                <Map zoom={15} markers={route.points}/>
-            </RouteContainer>
-        </RouteWrapper>
-    )
-};
-
-export default Delay({delay: 3000})(Ruta(this.props.match, null));
+}

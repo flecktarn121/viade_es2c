@@ -10,13 +10,14 @@ import {errorToaster, successToaster} from '@utils';
 import {useTranslation} from "react-i18next";
 import MediaLoader from "../../utils/InOut/MediaLoader";
 
-type Props = { webId: String };
+type Props = { webId: String , test: boolean};
 
 let markers = [];
 
+let gpxTest = "<gpx creator=\"GPS Visualizer https://www.gpsvisualizer.com/\" version=\"1.0\">  <trk>   <name>Barrett Spur 1</name>    <extensions>      <line xmlns=\"http://www.topografix.com/GPX/gpx_style/0/2\">        <color>9900ff</color>      </line>    </extensions>    <trkseg>      <trkpt lat=\"45.4431641\" lon=\"-121.7295456\"></trkpt>      <trkpt lat=\"45.4428615\" lon=\"-121.7290800\"></trkpt>    </trkseg>  </trk></gpx>"
 let gpx = "";
 
-const CreateRouteGPX = ({webId}: Props) => {
+const CreateRouteGPX = ({webId, test}: Props) => {
     const {t} = useTranslation();
     const webID = webId.replace("profile/card#me", "");
     const [title, setTitle] = useState('');
@@ -44,10 +45,10 @@ const CreateRouteGPX = ({webId}: Props) => {
         } else if (description.length === 0) {
             errorToaster(t('notifications.description'), t('notifications.error'));
         } else {
-            if (gpx === "") {
+            if (!test && gpx === "") {
                 errorToaster("suba un archivo", t('notifications.error'));
             } else {
-                parsergpx(gpx);
+                parsergpx(test? gpxTest:gpx);
                 if (markers.length === 0) {
                     errorToaster("error en el parser: es posible que su archivo no sea valido", t('notifications.error'));
                 } else {

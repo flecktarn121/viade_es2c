@@ -10,7 +10,6 @@ import Route from "../../utils/route/Route"
 import {errorToaster, successToaster} from '@utils';
 import {useTranslation} from "react-i18next";
 import MediaLoader from "../../utils/InOut/MediaLoader";
-import InputFiles from 'react-input-files';
 
 type Props = {
     webId: String,
@@ -22,11 +21,12 @@ const CreateRoute = ({webId}: Props) => {
     const webID = webId.replace("profile/card#me", "");
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [photo, setPhoto] = useState(null);
-    const [video, setVideo] = useState(null);
     const [markers, setMarkers] = useState({});
     const [photoURL, setPhotoURL] = useState("");
     const [videoURL, setVideoURL] = useState("");
+    let img = React.createRef();
+    let video = React.createRef();
+
 
     function callbackFunction(childData) {
         setMarkers(childData);
@@ -37,11 +37,13 @@ const CreateRoute = ({webId}: Props) => {
             errorToaster(t('notifications.title'), t('notifications.error'));
         } else if (description.length === 0) {
             errorToaster(t('notifications.description'), t('notifications.error'));
+        } else if (markers.length === undefined){
+            errorToaster("Añada marcadores al mapa para crear la ruta", t('notifications.error'));
         } else {
             let loader = new MediaLoader();
-            loader.saveImage(photoURL, photo);
+            loader.saveImage(photoURL, img);
             loader.saveVideo(videoURL, video);
-            let route = new Route(title, description, markers, webID, null, null, null);
+            let route = new Route(title, description, markers, webID, null, photoURL===""?null:photoURL, videoURL===""?null:videoURL);
             let parser = new RouteToRdfParser(route, webID);
             parser.parse();
             successToaster(t('notifications.save'), t('notifications.success'));
@@ -62,17 +64,17 @@ const CreateRoute = ({webId}: Props) => {
         setDescription(event.target.value);
     }
 
-    function handlePhotoChange(files) {
-        if (files.length > 0) {
-            setPhoto(files[0]);
-            setPhotoURL(webID + "viade/" + files[0].name);
+    function handlePhotoChange(event) {
+        event.preventDefault();
+        if (img.current.files.length > 0) {
+            setPhotoURL(webID + "viade/resources/" + img.current.files[0].name);
         }
     }
 
-    function handleVideoChange(files) {
-        if (files.length > 0) {
-            setVideo(files[0]);
-            setVideoURL(webID + "viade/" + files[0].name);
+    function handleVideoChange(event) {
+        event.preventDefault();
+        if (video.current.files.length > 0) {
+            setVideoURL(webID + "viade/resources/" + video.current.files[0].name);
         }
     }
 
@@ -81,19 +83,16 @@ const CreateRoute = ({webId}: Props) => {
             <Header>
                 <h1 className={"text--white"}>{t('createRoute.newRoute')}</h1>
                 <Label>{t('createRoute.title')}</Label>
-                <Input type="text" size="20" placeholder={t('createRoute.newRoute')} onChange={handleTitleChange}/>
+                <Input type="text" size="20" placeholder={t('createRoute.newRoute')} onChange={handleTitleChange} data-testid="input-title" />
                 <Label>{t('createRoute.description')}</Label>
-                <Input type="text" size="100" placeholder={t('createRoute.description')} onChange={handleDescriptionChange}/>
+                <Input type="text" size="100" placeholder={t('createRoute.description')} onChange={handleDescriptionChange} data-testid="input-description"/>
                 <Label>{t('createRoute.media')}</Label>
-                <InputFiles onChange={handlePhotoChange} accept={".png"}>
-                    <button>{t('createRoute.addPhoto')}</button>
-                </InputFiles>
+                <Label>{t('createRoute.addPhoto')}</Label>
+                <Input type="file" ref={img} onChange={handlePhotoChange} data-testid="input-img" accept={".png"}/>
+                <Label>{t('createRoute.addVideo')}</Label>
+                <Input type="file" ref={video} onChange={handleVideoChange} data-testid="input-video" accept={".mp4"}/>
                 <br/>
-                <InputFiles onChange={handleVideoChange} accept={".mp4"}>
-                    <button>{t('createRoute.addVideo')}</button>
-                </InputFiles>
-                <br/>
-                <Button onClick={handleSave}> {t('createRoute.saveRoute')} </Button>
+                <Button onClick={handleSave} data-testid="button-save"> {t('createRoute.saveRoute')} </Button>
             </Header>
             <CreateMap parentCallback={callbackFunction}/>
         </RouteWrapper>

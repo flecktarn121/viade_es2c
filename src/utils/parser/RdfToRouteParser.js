@@ -1,6 +1,7 @@
 import FileWriter from "../InOut/FileWriter";
 import Route from "../route/Route";
-import routes from "../../constants/globals";
+import rutas from "../../constants/globals";
+
 class RdftoRouteParser {
     regexForQuotationMarks=  /"/g;
 
@@ -26,15 +27,16 @@ class RdftoRouteParser {
         }
         let route = new Route(name,description, points,null,comments,image,video);
         this.pushRoutes(route);
+
     }
 
     pushRoutes(route){
-        for (let i=0;i<routes.length;i++){
-            if(routes[i].name === route.name){
+        for (let i=0;i<rutas.length;i++){
+            if(rutas[i].name === route.name){
                 return
             }
         }
-        routes.push(route);
+        rutas.push(route);
     }
 
     multiParse(url, documentos){

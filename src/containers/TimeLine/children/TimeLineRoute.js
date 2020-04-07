@@ -2,12 +2,6 @@ import React from 'react';
 import {TimelineRouteCard, TimelineRouteDetail} from './timelineroute.style';
 import {Link} from "react-router-dom";
 import {useTranslation} from 'react-i18next';
-//import Map from "../../../components/Map";
-//import Ruta from "../../Ruta/Ruta";
-//import RdftoRouteParser from "../../../utils/parser/RdfToRouteParser";
-
-
-
 
 const TimeLineRoute = props => {
     const { t } = useTranslation();

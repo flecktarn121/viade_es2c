@@ -37,6 +37,8 @@ const CreateRoute = ({webId}: Props) => {
             errorToaster(t('notifications.title'), t('notifications.error'));
         } else if (description.length === 0) {
             errorToaster(t('notifications.description'), t('notifications.error'));
+        } else if (markers.length === undefined){
+            errorToaster("Añada marcadores al mapa para crear la ruta", t('notifications.error'));
         } else {
             let loader = new MediaLoader();
             loader.saveImage(photoURL, img);

@@ -22,11 +22,11 @@ const CreateRouteGPX = ({ webId }: Props) => {
     const webID = webId.replace("profile/card#me", "");
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [photo, setPhoto] = useState(null);
-    const [video, setVideo] = useState(null);
     const [photoURL, setPhotoURL] = useState("");
     const [videoURL, setVideoURL] = useState("");
     let file = React.createRef();
+    let img = React.createRef();
+    let video = React.createRef();
 
     function parsergpx(file) {
         var xmlParser = new DOMParser();
@@ -46,7 +46,7 @@ const CreateRouteGPX = ({ webId }: Props) => {
             errorToaster(t('notifications.description'),t('notifications.error'));
         } else {
             let loader = new MediaLoader();
-            loader.saveImage(photoURL, photo);
+            loader.saveImage(photoURL, img);
             loader.saveVideo(videoURL, video);
             parsergpx(gpx);
             let route = new Route(title, description, markers, webID, null, photoURL===""?null:photoURL, videoURL===""?null:videoURL);
@@ -80,17 +80,17 @@ const CreateRouteGPX = ({ webId }: Props) => {
         }
     }
 
-    function handlePhotoChange(files) {
-        if (files.length > 0) {
-            setPhoto(files[0]);
-            setPhotoURL(webID + "viade/resources/" + files[0].name);
+    function handlePhotoChange(event) {
+        event.preventDefault();
+        if (img.current.files.length > 0) {
+            setPhotoURL(webID + "viade/resources/" + img.current.files[0].name);
         }
     }
 
-    function handleVideoChange(files) {
-        if (files.length > 0) {
-            setVideo(files[0]);
-            setVideoURL(webID + "viade/resources/" + files[0].name);
+    function handleVideoChange(event) {
+        event.preventDefault();
+        if (video.current.files.length > 0) {
+            setVideoURL(webID + "viade/resources/" + video.current.files[0].name);
         }
     }
 
@@ -105,13 +105,10 @@ const CreateRouteGPX = ({ webId }: Props) => {
                 <Label>{t('createRoute.uploadGPX')}</Label>
                 <Input type="file" ref={file} onChange={handleUpload} data-testid="input-file"/>
                 <Label>{t('createRoute.media')}</Label>
-                <InputFiles onChange={handlePhotoChange} accept={".png"} data-testid="input-img">
-                    <button>{t('createRoute.addPhoto')}</button>
-                </InputFiles>
-                <br/>
-                <InputFiles onChange={handleVideoChange} accept={".mp4"} data-testid="input-video">
-                    <button>{t('createRoute.addVideo')}</button>
-                </InputFiles>
+                <Label>{t('createRoute.addPhoto')}</Label>
+                <Input type="file" ref={img} onChange={handlePhotoChange} data-testid="input-img" accept={".png"}/>
+                <Label>{t('createRoute.addVideo')}</Label>
+                <Input type="file" ref={video} onChange={handleVideoChange} data-testid="input-video" accept={".mp4"}/>
                 <br/>
                 <Button onClick={handleSave} data-testid="button-save"> {t('createRoute.saveRoute')} </Button>
             </Header>

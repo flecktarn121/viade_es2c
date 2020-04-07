@@ -22,11 +22,12 @@ const CreateRoute = ({webId}: Props) => {
     const webID = webId.replace("profile/card#me", "");
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [photo, setPhoto] = useState(null);
-    const [video, setVideo] = useState(null);
     const [markers, setMarkers] = useState({});
     const [photoURL, setPhotoURL] = useState("");
     const [videoURL, setVideoURL] = useState("");
+    let img = React.createRef();
+    let video = React.createRef();
+
 
     function callbackFunction(childData) {
         setMarkers(childData);
@@ -39,7 +40,7 @@ const CreateRoute = ({webId}: Props) => {
             errorToaster(t('notifications.description'), t('notifications.error'));
         } else {
             let loader = new MediaLoader();
-            loader.saveImage(photoURL, photo);
+            loader.saveImage(photoURL, img);
             loader.saveVideo(videoURL, video);
             let route = new Route(title, description, markers, webID, null, photoURL===""?null:photoURL, videoURL===""?null:videoURL);
             let parser = new RouteToRdfParser(route, webID);
@@ -62,17 +63,17 @@ const CreateRoute = ({webId}: Props) => {
         setDescription(event.target.value);
     }
 
-    function handlePhotoChange(files) {
-        if (files.length > 0) {
-            setPhoto(files[0]);
-            setPhotoURL(webID + "viade/resources/" + files[0].name);
+    function handlePhotoChange(event) {
+        event.preventDefault();
+        if (img.current.files.length > 0) {
+            setPhotoURL(webID + "viade/resources/" + img.current.files[0].name);
         }
     }
 
-    function handleVideoChange(files) {
-        if (files.length > 0) {
-            setVideo(files[0]);
-            setVideoURL(webID + "viade/resources/" + files[0].name);
+    function handleVideoChange(event) {
+        event.preventDefault();
+        if (video.current.files.length > 0) {
+            setVideoURL(webID + "viade/resources/" + video.current.files[0].name);
         }
     }
 
@@ -85,13 +86,10 @@ const CreateRoute = ({webId}: Props) => {
                 <Label>{t('createRoute.description')}</Label>
                 <Input type="text" size="100" placeholder={t('createRoute.description')} onChange={handleDescriptionChange} data-testid="input-description"/>
                 <Label>{t('createRoute.media')}</Label>
-                <InputFiles onChange={handlePhotoChange} accept={".png"} data-testid="input-img">
-                    <button>{t('createRoute.addPhoto')}</button>
-                </InputFiles>
-                <br/>
-                <InputFiles onChange={handleVideoChange} accept={".mp4"} data-testid="input-video">
-                    <button>{t('createRoute.addVideo')}</button>
-                </InputFiles>
+                <Label>{t('createRoute.addPhoto')}</Label>
+                <Input type="file" ref={img} onChange={handlePhotoChange} data-testid="input-img" accept={".png"}/>
+                <Label>{t('createRoute.addVideo')}</Label>
+                <Input type="file" ref={video} onChange={handleVideoChange} data-testid="input-video" accept={".mp4"}/>
                 <br/>
                 <Button onClick={handleSave} data-testid="button-save"> {t('createRoute.saveRoute')} </Button>
             </Header>

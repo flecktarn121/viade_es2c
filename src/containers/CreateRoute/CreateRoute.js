@@ -41,7 +41,7 @@ const CreateRoute = ({webId}: Props) => {
             let loader = new MediaLoader();
             loader.saveImage(photoURL, photo);
             loader.saveVideo(videoURL, video);
-            let route = new Route(title, description, markers, webID, null, null, null);
+            let route = new Route(title, description, markers, webID, null, photoURL===""?null:photoURL, videoURL===""?null:videoURL);
             let parser = new RouteToRdfParser(route, webID);
             parser.parse();
             successToaster(t('notifications.save'), t('notifications.success'));
@@ -65,14 +65,14 @@ const CreateRoute = ({webId}: Props) => {
     function handlePhotoChange(files) {
         if (files.length > 0) {
             setPhoto(files[0]);
-            setPhotoURL(webID + "viade/" + files[0].name);
+            setPhotoURL(webID + "viade/resources/" + files[0].name);
         }
     }
 
     function handleVideoChange(files) {
         if (files.length > 0) {
             setVideo(files[0]);
-            setVideoURL(webID + "viade/" + files[0].name);
+            setVideoURL(webID + "viade/resources/" + files[0].name);
         }
     }
 
@@ -81,19 +81,19 @@ const CreateRoute = ({webId}: Props) => {
             <Header>
                 <h1 className={"text--white"}>{t('createRoute.newRoute')}</h1>
                 <Label>{t('createRoute.title')}</Label>
-                <Input type="text" size="20" placeholder={t('createRoute.newRoute')} onChange={handleTitleChange}/>
+                <Input type="text" size="20" placeholder={t('createRoute.newRoute')} onChange={handleTitleChange} data-testid="input-title" />
                 <Label>{t('createRoute.description')}</Label>
-                <Input type="text" size="100" placeholder={t('createRoute.description')} onChange={handleDescriptionChange}/>
+                <Input type="text" size="100" placeholder={t('createRoute.description')} onChange={handleDescriptionChange} data-testid="input-description"/>
                 <Label>{t('createRoute.media')}</Label>
-                <InputFiles onChange={handlePhotoChange} accept={".png"}>
+                <InputFiles onChange={handlePhotoChange} accept={".png"} data-testid="input-img">
                     <button>{t('createRoute.addPhoto')}</button>
                 </InputFiles>
                 <br/>
-                <InputFiles onChange={handleVideoChange} accept={".mp4"}>
+                <InputFiles onChange={handleVideoChange} accept={".mp4"} data-testid="input-video">
                     <button>{t('createRoute.addVideo')}</button>
                 </InputFiles>
                 <br/>
-                <Button onClick={handleSave}> {t('createRoute.saveRoute')} </Button>
+                <Button onClick={handleSave} data-testid="button-save"> {t('createRoute.saveRoute')} </Button>
             </Header>
             <CreateMap parentCallback={callbackFunction}/>
         </RouteWrapper>

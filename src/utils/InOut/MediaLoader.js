@@ -5,6 +5,8 @@ import FC from "solid-file-client";
 class MediaLoader {
 
     saveImage(url, file) {
+
+        console.log(file)
         SolidAuth.fetch(url, {
             method: 'PUT',
             body: file,
@@ -15,6 +17,7 @@ class MediaLoader {
     }
 
     saveVideo(url, file) {
+        console.log(file)
         SolidAuth.fetch(url, {
             method: 'PUT',
             body: file,

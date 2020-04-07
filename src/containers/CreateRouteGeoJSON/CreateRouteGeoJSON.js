@@ -8,6 +8,8 @@ import RouteToRdfParser from "../../utils/parser/RouteToRdfParser"
 import Route from "../../utils/route/Route"
 import {errorToaster, successToaster} from '@utils';
 import {useTranslation} from "react-i18next";
+import InputFiles from "react-input-files";
+import MediaLoader from "../../utils/InOut/MediaLoader";
 
 type Props = {webId: String, test: boolean};
 
@@ -22,6 +24,10 @@ const CreateRouteGeoJSON = ({ webId, test }: Props) => {
     const webID = webId.replace("profile/card#me", "");
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    const [photo, setPhoto] = useState(null);
+    const [video, setVideo] = useState(null);
+    const [photoURL, setPhotoURL] = useState("");
+    const [videoURL, setVideoURL] = useState("");
     let file = React.createRef();
 
     function parsergeojson(file) {
@@ -44,8 +50,12 @@ const CreateRouteGeoJSON = ({ webId, test }: Props) => {
         }else if(description.length === 0){
             errorToaster(t('notifications.description'),t('notifications.error'));
         } else {
+
+            let loader = new MediaLoader();
+            loader.saveImage(photoURL, photo);
+            loader.saveVideo(videoURL, video);
             parsergeojson(test? geojsontest:geojson);
-            let route = new Route(title, description, markers, webID, null, null, null);
+            let route = new Route(title, description, markers, webID, null, photoURL===""?null:photoURL, videoURL===""?null:videoURL);
             let parser = new RouteToRdfParser(route, webID);
             parser.parse();
             successToaster(t('notifications.save'),t('notifications.success'));
@@ -76,6 +86,20 @@ const CreateRouteGeoJSON = ({ webId, test }: Props) => {
         }
     }
 
+    function handlePhotoChange(files) {
+        if (files.length > 0) {
+            setPhoto(files[0]);
+            setPhotoURL(webID + "viade/resources/" + files[0].name);
+        }
+    }
+
+    function handleVideoChange(files) {
+        if (files.length > 0) {
+            setVideo(files[0]);
+            setVideoURL(webID + "viade/resources/" + files[0].name);
+        }
+    }
+
     return (
         <RouteWrapper data-testid="route-wrapper">
             <Header data-testid="route-header">
@@ -86,6 +110,14 @@ const CreateRouteGeoJSON = ({ webId, test }: Props) => {
                 <Input type="text" size="100" placeholder={t('createRoute.description')} onChange={handleDescriptionChange} data-testid="input-description"/>
                 <Label>{t('createRoute.uploadGeoJson')}</Label>
                 <Input type="file" ref={file} onChange={handleUpload} data-testid="input-file"/>
+                <Label>{t('createRoute.media')}</Label>
+                <InputFiles onChange={handlePhotoChange} accept={".png"} data-testid="input-img">
+                    <button>{t('createRoute.addPhoto')}</button>
+                </InputFiles>
+                <br/>
+                <InputFiles onChange={handleVideoChange} accept={".mp4"} data-testid="input-video">
+                    <button>{t('createRoute.addVideo')}</button>
+                </InputFiles>
                 <br/>
                 <Button onClick={handleSave} data-testid="button-save"> {t('createRoute.saveRoute')} </Button>
             </Header>

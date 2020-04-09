@@ -66,7 +66,7 @@ defineFeature(feature, test => {
                 waitUntil: 'networkidle2'
             });
 
-            expect(page.url()).toBe("http://localhost:3000/viade_es2c/#/welcome")
+            expect(page.url()).toBe("http://localhost:3000/#/welcome")
 
         });
 
@@ -104,7 +104,7 @@ defineFeature(feature, test => {
 
 
             const path = require('path');
-            const imgPath = path.relative(process.cwd(), __dirname + '/portada2.png');
+            const imgPath = path.relative(process.cwd(), __dirname + '/imagen.png');
             const input_img = await page.$("[id='input-img']");
             await input_img.uploadFile(imgPath);
             await input_img.evaluate(upload => upload.dispatchEvent(new Event('change', {bubbles: true})));

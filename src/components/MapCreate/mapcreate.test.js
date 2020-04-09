@@ -15,4 +15,16 @@ describe.only('Map create', () => {
   it('renders without crashing', () => {
     expect(container).toBeTruthy();
   });
+
+  it('renders without crashing', () => {
+    expect(container).toBeTruthy();
+  });
+
+  it('renders without crashing', () => {
+    container.click()
+  });
+
+
+
+
 });

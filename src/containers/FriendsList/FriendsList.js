@@ -1,7 +1,8 @@
 import React,{ useState } from 'react';
 import { render } from 'react-testing-library';
 import { toUnicode } from 'punycode';
-import { FriendListWrapper } from './FriendList.style';
+
+import {Header, FriendListWrapper, FriendListContainer } from './FriendList.style';
 
 //authentication
 const auth = require('solid-auth-client');
@@ -15,24 +16,26 @@ const fetcher = new $rdf.Fetcher(store);
 var person = 'https://ruben.verborgh.org/profile/#me';//example person with friends
 
 var friendsLi = null;
+
 /**
  * Container component to show the user´s friends
- * TODO: friendsUrls se modificara por objeto friend, con nombre y con su url,
+ * TODO: retornar ademas de la url el nombrey pasarselo al callback,
  * funcionamiento cuando usuario no tenga amigos, arreglar que se carguen datos antes de vista
  */
 function FriendsList() {
     //obtaining webId of the user in session
     trackSession(function(person){
-        loadFriendsUrls(person,function(friendsUrls){
+        loadFriends(person,function(friendsUrls){
             if(friendsUrls == null || friendsUrls === undefined){
                 console.log('Error obtaining friendsUrls');
-            }else{
-                    friendsLi = friendsUrls.map(friend=>
+            }
+            else{
+                    friendsLi = friendsUrls.map(friend =>
                         <li key={friend.toString()}>
-                            <h3>Amigo</h3>
-                            <div><a href={friend}>{friend}</a></div>
-                        </li>
-                );
+                        <h2>{friend}</h2>
+                        <a href={friend}>Ver perfil</a>
+                    </li>
+                    );   
             }
         });
     });
@@ -46,12 +49,17 @@ function FriendsList() {
 function renderFriendsList(){
     return( 
     <FriendListWrapper>
+        <FriendListContainer>
         <div>
-            <h2>Lista de amigos</h2> 
+            <Header>
+                <h1>Lista de amigos</h1> 
+            </Header>
                 <ul>
                     {friendsLi}
                 </ul>     
         </div>
+        </FriendListContainer>
+        
     </FriendListWrapper>)
 }
 
@@ -63,16 +71,19 @@ function renderFriendsList(){
 async function obtainFullName(personUrl,callback){
     await fetcher.load(personUrl);
     const fullName = store.any(personUrl,FOAF('name'));
-
-    return callback(fullName);
+    if(fullName === undefined || fullName === null){
+        console.log('Error obtaining the name of '+personUrl);
+    }else{
+        callback(fullName);
+    }
 }
 
 /**
- * TODO: modificar para devolver objeto con nombre y url
+ * TODO: modificar para devolver nombre y url
  * @param p user in session
- * @param callback function executed when the friends list is loaded
+ * @param callback function executed when the friends list is loaded, with urls and names
  */
-async function loadFriendsUrls(p,callback) {
+async function loadFriends(p,callback) {
     if(p == null){
         console.log('error couldnt get user');
         return callback(null);
@@ -80,8 +91,8 @@ async function loadFriendsUrls(p,callback) {
         await fetcher.load(person);
         const friends = store.each($rdf.sym(p), FOAF('knows'));
 
-        var friendsUrls = friends.map(friend => 
-            friend.value
+        var friendsUrls = friends.map(friend =>
+             friend.value        
         );
     }   
     return callback(friendsUrls);

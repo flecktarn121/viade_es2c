@@ -50,6 +50,8 @@
     "react-toastify": "^5.3.0",
     "react-transition-group": "^4.1.1",
     "shacl-js": "0.0.1",
+    "react-addons-update": "latest",
+    "react-google-maps": "latest"
     "solid-auth-client": "^2.4.1",
     "solid-file-client": "^1.0.2",
     "solid-namespace": "^0.3.0",

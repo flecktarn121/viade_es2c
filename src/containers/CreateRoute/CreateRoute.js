@@ -13,10 +13,11 @@ import MediaLoader from "../../utils/InOut/MediaLoader";
 
 type Props = {
     webId: String,
-    t: Function
+    t: Function,
+    test: boolean
 };
 
-const CreateRoute = ({webId}: Props) => {
+const CreateRoute = ({webId, test}: Props) => {
     const {t} = useTranslation();
     const webID = webId.replace("profile/card#me", "");
     const [title, setTitle] = useState('');
@@ -37,7 +38,7 @@ const CreateRoute = ({webId}: Props) => {
             errorToaster(t('notifications.title'), t('notifications.error'));
         } else if (description.length === 0) {
             errorToaster(t('notifications.description'), t('notifications.error'));
-        } else if (markers.length === undefined) {
+        } else if (!test && markers.length === undefined) {
             errorToaster("Añada marcadores al mapa para crear la ruta", t('notifications.error'));
         } else {
             let loader = new MediaLoader();

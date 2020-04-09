@@ -1,3 +1,3 @@
-const routes = [];
+const rutas = [];
 
-export default routes;
+export default rutas;

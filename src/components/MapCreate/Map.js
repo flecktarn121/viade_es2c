@@ -68,22 +68,6 @@ export class CreateMap extends Component {
         return markers;
     };
 
-    handleMarkerRightclick (index, event) {
-        /*
-         * All you modify is data, and the view is driven by data.
-         * This is so called data-driven-development. (And yes, it's now in
-         * web front end and even with google maps API.)
-         */
-        var {markers} = this.state;
-        markers = update(markers, {
-            $splice: [
-                [index, 1]
-            ],
-        });
-        this.setState({ markers });
-        alert("asdasdsdsd")
-    };
-
     render() {
         this.getLocation();
         return (

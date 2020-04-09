@@ -9,8 +9,9 @@ class RouteToRdfParser {
         let prefixs = this.getPrefix();
         let information = this.getInformation();
         let viadePoints = this.getViadePoints();
+        let comments = this.getComments();
         let media = this.getMedia();
-        FileWriter.handleSave(this.webID+"viade/"+this.route.name,(String)(prefixs+information+viadePoints+media))
+        FileWriter.handleSave(this.webID+"viade/"+this.route.fileName,(String)(prefixs+information+viadePoints+comments+media))
     }
 
     getPrefix(){
@@ -40,9 +41,31 @@ class RouteToRdfParser {
         return (String)(cabecera+puntos+final);
     }
 
-    getMedia(){
-        let comments = "viade:hasComments \""+this.route.comments+"\" .\n";
+    getComments(){
+        let comments = "viade:hasComments \""+this.route.comments+"\" ;\n";
         return comments;
+    }
+
+    getMedia() {
+        let imagen = "";
+        let video = "";
+        let imagenInfo = "";
+        let videoInfo = "";
+        if (this.route.image != null) {
+        imagen = "viade:hasMediaAttached :img ;\n";
+        imagenInfo = ":img schema:contentUrl \"" + this.route.image + "\" .\n";
+        }else{
+            imagen = "viade:hasMediaAttached \"null\" ;\n"
+        }
+        if(this.route.video!=null){
+            video = "viade:hasMediaAttached :video .\n";
+            videoInfo = ":video schema:contentUrl \""+this.route.video+"\" .\n"
+        }else{
+            video = "viade:hasMediaAttached \"null\" .\n"
+        }
+
+        return imagen+video+imagenInfo+videoInfo;
+
     }
 
 }

@@ -26,7 +26,7 @@ export const Header = styled.div`
   background-image: url('img/pattern-geo.png'),
     radial-gradient(#00B010, #00B010, #005F11);
   background-repeat: repeat, no-repeat;
-  padding: 5px 5px;
+  padding: 30px 20px;
   p {
     color: white;
   }

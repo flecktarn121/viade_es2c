@@ -18,7 +18,12 @@
     "errorGrantingAccess": "Había un error al dar acceso a tu documento. Por favor, intenta de nuevo.",
     "saved": "Tu documento ha sido guardado al pod.",
     "notEditable": "(no editable)",
-    "notSharable": "(logéate y carga undocumento en tu própio pod para poder dar acceso)"
+    "notSharable": "(logéate y carga undocumento en tu própio pod para poder dar acceso)",
+    "title": "La ruta debe tener un título.",
+    "description": "La ruta debe tener una descripción.",
+    "save": "La ruta se ha guardado correctamente.",
+    "notShareRoute" : "No se ha podido compartir la ruta",
+    "sendNotification": "Error: RouteConst > sendNotification"
   },
   "login": {
     "title": "Hola! Bienvenido a Viade",
@@ -46,40 +51,38 @@
     "next": "Siguiente"
   },
   "navBar": {
-    "welcome": "Bienvenida",
+    "welcome": "Bienvenid@",
     "formModel": "Form Model",
     "logOut": "Cerrar Sesión",
     "profile": "Perfil",
     "formModelRender": "Form Model Render",
     "formModelConvert": "Form Model Convert",
     "text-editor": "Editor de Textos",
-    "changeLanguage": "Cambiar Lenguaje",
+    "changeLanguage": "Cambiar Idioma",
     "map": "Mapa",
     "timeline":"Ver rutas",
     "createroute":"Crear ruta",
+    "friends":"Amigos",
     "languages": {
-      "en": "English (Inglés)",
-      "es": "Español (Español)"
+      "en": "EN",
+      "es": "ES"
     },
     "notifications": {
       "global": "Global",
-      "tictactoe": "Gato",
-      "noinbox": "No se encontró ningún inbox en su POD, debes tener al menos uno para jugar.",
       "fetchingError": "Error en las notificaciones"
-    },
-    "tictactoe": "Juego"
+    }
   },
   "footer": {
     "version": "Versión"
   },
   "notFound": {
     "title": "Página no encontrada",
-    "content": "Puede existir un problema con la dirección buscada. Por favor verifiquela e intente de nuevo. O la página que buscaste ha sido movida o eliminada",
-    "redirectButton": "Llevarme a la página principal"
+    "content": "Puede existir un problema con la dirección buscada. Por favor verifiquela e intente de nuevo. Quizá la página que buscaste ha sido movida o eliminada",
+    "redirectButton": "Página principal"
   },
   "welcome": {
-    "welcome": "Bienvenido",
-    "doneMessage": "¿Terminaste?",
+    "welcome": "Bienvenid@",
+    "doneMessage": "¿Has acabado?",
     "title": "<0>Esta aplicacion fue generada con <1>Solid React SDK by inrupt.</1></0>",
     "description": "<0>El <1>Solid React SDK by inrupt</1>  es una combinación de librerias, componentes, documentación, buenas prácticas y un generador de aplicaciones diseñada para acelerar el desarrollo de aplicaciones Solid de alta calidad:</0>",
     "libraryList": "<0><0><0> Componentes reutilizables </0>que puedes utilizar en tus propias aplicaciones.</0><1><0>Generador de aplicaciones</0>, incorpora todos los componentes y las buenas practicas en una misma aplicacion para el desarrollador. Nota: La aplicaciones Solid React, muestra el uso de los componentes instalados por el generador. No debe ser considerado como un servicio que Inrupt provee, y está sujeto a cambios.</0><0>Patrones de buenas prácticas que puedes referenciar como ejemplos para lograr resolver diferentes situaciones.</1></0>",
@@ -135,79 +138,6 @@
     "minMaxString": "Error: Mínimo y máximo debería ser ",
     "defaultError": "Error: Formato incorrecto"
   },
-  "game": {
-    "title": "Tres en Línea",
-    "createGamePrompt": "Ingresa un oponente y un ID para el juego",
-    "createGame": "Crear Juego",
-    "createGameSuccess": "Juego creado satisfactoriamente",
-    "resetGameForm": "Limpiar",
-    "idLabel": "ID del Juego",
-    "opponentWebIDLabel": "WebID del Oponente",
-    "nogames": "No se han encontrado juegos",
-    "invitationAccept": "te ha invitado a jugar una partida de Tres en Linea. Te gustaría jugar?",
-    "invitationTemplate": "<0><0><0>{{- name}}</0> te ha invitado a un juego de Tres en Linea.</0><1>Quieres aceptar el juego?</1></0>",
-    "invitationAcceptText": "Aceptar",
-    "invitationDeclineText": "Rechazar",
-    "deleteConfirmation": "Eliminar juego?",
-    "playingAgainst": "Jugando contra:",
-    "token": "Tu token:",
-    "tieMsg": "Es un empate",
-    "winnerMsg": "Eres el ganador!!",
-    "loserMsg": "Mejor suerte la próxima",
-    "winnerObj": "Ganador",
-    "notYourTurn": "No es tu turno, por favor espera a que tu rivla juegue",
-    "status": "Estado del juego:",
-    "created": "Creado:",
-    "confirmDelete": "Confirmar Eliminar",
-    "deleteLabel": "Eliminar",
-    "playLabel": "Jugar",
-    "yourGames": "Tus juegos",
-    "otherGames": "Otros juegos",
-    "errorTitle": "Error",
-    "opponentMissing": "No se puede crear el juego porque no se ingresó ningún WebID del oponente.",
-    "dataError": {
-      "message": "Los datos del juego no pudieros ser salvados, data.ttl no fue encontrado",
-      "link": {
-        "label": "Saber más",
-        "href": "https://solidsdk.inrupt.net/public/general/en/data-file-not-found.html"
-      }
-    },
-    "createFolder": {
-      "message": "Error al crear el folder del juego",
-      "link": {
-        "label": "Saber más",
-        "href": "url link"
-      }
-    },
-    "myself": "No puedes jugar contra ti mismo",
-    "alreadyExists": " archivo o carpeta ya existe en su pod."
-  },
-  "noInboxOpponent": {
-    "message": "No se encontró un inbox para su oponente",
-    "link": {
-      "label": "Conozca más",
-      "href": "https://solidsdk.inrupt.net/public/general/es/missing-global-inbox.html"
-    }
-  },
-  "noInboxUser": {
-    "message": "No tienes un inbox, por favor crea uno en tu Pod.",
-    "link": {
-      "label": "Saber más",
-      "href": "https://solidsdk.inrupt.net/public/general/es/missing-global-inbox.html"
-    }
-  },
-  "errorCreateInbox": {
-    "link": {
-      "label": "Conozca más",
-      "href": "https://solidsdk.inrupt.net/public/general/es/app-inbox-cannot-be-created.html"
-    }
-  },
-  "errorFormRender": {
-    "link": {
-      "label": "Conozca más",
-      "href": "https://solidsdk.inrupt.net/public/general/es/form-rendering-errors.html"
-    }
-  },
   "formLanguage": {
     "shacl": "SHACL",
     "shaclExtension": "SHACL + RDF Extension",
@@ -240,12 +170,39 @@
       "fieldAdded": "Campo de formulario agregado con éxito"
     }
   },
-  "editor": {
-    "explanation": "Aqui tiene un simple editor de textos con que puede crear un fichero de texto plano y guardarlo en un Pod. Para mostrarlo claramente en este demo, hay que proveer una URL que directamente identifica el fichero en el Pod. El Pod puede ser el del mismo usuario conectado, o de otra persona. Para poder escribir, y leer, al Pod de otra persona, el proprietario tendrá que dar permiso de escribir, usando el botón de 'Dar Acceso' abajo.",
-    "url": "URL",
-    "friend": "Webid de collaborador",
-    "load": "Cargar",
-    "save": "Guardar",
-    "grantAccess": "Dar Acceso"
+  "timeline": {
+    "seeRoutes": "Ver Rutas",
+    "seeRoute" : "Ver Ruta"
+  },
+  "globalError": {
+    "title": "Error",
+    "info" : "Ha ocurrido un error",
+    "msg" : "Te recomendamos refrescar la página o probar de nuevo en otro momento."
+  },
+  "imageProfile": {
+    "text": "Sube una nueva foto",
+    "upload" : "Subiendo"
+  },
+  "createRoute":{
+    "newRoute" : "Nueva Ruta",
+    "description" : "Descripción",
+    "title": "Título",
+    "media": "Multimedia",
+    "addPhoto": "Agregar foto",
+    "addVideo": "Agregar video",
+    "saveRoute" : "Guardar ruta",
+    "uploadGeoJson" : "Sube tu archivo GeoJson",
+    "uploadGPX" : "Sube tu archivo GPX",
+    "archive" : "A partir de un archivo:",
+    "map": "Crea tu propia ruta usando el mapa:",
+    "here" : "Aquí"
+  },
+  "friends": {
+    "list" : "Lista de amigos"
+  },
+  "route" : {
+    "share" : "Compartir",
+    "open" : "Abrir ruta",
+    "close" : "Cerrar ruta"
   }
 }

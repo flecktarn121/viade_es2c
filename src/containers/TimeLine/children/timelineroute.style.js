@@ -24,3 +24,7 @@ export const TimelineRouteDetail = styled.div`
     color: #005F11;
   }
 `;
+
+export const Input = styled.input`
+  margin: 5px;
+`;

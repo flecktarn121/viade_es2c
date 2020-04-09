@@ -2,6 +2,8 @@ import React,{ useState } from 'react';
 import { render } from 'react-testing-library';
 import { toUnicode } from 'punycode';
 import {Loader} from '@util-components'
+import {useTranslation} from 'react-i18next';
+/*import { render } from 'react-testing-library';*/
 
 import {Header, FriendListWrapper, FriendListContainer } from './FriendList.style';
 

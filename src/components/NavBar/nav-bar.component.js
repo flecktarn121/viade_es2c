@@ -59,7 +59,7 @@ const NavBar = (props: Props) => {
         <div className="logo-block">
           <Link to="/welcome">
             <img
-                src="/img/logo.svg"
+                src="img/logo.svg"
                 alt="Viade"
                 className="nav-icon"
                 width="24px"

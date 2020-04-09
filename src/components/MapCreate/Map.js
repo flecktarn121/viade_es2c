@@ -3,9 +3,16 @@ import {default as update} from "react-addons-update";
 import {GoogleApiWrapper, Map, Marker, Polyline} from 'google-maps-react';
 
 const containerStyle = {
-    height: '400px',
-    paddingBottom: '10px'
-    // height: '100%'
+    display: 'flex',
+    padding: '30px 0',
+    position: 'relative',
+};
+
+const style = {
+    display: 'flex',
+    flexDirection: 'row',
+    height: 'auto',
+    width: '100vw'
 };
 
 export class CreateMap extends Component {
@@ -61,27 +68,11 @@ export class CreateMap extends Component {
         return markers;
     };
 
-    handleMarkerRightclick (index, event) {
-        /*
-         * All you modify is data, and the view is driven by data.
-         * This is so called data-driven-development. (And yes, it's now in
-         * web front end and even with google maps API.)
-         */
-        var {markers} = this.state;
-        markers = update(markers, {
-            $splice: [
-                [index, 1]
-            ],
-        });
-        this.setState({ markers });
-        alert("asdasdsdsd")
-    };
-
     render() {
         this.getLocation();
         return (
             <Map google={this.props.google} zoom={14} onClick={this._onClick} center={this.state.center}
-                 containerStyle={containerStyle}>
+                 style={style} containerStyle={containerStyle}>
 
                 {this.state.markers.map((marker, index) => {
                     return (

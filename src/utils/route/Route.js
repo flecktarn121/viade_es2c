@@ -1,5 +1,5 @@
 class Route {
-    constructor(name, description, points, author, comments, image, video) {
+    constructor(name, description, points, author, comments, image, video, filename) {
         this._name = name;
         this._description = description;
         this._points = points;
@@ -7,6 +7,7 @@ class Route {
         this._comments = comments;
         this._image = image;
         this._video = video;
+        this._fileName = filename
     }
 
     get name() {
@@ -64,6 +65,14 @@ class Route {
 
     set video(value) {
         this._video = value;
+    }
+
+    get fileName() {
+        return this._fileName;
+    }
+
+    set fileName(value) {
+        this._fileName = value;
     }
 }
 export default Route;

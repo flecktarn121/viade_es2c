@@ -3,7 +3,7 @@ import {findIconDefinition, IconDefinition, IconLookup} from '@fortawesome/fonta
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {withTranslation} from 'react-i18next';
 import '../NavBar/children/Navigation/navigation.css'
-
+//{process.env.REACT_APP_VERSION}
 type Props = {
   t: Function
 };
@@ -21,7 +21,7 @@ const Footer = (props: Props) => {
             <li>© Viade</li>
             <li>
               {t('footer.version')}
-              {''} <span className="build-value">{process.env.REACT_APP_VERSION}</span>
+              {''} <span className="build-value">1.0.0</span>
             </li>
           </ul>
         </div>

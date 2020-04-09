@@ -80,8 +80,8 @@ const CreateRoute = ({webId}: Props) => {
     }
 
     return (
-        <RouteWrapper>
-            <Header>
+        <RouteWrapper data-testid="route-wrapper">
+            <Header data-testid="route-header">
                 <h1 className={"text--white"}>{t('createRoute.newRoute')}</h1>
                 <Label>{t('createRoute.title')}</Label>
                 <Input type="text" size="20" placeholder={t('createRoute.newRoute')} onChange={handleTitleChange}

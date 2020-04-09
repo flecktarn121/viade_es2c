@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {TimelineRouteCard, TimelineRouteDetail, Input} from './timelineroute.style';
 import Ruta from "../../Ruta"
 import rutas from "../../../constants/globals";
@@ -11,7 +11,7 @@ import {useTranslation} from 'react-i18next';
 
 const TimeLineRoute = props => {
     let cadena = null;
-    let friendWebID = null;
+    const [friendWebID, setFriendWebID] = useState("");
     const {title, description, id} = props;
     let route = rutas[id];
     const {createNotification} = useNotification(cadena);
@@ -83,7 +83,7 @@ const TimeLineRoute = props => {
 
     function handleFriendChange(event) {
         event.preventDefault();
-        friendWebID = event.target.value;
+        setFriendWebID(event.target.value);
     }
 
     return (

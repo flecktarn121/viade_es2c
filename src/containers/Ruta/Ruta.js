@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import Modal from 'react-awesome-modal'
 import {Header} from "./Ruta.style";
 import Map from "../../components/Map";
-import {useTranslation} from "react-i18next";
+//import {useTranslation} from "react-i18next";
 
 export default class Ruta extends Component {
 
@@ -31,7 +31,7 @@ export default class Ruta extends Component {
     render() {
         return (
             <section>
-                <input type="button" data-testid="open" value={"Abrir"} onClick={() => this.openModal()}/>
+                <input type="button" data-testid="button-open" value={"Abrir"} onClick={() => this.openModal()}/>
                 <Modal visible={this.state.visible} width="1000" height="650" effect="fadeInDown"
                        onClickAway={() => this.closeModal()}>
                     <div>
@@ -39,7 +39,7 @@ export default class Ruta extends Component {
                             <h1 className="text--white">{this.route.name}</h1>
                         </Header>
                         <Map zoom={15} markers={this.route.points}/>
-                        <input type="button" data-testid="close" value={"Cerrar"} onClick={() => this.closeModal()}/>
+                        <input type="button" data-testid="button-close" value={"Cerrar"} onClick={() => this.closeModal()}/>
                     </div>
                 </Modal>
             </section>

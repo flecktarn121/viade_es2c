@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {TimelineRouteCard, TimelineRouteDetail, Input} from './timelineroute.style';
 import Ruta from "../../Ruta"
-import rutas from "../../../constants/globals";
 
 import {NotificationTypes, useNotification} from '@inrupt/solid-react-components';
 import {notification} from '@utils';
@@ -11,8 +10,9 @@ import {useTranslation} from 'react-i18next';
 const TimeLineRoute = props => {
     let cadena = null;
     let friendWebID = null;
-    const {title, description, id} = props;
-    let route = rutas[id];
+    let route = props.route;
+    const title = route.name;
+    const description = route.description;
     const {createNotification} = useNotification(cadena);
     const { t } = useTranslation();
 

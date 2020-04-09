@@ -13,7 +13,7 @@ const props = {
 
 describe.only('CreateRoute', () => {
   afterAll(cleanup);
-  const { container, getByTestId } = render(
+  const { container } = render(
       <Router>
         <CreateRoute {...{ ...props }} />
       </Router>

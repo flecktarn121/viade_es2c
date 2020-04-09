@@ -27,11 +27,12 @@ const TimeLineRoute = props => {
     function handleShare() {
         try {
             console.log("a")
+            let url = cadena.replace("profile/card#me", "viade/"+ route.name);
             const contentNotif = {
                 title: "Route share",
                 summary: "Ha compartido una ruta contigo",
                 actor: cadena,
-                object: cadena + "viade/" + route.name,
+                object: url,
                 target: friendWebID
             };
             publish(sendNotification, contentNotif, friendWebID, NotificationTypes.OFFER);

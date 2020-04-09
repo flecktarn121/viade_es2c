@@ -26,7 +26,7 @@ const TimeLineRoute = props => {
 
     function handleShare() {
         try {
-            console.log("a")
+            console.log("a");
             let url = cadena.replace("profile/card#me", "viade/"+ route.name);
             const contentNotif = {
                 title: "Route share",

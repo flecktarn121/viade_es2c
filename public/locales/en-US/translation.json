@@ -197,6 +197,8 @@
     "list" : "List of friends"
   },
   "route" : {
-    "share" : "Share"
+    "share" : "Share",
+    "open" : "Open route",
+    "close" : "Close route"
   }
 }

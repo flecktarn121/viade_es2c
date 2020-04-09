@@ -45,13 +45,11 @@ describe.only('CreateRoute', () => {
     test('test inputs', () => {
         const input_title = getByTestId(container, 'input-title');
         const input_description = getByTestId(container, 'input-description');
-        const input_file = getByTestId(container, 'input-file');
         const button_save = getByTestId(container, 'button-save');
 
         fireEvent.change(input_title, {target: {value: "prueba"}});
         fireEvent.change(input_description, {target: {value: "prueba"}});
 
-        fireEvent.change(input_file);
         expect(input_title.value).toEqual("prueba");
         expect(input_description.value).toEqual("prueba");
 

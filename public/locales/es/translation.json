@@ -201,6 +201,8 @@
     "list" : "Lista de amigos"
   },
   "route" : {
-    "share" : "Compartir"
+    "share" : "Compartir",
+    "open" : "Abrir ruta",
+    "close" : "Cerrar ruta"
   }
 }

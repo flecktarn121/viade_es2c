@@ -5,6 +5,7 @@ import RdftoRouteParser from "../../utils/parser/RdfToRouteParser";
 import SmallRow from "../Delay/Delay";
 import {Loader} from '@util-components';
 import {withTranslation} from 'react-i18next';
+import SharedNotificationToRouteParser from "../../utils/parser/SharedNotificationToRouteParser";
 
 type Props = {
     webId: String,
@@ -23,6 +24,8 @@ class TimeLine extends React.Component {
         this.webID = webId.replace("profile/card#me", "viade/");
         this.parser = new RdftoRouteParser();
         this.parser.addRoutes(this.webID);
+        this.parserShared = new SharedNotificationToRouteParser();
+        this.parserShared.addRoutes(this.webID);
     }
 
     loaded = () => this.setState({isLoading: false});

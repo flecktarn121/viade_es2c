@@ -2,10 +2,11 @@ import React, {useEffect} from 'react';
 import {TimelineRouteCard, TimelineRouteDetail, Input} from './timelineroute.style';
 import Ruta from "../../Ruta"
 import rutas from "../../../constants/globals";
+import auth from "solid-auth-client";
+import FC from "solid-file-client";
 
 import {NotificationTypes, useNotification} from '@inrupt/solid-react-components';
 import {notification} from '@utils';
-import auth from "solid-auth-client";
 import {useTranslation} from 'react-i18next';
 
 const TimeLineRoute = props => {
@@ -27,7 +28,7 @@ const TimeLineRoute = props => {
     function handleShare() {
         try {
             console.log("a")
-            let url = cadena.replace("profile/card#me", "viade/"+ route.name);
+            let url = cadena.replace("profile/card#me", "viade/"+ route.fileName);
             const contentNotif = {
                 title: "Route share",
                 summary: "Ha compartido una ruta contigo",
@@ -39,7 +40,7 @@ const TimeLineRoute = props => {
         } catch (error) {
             console.log(error);
         }
-    }
+        }
 
     const publish = async (createNotification, content, webId, type) => {
         try {

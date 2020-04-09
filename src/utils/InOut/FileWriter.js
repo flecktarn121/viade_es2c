@@ -13,17 +13,17 @@ class FileWriter {
             }
         });
     }
-    static handleLoad(url,callback) {
+    static handleLoad(url,fileName,callback) {
         const doc = SolidAuth.fetch(url);
         doc
             .then(async response => {
                 const text = await response.text();
                 if (response.ok) {
-                    callback(text);
+                    callback(fileName,text);
                 } else if (response.status === 404) {
                     alert('error');
                 } else {
-                    alert('error');
+                    alert(response.status);
                 }
             });
     }
@@ -38,7 +38,7 @@ class FileWriter {
                 carpetas[i]=promesa.files[i].name;
             }
             callback(url,carpetas);
-        });
+        }, err => alert("Error al leer la carpeta "+url+" "+err));
     }
 }
 

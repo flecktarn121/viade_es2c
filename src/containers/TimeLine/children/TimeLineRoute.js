@@ -26,6 +26,7 @@ const TimeLineRoute = props => {
 
     function handleShare() {
         try {
+            console.log("a")
             const contentNotif = {
                 title: "Route share",
                 summary: "Ha compartido una ruta contigo",

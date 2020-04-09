@@ -11,8 +11,8 @@ import {useTranslation} from 'react-i18next';
 const TimeLineRoute = props => {
     let cadena = null;
     let friendWebID = null;
-    const {title, description, id} = props;
-    let route = rutas[id];
+    const {title, description, id, ruta} = props;
+    let route = ruta === undefined ? rutas[id] : ruta;
     const {createNotification} = useNotification(cadena);
     const { t } = useTranslation();
 

@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { media } from '@utils';
-
 export const FriendListWrapper = styled.div`
   display: flex;
   flex: 1 0 auto;
@@ -53,4 +51,3 @@ export const Header = styled.div`
   }
 `;
 
-;

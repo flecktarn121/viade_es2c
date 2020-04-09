@@ -1,11 +1,7 @@
-import React,{ useState } from 'react';
-import { render } from 'react-testing-library';
-import { toUnicode } from 'punycode';
+import React, {useState} from 'react';
 import {Loader} from '@util-components'
-import {useTranslation} from 'react-i18next';
+import {FriendListContainer, FriendListWrapper, Header} from './FriendList.style';
 /*import { render } from 'react-testing-library';*/
-
-import {Header, FriendListWrapper, FriendListContainer } from './FriendList.style';
 
 //authentication
 const auth = require('solid-auth-client');
@@ -27,8 +23,9 @@ var friendsLi = null;
  */
 function FriendsList() {
     //obtaining webId of the user in session
-    trackSession(function(person){
-        loadFriends(person,function(friendsUrls){
+    trackSession(function(persona){
+        console.log("sesion",persona)
+        loadFriends(persona,function(friendsUrls){
             if(friendsUrls == null || friendsUrls === undefined){
                 console.log('Error obtaining friendsUrls');
             }
@@ -74,15 +71,15 @@ function renderFriendsList(){
  * @param personUrl 
  * @param callback function executed when friend is loaded
  */
-async function obtainFullName(personUrl,callback){
-    await fetcher.load(personUrl);
-    const fullName = store.any(personUrl,FOAF('name'));
-    if(fullName === undefined || fullName === null){
-        console.log('Error obtaining the name of '+personUrl);
-    }else{
-        callback(fullName);
-    }
-}
+// async function obtainFullName(personUrl,callback){
+//     await fetcher.load(personUrl);
+//     const fullName = store.any(personUrl,FOAF('name'));
+//     if(fullName === undefined || fullName === null){
+//         console.log('Error obtaining the name of '+personUrl);
+//     }else{
+//         callback(fullName);
+//     }
+// }
 
 /**
  * TODO: modificar para devolver nombre y url
@@ -94,7 +91,8 @@ async function loadFriends(p,callback) {
         console.log('error couldnt get user');
         return callback(null);
     }else{
-        await fetcher.load(person);
+        console.log("loadfriends", p)
+        await fetcher.load(p);
         const friends = store.each($rdf.sym(p), FOAF('knows'));
 
         var friendsUrls = friends.map(friend =>
@@ -112,7 +110,7 @@ function trackSession(callback) {
         if (session) {
             //person = session.webId;
             console.log('The user : ' + person + 'is logged in');
-            return callback(person);
+            return callback(session.webId);
         }
         else {
             console.log('The user is not logged in');

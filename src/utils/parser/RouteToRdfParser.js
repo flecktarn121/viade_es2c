@@ -11,7 +11,7 @@ class RouteToRdfParser {
         let viadePoints = this.getViadePoints();
         let comments = this.getComments();
         let media = this.getMedia();
-        FileWriter.handleSave(this.webID+"viade/"+this.route.name,(String)(prefixs+information+viadePoints+comments+media))
+        FileWriter.handleSave(this.webID+"viade/"+this.route.filename,(String)(prefixs+information+viadePoints+comments+media))
     }
 
     getPrefix(){

@@ -1,6 +1,7 @@
 import React,{ useState } from 'react';
 import { render } from 'react-testing-library';
 import { toUnicode } from 'punycode';
+import {Loader} from '@util-components'
 
 import {Header, FriendListWrapper, FriendListContainer } from './FriendList.style';
 
@@ -47,8 +48,11 @@ function FriendsList() {
  * obtaining the friendsList
  */
 function renderFriendsList(){
+    const [isLoading,setIsLoading] = useState(true);
+    var loaded = () => setIsLoading(false);
     return( 
     <FriendListWrapper>
+        {setTimeout(loaded,3000)}
         <FriendListContainer>
         <div>
             <Header>
@@ -59,7 +63,7 @@ function renderFriendsList(){
                 </ul>     
         </div>
         </FriendListContainer>
-        
+        {isLoading && <Loader absolute/>}
     </FriendListWrapper>)
 }
 

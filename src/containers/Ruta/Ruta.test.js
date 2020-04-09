@@ -1,5 +1,5 @@
 import React from 'react';
-import {cleanup, render} from 'react-testing-library';
+import {cleanup, fireEvent, getByTestId, render} from 'react-testing-library';
 import Ruta from "./Ruta";
 import Route from "../../utils/route/Route"
 
@@ -18,7 +18,7 @@ const props = {
 describe.only('Ruta', () => {
     afterAll(cleanup);
 
-    const {container, getByTestId} = render(
+    const {container} = render(
         <Ruta {...{...props}}/>
     );
 
@@ -26,9 +26,16 @@ describe.only('Ruta', () => {
         expect(container).toBeTruthy();
     });
 
-    Ruta.setState(true);
+    test('renders changing state (true)', () => {
+        const button_open = getByTestId(container, 'button-open');
 
-    test('renders changing state', () => {
-        expect(container).toBeTruthy();
+        fireEvent.click(button_open);
     });
+
+    test('renders changing state (false)', () => {
+        const button_close = getByTestId(container, 'button-close');
+
+        fireEvent.click(button_close);
+    });
+
 });

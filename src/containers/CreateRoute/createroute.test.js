@@ -7,8 +7,10 @@ import CreateRoute from "./CreateRoute";
 
 library.add(fas);
 
+
 const props = {
-    webId: 'https://elmer.solid.community/'
+    webId: 'https://elmer.solid.community/',
+    test: true
 };
 
 describe.only('CreateRoute', () => {

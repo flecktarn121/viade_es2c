@@ -21,8 +21,8 @@ export const NavigationItems = [
     to: '/friends'
   },
   {
-    id: 'createrouteselector',
-    icon: 'img/icon/ruta.svg',
+    id: 'createroute',
+    icon: '/img/icon/ruta.svg',
     label: 'navBar.createroute',
     to: '/createrouteselector'
   }

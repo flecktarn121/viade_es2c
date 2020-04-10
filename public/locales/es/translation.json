@@ -195,10 +195,15 @@
     "uploadGPX" : "Sube tu archivo GPX",
     "archive" : "A partir de un archivo:",
     "map": "Crea tu propia ruta usando el mapa:",
-    "here" : "Aquí"
+    "here" : "Aquí",
+    "data": "Datos de la ruta"
   },
   "friends": {
-    "list" : "Lista de amigos"
+    "list" : "Lista de amigos",
+    "profile" : "Ver perfil",
+    "errorObtaining": "Error obteniendo los amigos",
+    "erroruser" : "Error obteniendo la sesión del usuario",
+    "userlogged" : "El usuario no está loggeado"
   },
   "route" : {
     "share" : "Compartir",

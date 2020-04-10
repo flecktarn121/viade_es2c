@@ -6,19 +6,24 @@ const containerStyle = {
     display: 'flex',
     padding: '30px 0',
     position: 'relative',
+    width: 'auto',
+    height: '30em'
 };
 
 const style = {
     display: 'flex',
     flexDirection: 'row',
-    height: 'auto',
-    width: '100vw'
+    height: '30em',
+    width: 'auto'
 };
 
 export class CreateMap extends Component {
+
     sendData = () => {
         this.props.parentCallback(this.state.markers);
     };
+
+
 
     state = {
         markers: [],
@@ -57,6 +62,8 @@ export class CreateMap extends Component {
         });
         this.setState({markers});
         this.sendData();
+
+
     };
 
     crearlinea() {

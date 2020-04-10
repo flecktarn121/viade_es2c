@@ -5,7 +5,7 @@ import {
     loadFeature,
 } from 'jest-cucumber';
 
-const feature = loadFeature('./feature/features/login.feature');
+const feature = loadFeature('./feature/features/timeline.feature');
 const puppeteer = require('puppeteer');
 let browser = null;
 let page = null;
@@ -16,21 +16,17 @@ defineFeature(feature, test => {
         jest.setTimeout(1200000);
     });
 
-    test('Trying to log in', ({given, when, and, then}) => {
+    test('Trying view my routes', ({given, when, and, then}) => {
 
-        given('I will log ing', async () => {
+        given('I go to timeline page', async () => {
             browser = await puppeteer.launch({
                 headless: false
             });
 
-            page = await browser.newPage()
+            page = await browser.newPage();
             await page.goto("http://localhost:3000/#/login", {
                 waitUntil: 'networkidle2'
             });
-
-        });
-
-        when('I write my webID', async () => {
 
             await page.waitForSelector(".sc-EHOje.cffgrt");
             await page.type(".sc-EHOje.cffgrt", "https://viadees2c.solid.community/profile/card#me");
@@ -49,10 +45,6 @@ defineFeature(feature, test => {
                 waitUntil: 'networkidle2'
             });
 
-        });
-
-        and('I fill the form', async () => {
-
             await page.waitForSelector("[id='username']", {visible: true});
             await page.type("[id='username']", "viadees2c");
 
@@ -70,16 +62,39 @@ defineFeature(feature, test => {
                 });
             });
 
-        });
-
-        then('sends us to the welcome page', async () => {
-
             await page.waitForNavigation({
                 waitUntil: 'networkidle2'
             });
 
-            expect(page.url()).toBe("http://localhost:3000/#/welcome")
+            expect(page.url()).toBe("http://localhost:3000/#/welcome");
+
+            await page.waitFor(1000);
+
+            await page.goto("http://localhost:3000/#/timeline", {
+                waitUntil: 'networkidle2'
+            });
+
+            expect(page.url()).toBe("http://localhost:3000/#/timeline")
 
         });
-    });
+
+
+        when('I try to see a route', async () => {
+
+            await page.waitFor(5000);
+
+            await page.evaluate(() => {
+                let btns = document.getElementById("button-open-Compartir");
+                btns.click();
+            });
+
+        });
+
+        then('I can see the route', async () => {
+            await page.waitFor(1000);
+            await page.waitForSelector("[id='route-title-Compartir']", {visible: true});
+            expect(page.url()).toBe("http://localhost:3000/#/timeline")
+        });
+    })
+
 });

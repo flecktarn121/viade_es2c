@@ -3,14 +3,16 @@
 /* eslint-disable no-console */
 
 import React, {useState} from 'react';
-import {Button, Header, Input, Label, RouteWrapper} from "./Route.style";
+import {Header, Input, Label, RouteWrapper, Form, FullGridSize, RouteContainer} from "./Route.style";
 import RouteToRdfParser from "../../utils/parser/RouteToRdfParser"
 import Route from "../../utils/route/Route"
 import {errorToaster, successToaster} from '@utils';
 import {useTranslation} from "react-i18next";
 import MediaLoader from "../../utils/InOut/MediaLoader";
+import {Button} from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-type Props = { webId: String , test: boolean};
+type Props = { webId: String, test: boolean };
 
 let markers = [];
 
@@ -48,7 +50,7 @@ const CreateRouteGPX = ({webId, test}: Props) => {
             if (!test && gpx === "") {
                 errorToaster("suba un archivo", t('notifications.error'));
             } else {
-                parsergpx(test? gpxTest:gpx);
+                parsergpx(test ? gpxTest : gpx);
                 if (markers.length === 0) {
                     errorToaster("error en el parser: es posible que su archivo no sea valido", t('notifications.error'));
                 } else {
@@ -56,7 +58,7 @@ const CreateRouteGPX = ({webId, test}: Props) => {
                     loader.saveImage(photoURL, img);
                     loader.saveVideo(videoURL, video);
                     let filename = title.trim().replace(/ /g, "") + new Date().getTime();
-                    let route = new Route(title, description, markers, webID, null, photoURL === "" ? null : photoURL, videoURL === "" ? null : videoURL,filename);
+                    let route = new Route(title, description, markers, webID, null, photoURL === "" ? null : photoURL, videoURL === "" ? null : videoURL, filename);
                     let parser = new RouteToRdfParser(route, webID);
                     parser.parse();
                     successToaster(t('notifications.save'), t('notifications.success'));
@@ -108,24 +110,53 @@ const CreateRouteGPX = ({webId, test}: Props) => {
 
     return (
         <RouteWrapper data-testid="route-wrapper">
-            <Header data-testid="route-header">
-                <h1 className={"text--white"}>{t('createRoute.newRoute')}</h1>
-                <Label>import {useTranslation} from 'react-i18next';</Label>
-                <Input type="text" size="20" placeholder={t('createRoute.newRoute')} onChange={handleTitleChange}
-                       data-testid="input-title"/>
-                <Label>{t('createRoute.description')}</Label>
-                <Input type="text" size="100" placeholder={t('createRoute.description')}
-                       onChange={handleDescriptionChange} data-testid="input-description"/>
-                <Label>{t('createRoute.uploadGPX')}</Label>
-                <Input type="file" ref={file} onChange={handleUpload} data-testid="input-file"/>
-                <Label>{t('createRoute.media')}</Label>
-                <Label>{t('createRoute.addPhoto')}</Label>
-                <Input type="file" ref={img} onChange={handlePhotoChange} data-testid="input-img" accept={".png"}/>
-                <Label>{t('createRoute.addVideo')}</Label>
-                <Input type="file" ref={video} onChange={handleVideoChange} data-testid="input-video" accept={".mp4"}/>
-                <br/>
-                <Button onClick={handleSave} data-testid="button-save"> {t('createRoute.saveRoute')} </Button>
-            </Header>
+            <RouteContainer>
+                <Header data-testid="route-header">
+                    <h1 className={"text--white"}>{t('createRoute.newRoute')}: Gpx</h1>
+                </Header>
+                <Form>
+                    <h4>{t('createRoute.data')}</h4>
+                    <FullGridSize>
+                        <Label>
+                            {t('createRoute.title')}
+                            <Input type="text" size="20" placeholder={t('createRoute.newRoute')}
+                                   onChange={handleTitleChange}
+                                   data-testid="input-title" id="input-title"/>
+                        </Label>
+
+                        <Label>{t('createRoute.description')}
+                            <Input type="text" size="100" placeholder={t('createRoute.description')}
+                                   onChange={handleDescriptionChange} data-testid="input-description" id="input-description"/>
+                        </Label>
+
+                        <Label>{t('createRoute.uploadGPX')}
+                            <Input type="file" ref={file} onChange={handleUpload} data-testid="input-file" id="input-file"/>
+                        </Label>
+
+                    </FullGridSize>
+                    <h4>{t('createRoute.media')}</h4>
+                    <FullGridSize>
+                        <Label>{t('createRoute.addPhoto')}</Label>
+                        <Input type="file" ref={img} onChange={handlePhotoChange} data-testid="input-img" id="input-img"
+                               accept={".png"}/>
+                        <Label>{t('createRoute.addVideo')}</Label>
+                        <Input type="file" ref={video} onChange={handleVideoChange} data-testid="input-video" id="input-video"
+                               accept={".mp4"}/>
+                    </FullGridSize>
+                    <FullGridSize>
+                        <Button
+                            variant="success"
+                            onClick={handleSave}
+                            data-testid="button-save"
+                            id="button-save"
+                            size="lg" block
+                        >
+                            {t('createRoute.saveRoute')}
+                        </Button>
+                    </FullGridSize>
+                </Form>
+
+            </RouteContainer>
         </RouteWrapper>
     );
 

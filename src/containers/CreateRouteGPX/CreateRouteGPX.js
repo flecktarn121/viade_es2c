@@ -121,26 +121,26 @@ const CreateRouteGPX = ({webId, test}: Props) => {
                             {t('createRoute.title')}
                             <Input type="text" size="20" placeholder={t('createRoute.newRoute')}
                                    onChange={handleTitleChange}
-                                   data-testid="input-title"/>
+                                   data-testid="input-title" id="input-title"/>
                         </Label>
 
                         <Label>{t('createRoute.description')}
                             <Input type="text" size="100" placeholder={t('createRoute.description')}
-                                   onChange={handleDescriptionChange} data-testid="input-description"/>
+                                   onChange={handleDescriptionChange} data-testid="input-description" id="input-description"/>
                         </Label>
 
                         <Label>{t('createRoute.uploadGPX')}
-                            <Input type="file" ref={file} onChange={handleUpload} data-testid="input-file"/>
+                            <Input type="file" ref={file} onChange={handleUpload} data-testid="input-file" id="input-file"/>
                         </Label>
 
                     </FullGridSize>
                     <h4>{t('createRoute.media')}</h4>
                     <FullGridSize>
                         <Label>{t('createRoute.addPhoto')}</Label>
-                        <Input type="file" ref={img} onChange={handlePhotoChange} data-testid="input-img"
+                        <Input type="file" ref={img} onChange={handlePhotoChange} data-testid="input-img" id="input-img"
                                accept={".png"}/>
                         <Label>{t('createRoute.addVideo')}</Label>
-                        <Input type="file" ref={video} onChange={handleVideoChange} data-testid="input-video"
+                        <Input type="file" ref={video} onChange={handleVideoChange} data-testid="input-video" id="input-video"
                                accept={".mp4"}/>
                     </FullGridSize>
                     <FullGridSize>
@@ -149,7 +149,7 @@ const CreateRouteGPX = ({webId, test}: Props) => {
                             onClick={handleSave}
                             data-testid="button-save"
                             id="button-save"
-                            size="lg" block
+                            size="lg" block 
                         >
                             {t('createRoute.saveRoute')}
                         </Button>

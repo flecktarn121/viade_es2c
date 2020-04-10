@@ -5,7 +5,7 @@ import {
     loadFeature,
 } from 'jest-cucumber';
 
-const feature = loadFeature('./feature/features/createroute.feature');
+const feature = loadFeature('./feature/features/createroutefile.feature');
 const puppeteer = require('puppeteer');
 let browser = null;
 let page = null;
@@ -16,7 +16,7 @@ defineFeature(feature, test => {
         jest.setTimeout(1200000);
     });
 
-    test('Trying create route with map', ({given, when, and, then}) => {
+    test('Trying create route with gpx file', ({given, when, and, then}) => {
 
         given('I go to create route with page', async () => {
             browser = await puppeteer.launch({
@@ -73,7 +73,7 @@ defineFeature(feature, test => {
 
         when('I fill the title and description and I upload a video and a image', async () => {
 
-            await page.goto("http://localhost:3000/#/createroute", {
+            await page.goto("http://localhost:3000/#/createroutegpx", {
                 waitUntil: 'networkidle2'
             });
 
@@ -105,19 +105,14 @@ defineFeature(feature, test => {
 
         });
 
-        and('I put the markers on the map and I save the route', async () => {
+        and('I upload de gpx file and I save the route', async () => {
 
-            await page.evaluate(() => {
-                window.scrollBy(0, window.innerHeight);
-            });
-
-            await page.waitFor(1000);
-
-            await page.mouse.move(500, 500);
-            await page.mouse.down({button: 'left'});
-            await page.mouse.up({button: 'left'});
-
-            await page.waitFor(1000);
+            const path = require('path');
+            const filepath = path.relative(process.cwd(), __dirname + '/track.gpx');
+            const input_file = await page.$("[id='input-file']");
+            await input_file.uploadFile(filepath);
+            await input_file.evaluate(upload => upload.dispatchEvent(new Event('change', {bubbles: true})));
+            await page.waitFor(1500);
 
             await page.evaluate(() => {
                 let submit = document.getElementById("button-save");

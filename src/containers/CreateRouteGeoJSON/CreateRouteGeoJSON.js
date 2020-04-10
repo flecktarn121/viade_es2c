@@ -3,12 +3,14 @@
 /* eslint-disable no-console */
 
 import React, {useState} from 'react';
-import {Button, Header, Input, Label, RouteWrapper, RouteContainer, Form, FullGridSize} from "./RouteGeoJSON.style";
+import {Header, Input, Label, RouteWrapper, RouteContainer, Form, FullGridSize} from "./RouteGeoJSON.style";
 import RouteToRdfParser from "../../utils/parser/RouteToRdfParser"
 import Route from "../../utils/route/Route"
 import {errorToaster, successToaster} from '@utils';
 import {useTranslation} from "react-i18next";
 import MediaLoader from "../../utils/InOut/MediaLoader";
+import {Button} from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 type Props = { webId: String, test: boolean };
 
@@ -128,11 +130,15 @@ const CreateRouteGeoJSON = ({webId, test}: Props) => {
                                    data-testid="input-title"/>
                         </Label>
 
-                        <Label>{t('createRoute.description')}</Label>
-                        <Input type="text" size="100" placeholder={t('createRoute.description')}
-                               onChange={handleDescriptionChange} data-testid="input-description"/>
-                        <Label>{t('createRoute.uploadGeoJson')}</Label>
-                        <Input type="file" ref={file} onChange={handleUpload} data-testid="input-file"/>
+                        <Label>{t('createRoute.description')}
+                            <Input type="text" size="100" placeholder={t('createRoute.description')}
+                                   onChange={handleDescriptionChange} data-testid="input-description"/>
+                        </Label>
+
+                        <Label>{t('createRoute.uploadGeoJson')}
+                            <Input type="file" ref={file} onChange={handleUpload} data-testid="input-file"/>
+                        </Label>
+
                     </FullGridSize>
                     <h4>{t('createRoute.media')}</h4>
                     <FullGridSize>
@@ -144,7 +150,14 @@ const CreateRouteGeoJSON = ({webId, test}: Props) => {
                                accept={".mp4"}/>
                     </FullGridSize>
                     <FullGridSize>
-                    <Button onClick={handleSave} data-testid="button-save"> {t('createRoute.saveRoute')} </Button>
+                        <Button
+                            variant="success"
+                            onClick={handleSave}
+                            data-testid="button-save"
+                            id="button-save"
+                        >
+                            {t('createRoute.saveRoute')}
+                        </Button>
                     </FullGridSize>
                 </Form>
 

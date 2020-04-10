@@ -97,14 +97,18 @@ const CreateRoute = ({webId}: Props) => {
                     <FullGridSize>
                         <Label>
                             {t('createRoute.title')}
+                            <Input type="text" size="20" placeholder={t('createRoute.newRoute')}
+                                   onChange={handleTitleChange} data-testid='input-title' id='input-title'/>
                         </Label>
-                        <Input type="text" size="20" placeholder={t('createRoute.newRoute')} onChange={handleTitleChange} data-testid='input-title' id='input-title'/>
+
 
                         <Label>{t('createRoute.description')}
+                            <Input type="text" size="100" placeholder={t('createRoute.description')}
+                                   onChange={handleDescriptionChange} data-testid="input-description"
+                                   id="input-description"/>
 
                         </Label>
-                        <Input type="text" size="100" placeholder={t('createRoute.description')}
-                               onChange={handleDescriptionChange} data-testid="input-description" id="input-description"/>
+
 
                     </FullGridSize>
                     <h4>{t('createRoute.media')}</h4>
@@ -113,7 +117,8 @@ const CreateRoute = ({webId}: Props) => {
                         <Input type="file" ref={img} onChange={handlePhotoChange} data-testid="input-img" id="input-img"
                                accept={".png"}/>
                         <Label>{t('createRoute.addVideo')}</Label>
-                        <Input type="file" ref={video} onChange={handleVideoChange} data-testid="input-video" id="input-video"
+                        <Input type="file" ref={video} onChange={handleVideoChange} data-testid="input-video"
+                               id="input-video"
                                accept={".mp4"}/>
                     </FullGridSize>
                     <h4>{"Mapa"}</h4>

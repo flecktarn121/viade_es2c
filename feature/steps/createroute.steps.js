@@ -94,6 +94,10 @@ defineFeature(feature, test => {
 
         and('I put the markers on the map', async () => {
 
+            await page.evaluate(() => {
+                window.scrollBy(0, window.innerHeight);
+            });
+
             await page.waitFor(1000);
 
             await page.mouse.move(500, 500);

@@ -66,7 +66,7 @@ export const FullGridSize = styled.div`
 `;
 
 export const Input = styled.input`
-  margin: 5px;
+  margin: 10px;
 `;
 
 export const Button = styled.button`

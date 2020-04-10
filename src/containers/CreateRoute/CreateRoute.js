@@ -3,13 +3,15 @@
 /* eslint-disable no-console */
 
 import React, {useState} from 'react';
-import {Button, Header, Input, Label, RouteWrapper} from "./Route.style";
+import {Form, FullGridSize, Header, Input, Label, RouteContainer, RouteWrapper} from "./Route.style";
 import {CreateMap} from "../../components";
 import RouteToRdfParser from "../../utils/parser/RouteToRdfParser"
 import Route from "../../utils/route/Route"
 import {errorToaster, successToaster} from '@utils';
 import {useTranslation} from "react-i18next";
 import MediaLoader from "../../utils/InOut/MediaLoader";
+import {Button} from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 type Props = {
     webId: String,
@@ -24,15 +26,19 @@ const CreateRoute = ({webId}: Props) => {
     const [markers, setMarkers] = useState({});
     const [photoURL, setPhotoURL] = useState("");
     const [videoURL, setVideoURL] = useState("");
+    let marcadores = [];
     let img = React.createRef();
     let video = React.createRef();
 
 
     function callbackFunction(childData) {
         setMarkers(childData);
+        marcadores = childData;
+        console.log(marcadores)
     }
 
     function handleSave(event) {
+        marcadores.push({position: {lat: 0, lng: 0}})
         if (title.length === 0) {
             errorToaster(t('notifications.title'), t('notifications.error'));
         } else if (description.length === 0) {
@@ -44,7 +50,7 @@ const CreateRoute = ({webId}: Props) => {
             loader.saveImage(photoURL, img);
             loader.saveVideo(videoURL, video);
             let filename = title.trim().replace(/ /g, "") + new Date().getTime();
-            let route = new Route(title, description, markers, webID, null, photoURL === "" ? null : photoURL, videoURL === "" ? null : videoURL,filename);
+            let route = new Route(title, description, markers, webID, null, photoURL === "" ? null : photoURL, videoURL === "" ? null : videoURL, filename);
             let parser = new RouteToRdfParser(route, webID);
             parser.parse();
             successToaster(t('notifications.save'), t('notifications.success'));
@@ -80,29 +86,55 @@ const CreateRoute = ({webId}: Props) => {
     }
 
     return (
+
         <RouteWrapper data-testid="route-wrapper">
-            <Header data-testid="route-header">
-                <h1 className={"text--white"}>{t('createRoute.newRoute')}</h1>
-                <Label>{t('createRoute.title')}</Label>
-                <Input type="text" size="20" placeholder={t('createRoute.newRoute')} onChange={handleTitleChange}
-                       data-testid="input-title" id={"input-title"}/>
-                <Label>{t('createRoute.description')}</Label>
-                <Input type="text" size="100" placeholder={t('createRoute.description')}
-                       onChange={handleDescriptionChange} data-testid="input-description" id={"input-description"}/>
-                <Label>{t('createRoute.media')}</Label>
-                <Label>{t('createRoute.addPhoto')}</Label>
-                <Input type="file" ref={img} onChange={handlePhotoChange} data-testid="input-img" id={"input-img"}
-                       accept={".png"}/>
-                <Label>{t('createRoute.addVideo')}</Label>
-                <Input type="file" ref={video} onChange={handleVideoChange} data-testid="input-video" id={"input-video"}
-                       accept={".mp4"}/>
-                <br/>
-                <Button onClick={handleSave} data-testid="button-save"
-                        id={"button-save"}> {t('createRoute.saveRoute')} </Button>
-            </Header>
+            <RouteContainer>
+                <Header data-testid="route-header">
+                    <h1 className={"text--white"}>{t('createRoute.newRoute')}</h1>
+                </Header>
+                <Form>
+                    <h4>{t('createRoute.data')}</h4>
+                    <FullGridSize>
+                        <Label>
+                            {t('createRoute.title')}
+                        </Label>
+                        <Input type="text" size="20" placeholder={t('createRoute.newRoute')} onChange={handleTitleChange} data-testid='input-title' id='input-title'/>
 
-            <CreateMap parentCallback={callbackFunction}/>
+                        <Label>{t('createRoute.description')}
 
+                        </Label>
+                        <Input type="text" size="100" placeholder={t('createRoute.description')}
+                               onChange={handleDescriptionChange} data-testid="input-description" id="input-description"/>
+
+                    </FullGridSize>
+                    <h4>{t('createRoute.media')}</h4>
+                    <FullGridSize>
+                        <Label>{t('createRoute.addPhoto')}</Label>
+                        <Input type="file" ref={img} onChange={handlePhotoChange} data-testid="input-img" id="input-img"
+                               accept={".png"}/>
+                        <Label>{t('createRoute.addVideo')}</Label>
+                        <Input type="file" ref={video} onChange={handleVideoChange} data-testid="input-video" id="input-video"
+                               accept={".mp4"}/>
+                    </FullGridSize>
+                    <h4>{"Mapa"}</h4>
+                    <FullGridSize>
+                        <CreateMap parentCallback={callbackFunction} marcadores={marcadores}/>
+                    </FullGridSize>
+                    <FullGridSize>
+                        <Button
+                            variant="success"
+                            onClick={handleSave}
+                            data-testid="button-save"
+                            id="button-save"
+                        >
+                            {t('createRoute.saveRoute')}
+                        </Button>
+                        {/*<ButtonStyle onClick={handleSave} data-testid="button-save"> {t('createRoute.saveRoute')} </ButtonStyle>*/}
+                    </FullGridSize>
+
+                </Form>
+
+            </RouteContainer>
         </RouteWrapper>
     );
 

@@ -1,21 +1,16 @@
-
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {TimelineRouteCard, TimelineRouteDetail} from './timelineroute.style';
 import Ruta from "../../Ruta"
-
-import {NotificationTypes, useNotification} from '@inrupt/solid-react-components';
-import {notification} from '@utils';
-
 import auth from "solid-auth-client";
 import {AccessControlList, NotificationTypes, useNotification} from '@inrupt/solid-react-components';
 import {errorToaster, notification, successToaster} from '@utils';
 import {useTranslation} from 'react-i18next';
-import {Button,InputGroup,FormControl} from "react-bootstrap";
+import {Button, InputGroup, FormControl} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const TimeLineRoute = props => {
     let cadena = null;
-    let friendWebID = null;
+    const [friendWebID, setFriendWebID] = useState("");
     let route = props.route;
     const title = route.name;
     const description = route.description;
@@ -31,12 +26,13 @@ const TimeLineRoute = props => {
     });
 
     function isValidURL(string) {
-        var res = string.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)()/g);
+        // eslint-disable-next-line no-useless-escape
+        var res = string.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)()/g);
         return (res !== null)
     };
 
     function handleShare() {
-        if(isValidURL(friendWebID)){
+        if (isValidURL(friendWebID)) {
             try {
                 let url = cadena.replace("profile/card#me", "viade/" + route.fileName);
                 const permissions = [
@@ -60,7 +56,7 @@ const TimeLineRoute = props => {
             } catch (error) {
                 errorToaster(t('notifications.errorGrantingAccess'));
             }
-        }else{
+        } else {
             errorToaster("Friend webId is not valid", t("notifications.error"));
         }
 
@@ -120,7 +116,7 @@ const TimeLineRoute = props => {
                     <InputGroup.Prepend>
                         <Button variant="outline-success" onClick={handleShare}>{t('route.share')}</Button>
                     </InputGroup.Prepend>
-                    <FormControl type={"text"} placeholder={"WebID"} onChange={handleFriendChange} />
+                    <FormControl type={"text"} placeholder={"WebID"} onChange={handleFriendChange}/>
                 </InputGroup>
             </TimelineRouteDetail>
         </TimelineRouteCard>

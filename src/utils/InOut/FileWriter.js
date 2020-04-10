@@ -5,10 +5,6 @@ import {errorToaster} from '@utils';
 
 class FileWriter {
 
-    constructor( Props) {
-
-    }
-
     static async handleSave(url, text) {
          await SolidAuth.fetch(url, {
             method: 'PUT',
@@ -26,7 +22,7 @@ class FileWriter {
                 if (response.ok) {
                     callback(fileName,text);
                 } else if (response.status === 404) {
-                    errorToaster("Error 404 Not Found"+" "+url, "Error")
+                    errorToaster("Error 404 Not Found "+url, "Error")
                 } else {
                     errorToaster("Error "+response.status+": "+url, "Error")
                 }
@@ -37,8 +33,8 @@ class FileWriter {
         const fc = new FC(auth);
 
         fc.readFolder(url,[]).then(promesa => {
-            let i
-            let carpetas = []
+            let i;
+            let carpetas = [];
             for (i=0;i<promesa.files.length;i++){
                 carpetas[i]=promesa.files[i].name;
             }

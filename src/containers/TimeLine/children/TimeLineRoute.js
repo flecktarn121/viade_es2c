@@ -1,12 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {TimelineRouteCard, TimelineRouteDetail, Input} from './timelineroute.style';
+import {Input, TimelineRouteCard, TimelineRouteDetail} from './timelineroute.style';
 import Ruta from "../../Ruta"
 import rutas from "../../../constants/globals";
 import auth from "solid-auth-client";
-import FC from "solid-file-client";
-
-import {NotificationTypes, useNotification} from '@inrupt/solid-react-components';
-import {notification} from '@utils';
+import {AccessControlList, NotificationTypes, useNotification} from '@inrupt/solid-react-components';
+import {errorToaster, notification, successToaster} from '@utils';
 import {useTranslation} from 'react-i18next';
 
 const TimeLineRoute = props => {
@@ -15,7 +13,7 @@ const TimeLineRoute = props => {
     const {title, description, id} = props;
     let route = rutas[id];
     const {createNotification} = useNotification(cadena);
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     useEffect(() => {
         auth.trackSession(session => {
@@ -25,22 +23,41 @@ const TimeLineRoute = props => {
         });
     });
 
+    function isValidURL(string) {
+        var res = string.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)()/g);
+        return (res !== null)
+    };
+
     function handleShare() {
-        try {
-            console.log("a")
-            let url = cadena.replace("profile/card#me", "viade/"+ route.fileName);
-            const contentNotif = {
-                title: "Route share",
-                summary: "Ha compartido una ruta contigo",
-                actor: cadena,
-                object: url,
-                target: friendWebID
-            };
-            publish(sendNotification, contentNotif, friendWebID, NotificationTypes.OFFER);
-        } catch (error) {
-            console.log(error);
+        if(isValidURL(friendWebID)){
+            try {
+                let url = cadena.replace("profile/card#me", "viade/" + route.fileName);
+                const permissions = [
+                    {
+                        agents: [friendWebID],
+                        modes: [AccessControlList.MODES.READ]
+                    }
+                ];
+                const ACLFile = new AccessControlList(cadena, url);
+                ACLFile.createACL(permissions);
+                successToaster(t('notifications.accessGranted'));
+
+                const contentNotif = {
+                    title: "Route share",
+                    summary: "Ha compartido una ruta contigo",
+                    actor: cadena,
+                    object: url,
+                    target: friendWebID
+                };
+                publish(sendNotification, contentNotif, friendWebID, NotificationTypes.OFFER);
+            } catch (error) {
+                errorToaster(t('notifications.errorGrantingAccess'));
+            }
+        }else{
+            errorToaster("Friend webId is not valid", t("notifications.error"));
         }
-        }
+
+    }
 
     const publish = async (createNotification, content, webId, type) => {
         try {
@@ -87,9 +104,10 @@ const TimeLineRoute = props => {
     }
 
     return (
+
         <TimelineRouteCard className="card">
             <TimelineRouteDetail data-testid="welcome-detail">
-                <h3>{title}</h3>
+                <h3>{title} - {route.author}</h3>
                 <p>{description}</p>
                 <Ruta route={route}/>
                 <p>{t('route.share')}</p>

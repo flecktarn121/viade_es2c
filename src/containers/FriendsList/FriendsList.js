@@ -4,9 +4,9 @@ import {FriendListContainer, FriendListWrapper, Header} from './FriendList.style
 import {useTranslation} from 'react-i18next';
 import {errorToaster} from '@utils';
 /*import { render } from 'react-testing-library';*/
+import auth from "solid-auth-client";
 
 //authentication
-const auth = require('solid-auth-client');
 //rdf 
 const $rdf = require('rdflib');
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');

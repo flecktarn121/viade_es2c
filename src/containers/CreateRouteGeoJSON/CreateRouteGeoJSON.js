@@ -3,14 +3,14 @@
 /* eslint-disable no-console */
 
 import React, {useState} from 'react';
-import {Button, Header, Input, Label, RouteWrapper} from "./RouteGeoJSON.style";
+import {Button, Header, Input, Label, RouteWrapper, RouteContainer, Form, FullGridSize} from "./RouteGeoJSON.style";
 import RouteToRdfParser from "../../utils/parser/RouteToRdfParser"
 import Route from "../../utils/route/Route"
 import {errorToaster, successToaster} from '@utils';
 import {useTranslation} from "react-i18next";
 import MediaLoader from "../../utils/InOut/MediaLoader";
 
-type Props = {webId: String, test: boolean};
+type Props = { webId: String, test: boolean };
 
 let markers = [];
 
@@ -18,8 +18,8 @@ let geojsontest = '{"type": "FeatureCollection", "features": [{"type": "Feature"
 let geojson = '';
 
 
-const CreateRouteGeoJSON = ({ webId, test }: Props) => {
-    const { t } = useTranslation();
+const CreateRouteGeoJSON = ({webId, test}: Props) => {
+    const {t} = useTranslation();
     const webID = webId.replace("profile/card#me", "");
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -33,11 +33,11 @@ const CreateRouteGeoJSON = ({ webId, test }: Props) => {
         var geoObject = JSON.parse(file);
         var features = [];
         features = geoObject.features;
-        if(features.length === 1){
-            if(features[0].geometry.type === "LineString"){
+        if (features.length === 1) {
+            if (features[0].geometry.type === "LineString") {
                 var coordinates = features[0].geometry.coordinates;
-                for(var i = 0; i< coordinates.length; i++){
-                    markers.push({position:{lat:coordinates[i][0], lng: coordinates[i][1]}});
+                for (var i = 0; i < coordinates.length; i++) {
+                    markers.push({position: {lat: coordinates[i][0], lng: coordinates[i][1]}});
                 }
             }
         }
@@ -45,14 +45,14 @@ const CreateRouteGeoJSON = ({ webId, test }: Props) => {
 
     function handleSave(event) {
         if (title.length === 0) {
-            errorToaster(t('notifications.title'),t('notifications.error'));
-        }else if(description.length === 0){
-            errorToaster(t('notifications.description'),t('notifications.error'));
+            errorToaster(t('notifications.title'), t('notifications.error'));
+        } else if (description.length === 0) {
+            errorToaster(t('notifications.description'), t('notifications.error'));
         } else {
-            if(!test && geojson===""){
-                errorToaster("suba un archivo",t('notifications.error'));
-            }else{
-                parsergeojson(test? geojsontest:geojson);
+            if (!test && geojson === "") {
+                errorToaster("suba un archivo", t('notifications.error'));
+            } else {
+                parsergeojson(test ? geojsontest : geojson);
                 if (markers.length === 0) {
                     errorToaster("error en el parser: es posible que su archivo no sea valido", t('notifications.error'));
                 } else {
@@ -60,10 +60,10 @@ const CreateRouteGeoJSON = ({ webId, test }: Props) => {
                     loader.saveImage(photoURL, img);
                     loader.saveVideo(videoURL, video);
                     let filename = title.trim().replace(/ /g, "") + new Date().getTime();
-                    let route = new Route(title, description, markers, webID, null, photoURL === "" ? null : photoURL, videoURL === "" ? null : videoURL,filename);
+                    let route = new Route(title, description, markers, webID, null, photoURL === "" ? null : photoURL, videoURL === "" ? null : videoURL, filename);
                     let parser = new RouteToRdfParser(route, webID);
                     parser.parse();
-                    successToaster(t('notifications.save'),t('notifications.success'));
+                    successToaster(t('notifications.save'), t('notifications.success'));
                     setTimeout(function () {
                         window.location.href = '#/timeline'
                     }, 1000)
@@ -88,9 +88,10 @@ const CreateRouteGeoJSON = ({ webId, test }: Props) => {
     function loaded(file) {
         geojson = file.target.result.toString();
     }
+
     function handleUpload(event) {
         event.preventDefault();
-        if(file.current.files.length > 0){
+        if (file.current.files.length > 0) {
             var reader = new FileReader();
             reader.readAsText(file.current.files[0]);
             reader.onload = loaded;
@@ -113,22 +114,41 @@ const CreateRouteGeoJSON = ({ webId, test }: Props) => {
 
     return (
         <RouteWrapper data-testid="route-wrapper">
-            <Header data-testid="route-header">
-                <h1 className={"text--white"}>{t('createRoute.newRoute')}</h1>
-                <Label>{t('createRoute.title')}</Label>
-                <Input type="text" size="20" placeholder={t('createRoute.newRoute')} onChange={handleTitleChange} data-testid="input-title" />
-                <Label>{t('createRoute.description')}</Label>
-                <Input type="text" size="100" placeholder={t('createRoute.description')} onChange={handleDescriptionChange} data-testid="input-description"/>
-                <Label>{t('createRoute.uploadGeoJson')}</Label>
-                <Input type="file" ref={file} onChange={handleUpload} data-testid="input-file"/>
-                <Label>{t('createRoute.media')}</Label>
-                <Label>{t('createRoute.addPhoto')}</Label>
-                <Input type="file" ref={img} onChange={handlePhotoChange} data-testid="input-img" accept={".png"}/>
-                <Label>{t('createRoute.addVideo')}</Label>
-                <Input type="file" ref={video} onChange={handleVideoChange} data-testid="input-video" accept={".mp4"}/>
-                <br/>
-                <Button onClick={handleSave} data-testid="button-save"> {t('createRoute.saveRoute')} </Button>
-            </Header>
+            <RouteContainer>
+                <Header data-testid="route-header">
+                    <h1 className={"text--white"}>{t('createRoute.newRoute')}: GeoJSON</h1>
+                </Header>
+                <Form>
+                    <h4>{t('createRoute.data')}</h4>
+                    <FullGridSize>
+                        <Label>
+                            {t('createRoute.title')}
+                            <Input type="text" size="20" placeholder={t('createRoute.newRoute')}
+                                   onChange={handleTitleChange}
+                                   data-testid="input-title"/>
+                        </Label>
+
+                        <Label>{t('createRoute.description')}</Label>
+                        <Input type="text" size="100" placeholder={t('createRoute.description')}
+                               onChange={handleDescriptionChange} data-testid="input-description"/>
+                        <Label>{t('createRoute.uploadGeoJson')}</Label>
+                        <Input type="file" ref={file} onChange={handleUpload} data-testid="input-file"/>
+                    </FullGridSize>
+                    <h4>{t('createRoute.media')}</h4>
+                    <FullGridSize>
+                        <Label>{t('createRoute.addPhoto')}</Label>
+                        <Input type="file" ref={img} onChange={handlePhotoChange} data-testid="input-img"
+                               accept={".png"}/>
+                        <Label>{t('createRoute.addVideo')}</Label>
+                        <Input type="file" ref={video} onChange={handleVideoChange} data-testid="input-video"
+                               accept={".mp4"}/>
+                    </FullGridSize>
+                    <FullGridSize>
+                    <Button onClick={handleSave} data-testid="button-save"> {t('createRoute.saveRoute')} </Button>
+                    </FullGridSize>
+                </Form>
+
+            </RouteContainer>
         </RouteWrapper>
     );
 

@@ -97,7 +97,6 @@ const TimeLineRoute = props => {
         }
     }
 
-
     function handleFriendChange(event) {
         event.preventDefault();
         setFriendWebID(event.target.value);

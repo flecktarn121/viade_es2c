@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Loader} from '@util-components'
 import {FriendListContainer, FriendListWrapper, Header} from './FriendList.style';
 import {useTranslation} from 'react-i18next';
-import {errorToaster, notification, successToaster} from '@utils';
+import {errorToaster} from '@utils';
 /*import { render } from 'react-testing-library';*/
 
 //authentication

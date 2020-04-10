@@ -191,12 +191,15 @@
     "uploadGPX" : "Upload your GPX file",
     "archive" : "Using a file:",
     "map": "Create your own route using the map:",
-    "here" : "Here"
+    "here" : "Here",
+    "data": "Route data"
   },
   "friends": {
     "list" : "List of friends"
   },
   "route" : {
-    "share" : "Share"
+    "share" : "Share",
+    "open" : "Open route",
+    "close" : "Close route"
   }
 }

@@ -6,19 +6,24 @@ const containerStyle = {
     display: 'flex',
     padding: '30px 0',
     position: 'relative',
+    width: 'auto',
+    height: '30em'
 };
 
 const style = {
     display: 'flex',
     flexDirection: 'row',
-    height: 'auto',
-    width: '100vw'
+    height: '30em',
+    width: 'auto'
 };
 
 export class CreateMap extends Component {
+
     sendData = () => {
         this.props.parentCallback(this.state.markers);
     };
+
+
 
     state = {
         markers: [],
@@ -57,6 +62,8 @@ export class CreateMap extends Component {
         });
         this.setState({markers});
         this.sendData();
+
+
     };
 
     crearlinea() {
@@ -66,22 +73,6 @@ export class CreateMap extends Component {
             markers.push({lat: this.state.markers[i].position.lat, lng: this.state.markers[i].position.lng})
         }
         return markers;
-    };
-
-    handleMarkerRightclick (index, event) {
-        /*
-         * All you modify is data, and the view is driven by data.
-         * This is so called data-driven-development. (And yes, it's now in
-         * web front end and even with google maps API.)
-         */
-        var {markers} = this.state;
-        markers = update(markers, {
-            $splice: [
-                [index, 1]
-            ],
-        });
-        this.setState({ markers });
-        alert("asdasdsdsd")
     };
 
     render() {

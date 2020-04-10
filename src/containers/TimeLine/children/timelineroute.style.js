@@ -9,10 +9,6 @@ export const TimelineRouteCard = styled.div`
   flex-direction: row !important;
   padding: 50px 0 !important; //temporary fix to a style guide bug
   align-items: center;
-
-  button {
-    margin-right: 8px;
-  }
 `;
 
 export const TimelineRouteDetail = styled.div`
@@ -23,8 +19,4 @@ export const TimelineRouteDetail = styled.div`
   h4 {
     color: #005F11;
   }
-`;
-
-export const Input = styled.input`
-  margin: 5px;
 `;

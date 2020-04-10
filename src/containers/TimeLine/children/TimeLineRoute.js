@@ -1,17 +1,24 @@
-import React, {useEffect, useState} from 'react';
-import {Input, TimelineRouteCard, TimelineRouteDetail} from './timelineroute.style';
+
+import React, {useEffect} from 'react';
+import {TimelineRouteCard, TimelineRouteDetail} from './timelineroute.style';
 import Ruta from "../../Ruta"
-import rutas from "../../../constants/globals";
+
+import {NotificationTypes, useNotification} from '@inrupt/solid-react-components';
+import {notification} from '@utils';
+
 import auth from "solid-auth-client";
 import {AccessControlList, NotificationTypes, useNotification} from '@inrupt/solid-react-components';
 import {errorToaster, notification, successToaster} from '@utils';
 import {useTranslation} from 'react-i18next';
+import {Button,InputGroup,FormControl} from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const TimeLineRoute = props => {
     let cadena = null;
-    const [friendWebID, setFriendWebID] = useState("");
-    const {title, description, id} = props;
-    let route = rutas[id];
+    let friendWebID = null;
+    let route = props.route;
+    const title = route.name;
+    const description = route.description;
     const {createNotification} = useNotification(cadena);
     const {t} = useTranslation();
 
@@ -109,9 +116,12 @@ const TimeLineRoute = props => {
                 <h3>{title} - {route.author}</h3>
                 <p>{description}</p>
                 <Ruta route={route}/>
-                <p>{t('route.share')}</p>
-                <Input type={"text"} placeholder={"WebID"} onChange={handleFriendChange}/>
-                <button onClick={handleShare}>{t('route.share')}</button>
+                <InputGroup>
+                    <InputGroup.Prepend>
+                        <Button variant="outline-success" onClick={handleShare}>{t('route.share')}</Button>
+                    </InputGroup.Prepend>
+                    <FormControl type={"text"} placeholder={"WebID"} onChange={handleFriendChange} />
+                </InputGroup>
             </TimelineRouteDetail>
         </TimelineRouteCard>
     );

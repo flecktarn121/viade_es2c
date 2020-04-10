@@ -80,12 +80,12 @@ defineFeature(feature, test => {
             await page.waitFor(500);
 
             await page.waitForSelector("[id='input-title']", {visible: true});
-            await page.type("[id='input-title']", "Pupeteer ");
+            await page.type("[id='input-title']", "gpx ");
 
             await page.waitFor(500);
 
             await page.waitForSelector("[id='input-description']", {visible: true});
-            await page.type("[id='input-description']", "Pupeteer");
+            await page.type("[id='input-description']", "gpx");
 
             await page.waitFor(500);
 

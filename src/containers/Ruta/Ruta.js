@@ -38,12 +38,12 @@ class Ruta extends Component {
         const { t } = this.props;
         return (
             <section>
-                <input type="button" data-testid="button-open" value={t('route.open')} onClick={() => this.openModal()}/>
+                <button data-testid="button-open" id={"button-open-"+ this.route.name} onClick={() => this.openModal()}> {t('route.open')}</button>
                 <Modal visible={this.state.visible} width="70%" height="85%" effect="fadeInDown"
                        onClickAway={() => this.closeModal()}>
                     <div>
                         <Header>
-                            <h1 className="text--white">{this.route.name}</h1>
+                            <h1 id={"route-title-"+ this.route.name} className="text--white">{this.route.name}</h1>
                         </Header>
                         <Map zoom={15} markers={this.route.points}/>
                         <input type="button" data-testid="button-close" value={t('route.close')} onClick={() => this.closeModal()}/>

@@ -1,8 +1,13 @@
 import SolidAuth from "solid-auth-client";
 import auth from "solid-auth-client";
 import FC from "solid-file-client";
+import {errorToaster} from '@utils';
 
 class FileWriter {
+
+    constructor( Props) {
+
+    }
 
     static async handleSave(url, text) {
          await SolidAuth.fetch(url, {
@@ -21,9 +26,9 @@ class FileWriter {
                 if (response.ok) {
                     callback(fileName,text);
                 } else if (response.status === 404) {
-                    alert('error');
+                    errorToaster("Error 404 Not Found"+" "+url, "Error")
                 } else {
-                    alert(response.status);
+                    errorToaster("Error "+response.status+": "+url, "Error")
                 }
             });
     }
@@ -38,7 +43,7 @@ class FileWriter {
                 carpetas[i]=promesa.files[i].name;
             }
             callback(url,carpetas);
-        }, err => alert("Error al leer la carpeta "+url+" "+err));
+        }, err => errorToaster("Error: "+err+", "+url));
     }
 }
 

@@ -155,6 +155,7 @@ const CreateRouteGeoJSON = ({webId, test}: Props) => {
                             onClick={handleSave}
                             data-testid="button-save"
                             id="button-save"
+                            size="lg" block
                         >
                             {t('createRoute.saveRoute')}
                         </Button>

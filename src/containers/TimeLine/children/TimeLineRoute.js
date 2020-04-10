@@ -1,11 +1,13 @@
 import React, {useEffect} from 'react';
-import {TimelineRouteCard, TimelineRouteDetail, Input} from './timelineroute.style';
+import {TimelineRouteCard, TimelineRouteDetail} from './timelineroute.style';
 import Ruta from "../../Ruta"
 
 import {NotificationTypes, useNotification} from '@inrupt/solid-react-components';
 import {notification} from '@utils';
 import auth from "solid-auth-client";
 import {useTranslation} from 'react-i18next';
+import {Button,InputGroup,FormControl} from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const TimeLineRoute = props => {
     let cadena = null;
@@ -91,9 +93,12 @@ const TimeLineRoute = props => {
                 <h3>{title}</h3>
                 <p>{description}</p>
                 <Ruta route={route}/>
-                <p>{t('route.share')}</p>
-                <Input type={"text"} placeholder={"WebID"} onChange={handleFriendChange}/>
-                <button onClick={handleShare}>{t('route.share')}</button>
+                <InputGroup>
+                    <InputGroup.Prepend>
+                        <Button variant="outline-success" onClick={handleShare}>{t('route.share')}</Button>
+                    </InputGroup.Prepend>
+                    <FormControl type={"text"} placeholder={"WebID"} onChange={handleFriendChange} />
+                </InputGroup>
             </TimelineRouteDetail>
         </TimelineRouteCard>
     );

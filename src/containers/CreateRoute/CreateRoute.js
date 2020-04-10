@@ -131,10 +131,10 @@ const CreateRoute = ({webId}: Props) => {
                             onClick={handleSave}
                             data-testid="button-save"
                             id="button-save"
+                            size="lg" block
                         >
                             {t('createRoute.saveRoute')}
                         </Button>
-                        {/*<ButtonStyle onClick={handleSave} data-testid="button-save"> {t('createRoute.saveRoute')} </ButtonStyle>*/}
                     </FullGridSize>
 
                 </Form>

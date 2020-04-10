@@ -199,7 +199,11 @@
     "data": "Datos de la ruta"
   },
   "friends": {
-    "list" : "Lista de amigos"
+    "list" : "Lista de amigos",
+    "profile" : "Ver perfil",
+    "errorObtaining": "Error obteniendo los amigos",
+    "erroruser" : "Error obteniendo la sesión del usuario",
+    "userlogged" : "El usuario no está loggeado"
   },
   "route" : {
     "share" : "Compartir",

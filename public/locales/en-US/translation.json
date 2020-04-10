@@ -195,7 +195,11 @@
     "data": "Route data"
   },
   "friends": {
-    "list" : "List of friends"
+    "list" : "List of friends",
+    "profile" : "Check profile",
+    "errorObtaining": "Error obtaining the friends",
+    "erroruser" : "Error getting the user's session",
+    "userlogged" : "The user is not logged in"
   },
   "route" : {
     "share" : "Share",

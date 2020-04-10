@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Loader} from '@util-components'
 import {FriendListContainer, FriendListWrapper, Header} from './FriendList.style';
+import {useTranslation} from 'react-i18next';
+import {errorToaster, notification, successToaster} from '@utils';
 /*import { render } from 'react-testing-library';*/
 
 //authentication
@@ -9,7 +11,7 @@ const auth = require('solid-auth-client');
 const $rdf = require('rdflib');
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
 const store = $rdf.graph();
-const fetcher = new $rdf.Fetcher(store);
+//const fetcher = new $rdf.Fetcher(store);
 
 //var person = null;
 var person = 'https://ruben.verborgh.org/profile/#me';//example person with friends
@@ -22,18 +24,19 @@ var friendsLi = null;
  * funcionamiento cuando usuario no tenga amigos, arreglar que se carguen datos antes de vista
  */
 function FriendsList() {
+    const {t} = useTranslation();
     //obtaining webId of the user in session
     trackSession(function(persona){
         console.log("sesion",persona)
         loadFriends(persona,function(friendsUrls){
             if(friendsUrls == null || friendsUrls === undefined){
-                console.log('Error obtaining friendsUrls');
+                errorToaster(t('friends.errorObtaining'), "Error");
             }
             else{
                     friendsLi = friendsUrls.map(friend =>
                         <li key={friend.toString()}>
                         <h2>{friend}</h2>
-                        <a href={friend}>Ver perfil</a>
+                        <a href={friend}>{t("friends.profile")}</a>
                     </li>
                     );   
             }
@@ -47,6 +50,7 @@ function FriendsList() {
  * obtaining the friendsList
  */
 function renderFriendsList(){
+    const {t} = useTranslation();
     const [isLoading,setIsLoading] = useState(true);
     var loaded = () => setIsLoading(false);
     return( 
@@ -55,7 +59,7 @@ function renderFriendsList(){
         <FriendListContainer>
         <div>
             <Header>
-                <h1>Lista de amigos</h1> 
+                <h1>{t("friends.list")}</h1>
             </Header>
                 <ul>
                     {friendsLi}
@@ -87,8 +91,8 @@ function renderFriendsList(){
  * @param callback function executed when the friends list is loaded, with urls and names
  */
 async function loadFriends(p,callback) {
+    const fetcher = new $rdf.Fetcher(store);
     if(p == null){
-        console.log('error couldnt get user');
         return callback(null);
     }else{
         console.log("loadfriends", p)
@@ -106,6 +110,7 @@ async function loadFriends(p,callback) {
  * This function is used for tracking the user session
  */
 function trackSession(callback) {
+    const {t} = useTranslation();
     auth.trackSession(session => {
         if (session) {
             //person = session.webId;
@@ -113,7 +118,7 @@ function trackSession(callback) {
             return callback(session.webId);
         }
         else {
-            console.log('The user is not logged in');
+            errorToaster(t('friends.userlogged'), "Error");
             return callback(null);
         }
     });

@@ -27,7 +27,7 @@ const CreateRouteSelector = ({ webId }: Props) => {
                     <Button
                         variant="outline-success"
                         onClick={() => goTo('#/createroutegpx')}
-                        ata-testid="goTo-gpx"
+                        data-testid="goTo-gpx"
                     >
                         Gpx
                     </Button>

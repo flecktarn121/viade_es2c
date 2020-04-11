@@ -38,4 +38,10 @@ describe.only('Ruta', () => {
         fireEvent.click(button_close);
     });
 
+    test('renders media', () => {
+        const button_media = getByTestId(container, 'button-multimedia');
+
+        fireEvent.click(button_media);
+    });
+
 });

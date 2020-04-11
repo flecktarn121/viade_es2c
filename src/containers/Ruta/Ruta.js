@@ -84,7 +84,7 @@ class Ruta extends Component {
                                 </FullGridSize>
                                 <h4>{t('createRoute.media')}</h4>
                                 <FullGridSize>
-                                    <button onClick={this.verMultimedia}>ver multimedia</button>
+                                    <button data-testid="button-multimedia" onClick={this.verMultimedia}>ver multimedia</button>
                                     <div id={"foto"+this.route.fileName}></div>
                                     <div id={"video"+this.route.fileName}></div>
                                 </FullGridSize>

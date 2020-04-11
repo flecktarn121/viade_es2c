@@ -25,7 +25,7 @@ class SolidAuthClient extends EventEmitter {
 
   currentSession = async () =>  {
     return {
-      webId: 'https://viadees2c.solid.community/'
+      webId: 'https://elmer.solid.community/'
     }
   }
 

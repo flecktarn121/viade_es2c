@@ -5,8 +5,6 @@ import FC from "solid-file-client";
 class MediaLoader {
 
     saveImage(url, file) {
-
-        console.log(file)
         SolidAuth.fetch(url, {
             method: 'PUT',
             body: file,
@@ -17,7 +15,6 @@ class MediaLoader {
     }
 
     saveVideo(url, file) {
-        console.log(file)
         SolidAuth.fetch(url, {
             method: 'PUT',
             body: file,
@@ -27,9 +24,9 @@ class MediaLoader {
         });
     }
 
-    loadImage(url, callback) { // explicacion debajo !!
+    loadMedia(url, callback) { // explicacion debajo !!
         const fc = new FC(auth);
-        let content = fc.readFile( "https://elmer.solid.community/viade/portada8.png" );
+        let content = fc.readFile( url );
         content.then(value => callback(value));
     }
 

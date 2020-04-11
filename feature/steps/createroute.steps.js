@@ -29,7 +29,7 @@ defineFeature(feature, test => {
             });
 
             await page.waitForSelector(".sc-EHOje.cffgrt");
-            await page.type(".sc-EHOje.cffgrt", "https://viadees2c.solid.community/profile/card#me");
+            await page.type(".sc-EHOje.cffgrt", "https://viades2c.solid.community/profile/card#me");
 
             await page.evaluate(() => {
                 let btns = [...document.querySelectorAll("button")];
@@ -46,11 +46,11 @@ defineFeature(feature, test => {
             });
 
             await page.waitForSelector("[id='username']", {visible: true});
-            await page.type("[id='username']", "viadees2c");
+            await page.type("[id='username']", "viades2c");
 
             await page.waitFor(500);
             await page.waitForSelector("[id='password']", {visible: true});
-            await page.type("[id='password']", "viadees2cviadees2c", {visible: true});
+            await page.type("[id='password']", "viades2cviades2cviades2c", {visible: true});
 
             await page.waitFor(500);
 

@@ -14,7 +14,7 @@ const store = $rdf.graph();
 //const fetcher = new $rdf.Fetcher(store);
 
 //var person = null;
-var person = 'https://ruben.verborgh.org/profile/#me';//example person with friends
+// var person = 'https://ruben.verborgh.org/profile/#me';//example person with friends
 
 var friendsLi = null;
 

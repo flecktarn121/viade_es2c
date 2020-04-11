@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {TimelineRouteCard, TimelineRouteDetail} from './timelineroute.style';
 import Ruta from "../../Ruta"
 import auth from "solid-auth-client";
-import * as fileClient from 'solid-file-client';
 import {AccessControlList, NotificationTypes, useNotification} from '@inrupt/solid-react-components';
 import {errorToaster, notification, successToaster} from '@utils';
 import {useTranslation} from 'react-i18next';

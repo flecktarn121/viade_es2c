@@ -46,6 +46,9 @@ class RdftoRouteParser {
                 let image = this.getImage(results);
                 let video = this.getVideo(results);
                 let route = new Route(name,description, points,null,comments,image,video,fileName);
+                alert(route.name)
+                alert(route.image)
+                alert(route.video)
                 this.pushRoutes(route);
             },
             err =>  errorToaster(err,"Error")

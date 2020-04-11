@@ -27,19 +27,17 @@ const CreateRoute = ({webId, test}: Props) => {
     const [markers, setMarkers] = useState({});
     const [photoURL, setPhotoURL] = useState("");
     const [videoURL, setVideoURL] = useState("");
-    let marcadores = [];
+    const [videoFile, setVideoFile] = useState(null);
+    const [imgFile, setImgFile] = useState(null);
     let img = React.createRef();
     let video = React.createRef();
 
 
     function callbackFunction(childData) {
         setMarkers(childData);
-        marcadores = childData;
-        console.log(marcadores)
     }
 
     function handleSave(event) {
-        marcadores.push({position: {lat: 0, lng: 0}})
         if (title.length === 0) {
             errorToaster(t('notifications.title'), t('notifications.error'));
         } else if (description.length === 0) {
@@ -48,8 +46,8 @@ const CreateRoute = ({webId, test}: Props) => {
             errorToaster("Añada marcadores al mapa para crear la ruta", t('notifications.error'));
         } else {
             let loader = new MediaLoader();
-            loader.saveImage(photoURL, img);
-            loader.saveVideo(videoURL, video);
+            loader.saveImage(photoURL, imgFile);
+            loader.saveVideo(videoURL, videoFile);
             let filename = title.trim().replace(/ /g, "") + new Date().getTime();
             let route = new Route(title, description, markers, webID, null, photoURL === "" ? null : photoURL, videoURL === "" ? null : videoURL, filename);
             let parser = new RouteToRdfParser(route, webID);
@@ -75,6 +73,7 @@ const CreateRoute = ({webId, test}: Props) => {
     function handlePhotoChange(event) {
         event.preventDefault();
         if (img.current.files.length > 0) {
+            setImgFile(img.current.files[0]);
             setPhotoURL(webID + "viade/resources/" + img.current.files[0].name);
         }
     }
@@ -82,6 +81,7 @@ const CreateRoute = ({webId, test}: Props) => {
     function handleVideoChange(event) {
         event.preventDefault();
         if (video.current.files.length > 0) {
+            setVideoFile(video.current.files[0]);
             setVideoURL(webID + "viade/resources/" + video.current.files[0].name);
         }
     }
@@ -124,7 +124,7 @@ const CreateRoute = ({webId, test}: Props) => {
                     </FullGridSize>
                     <h4>{"Mapa"}</h4>
                     <FullGridSize>
-                        <CreateMap parentCallback={callbackFunction} marcadores={marcadores}/>
+                        <CreateMap parentCallback={callbackFunction}/>
                     </FullGridSize>
                     <FullGridSize>
                         <Button

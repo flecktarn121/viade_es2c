@@ -22,7 +22,7 @@ export const NavigationItems = [
   },
   {
     id: 'createroute',
-    icon: '/img/icon/ruta.svg',
+    icon: 'img/icon/ruta.svg',
     label: 'navBar.createroute',
     to: '/createrouteselector'
   }

@@ -27,6 +27,8 @@ const CreateRouteGeoJSON = ({webId, test}: Props) => {
     const [description, setDescription] = useState('');
     const [photoURL, setPhotoURL] = useState("");
     const [videoURL, setVideoURL] = useState("");
+    const [videoFile, setVideoFile] = useState(null);
+    const [imgFile, setImgFile] = useState(null);
     let file = React.createRef();
     let img = React.createRef();
     let video = React.createRef();
@@ -59,8 +61,8 @@ const CreateRouteGeoJSON = ({webId, test}: Props) => {
                     errorToaster("error en el parser: es posible que su archivo no sea valido", t('notifications.error'));
                 } else {
                     let loader = new MediaLoader();
-                    loader.saveImage(photoURL, img);
-                    loader.saveVideo(videoURL, video);
+                    loader.saveImage(photoURL, imgFile);
+                    loader.saveVideo(videoURL, videoFile);
                     let filename = title.trim().replace(/ /g, "") + new Date().getTime();
                     let route = new Route(title, description, markers, webID, null, photoURL === "" ? null : photoURL, videoURL === "" ? null : videoURL, filename);
                     let parser = new RouteToRdfParser(route, webID);
@@ -103,6 +105,7 @@ const CreateRouteGeoJSON = ({webId, test}: Props) => {
     function handlePhotoChange(event) {
         event.preventDefault();
         if (img.current.files.length > 0) {
+            setImgFile(img.current.files[0]);
             setPhotoURL(webID + "viade/resources/" + img.current.files[0].name);
         }
     }
@@ -110,6 +113,7 @@ const CreateRouteGeoJSON = ({webId, test}: Props) => {
     function handleVideoChange(event) {
         event.preventDefault();
         if (video.current.files.length > 0) {
+            setVideoFile(video.current.files[0]);
             setVideoURL(webID + "viade/resources/" + video.current.files[0].name);
         }
     }
